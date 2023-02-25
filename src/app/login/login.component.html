@@ -1,0 +1,35 @@
+<div class="row" style="--bs-gutter-x: 0;">
+    <div class="col-sm-12">
+        <div class="dropdown m-4" style="float: right;">
+            <button class="dropbtn" id="loading"><i class="bx bx-cog  tex" style="font-size: 25px;"></i></button>
+            <div class="dropdown-content">
+                <a href="JavaScript:void(0);" (click)="light()" class="tex">Light Theme</a>
+                <a href="JavaScript:void(0);" (click)="dark()">Dark Theme</a>
+            </div>
+        </div>
+    </div>    
+</div>
+<div class="form" style="margin: auto; margin-top: 6%;">
+    <h2>{{head}}</h2>
+    <div class="input">
+        <form action="" method="POST">
+            <div class="inputBox">
+                <label for="">Email</label>
+                <input type="email" name="email" id="email" placeholder="Enter Email" required>
+            </div>
+            <div class="inputBox">
+                <label for="">Password</label>
+                <input type="password" name="password" id="password" placeholder="Password">
+            </div>
+            <div class="inputBox">
+                <input type="submit" name="" value="Log In"> 
+            </div>
+        </form>
+    </div>
+    <p class="forgot ">Create New Account <a routerLink="/signup">SignUp</a></p>
+    <button type="button" (click)="sayMessage()" class='alertM' [style.color]="fontcolor"> Alert message</button>
+    <!-- <button type="button" (click)="onEditClick()">Make text editable!</button>
+    <p [contentEditable]="canEdit" [style.color]="fontcolor">{{ message }}</p> -->
+</div>
+
+

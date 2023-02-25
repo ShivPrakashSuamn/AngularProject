@@ -1,0 +1,74 @@
+<!----Nave bar ----------->
+<div class="nave p-0 fixed-top shadow-lg" style="background: aliceblue; height: 80px;"> 
+    <div class="row ">
+        <div class="col-sm-6 mt-3 ">
+                <a href="#" class="tex" style="font-size: 25px; float: left; margin-left: 32px;"> 
+                    <i style="font-size: 25px; padding-right: 10px;" class='bx bx-layer nav_logo-icon '></i> 
+                    <span class="nav_logo-name">AAAngular</span> 
+                </a>
+            <a (click)="toggleSidebar()" href="javascript:void(0);"><i class="fa fa-bars tex" style="font-size: 25px; float: left;  margin: 10px 20px 0px 108px;"></i></a>
+            <form>
+                <input type="text" class="form-control tex " style="border: none;" id="search" placeholder="Search...." [(ngModel)]="search" name="search">
+                <button type="submit" class="tex" (click)="searchVal()">Search</button> 
+            </form>
+        </div>
+        <div class="col-sm-6">
+            <div style=" float: right;">
+                <div class="float-right">
+                    <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-profiles/avatar-1.webp" class=" rounded-circle mt-2 imG" width="50px" >
+                    <a routerLink="#" class="tex" style="margin: 20px; font-size: 25px;"><i class="fa fa-bell tex notification-info"></i></a>
+                    <a routerLink="#" class="tex" style="margin: 20px; font-size: 25px;"><i class="fa fa-envelope tex"></i></a>
+                    <div class="dropdown m-4">
+                        <button class="dropbtn" id="loading"><i class="fa fa-cog  tex" style="font-size: 25px;"></i></button>
+                        <div class="dropdown-content">
+                            <a href="JavaScript:void(0);" (click)="light()" class="tex">Light Theme</a>
+                            <a href="JavaScript:void(0);" (click)="dark()">Dark Theme</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <hr style="margin: -5px;">
+    </div>
+</div>
+<!--- sidebar  -->
+<div class="col-lg-2 p-0">   
+    <div class="l-navbar shadow-lg" id="nav-bar" style="background: aliceblue; width: inherit; z-index: 1;" [ngClass]="{'w85': toggleVal}">
+        <nav class="nav" style="padding-left: 10px;">
+            <div class="mt-5 pt-5">   
+                <div class="nav_list"> 
+                    <a routerLink="/dashboard" class="nav_link active tex"> 
+                        <i class='bx bx-grid-alt nav_icon'></i> 
+                        <span class="nav_name">Dashboard</span> 
+                    </a> 
+                    <a routerLink="/profile" class="nav_link tex"> 
+                        <i class='bx bx-user-circle nav_icon'></i>
+                        <span class="nav_name">Profile</span> 
+                    </a> 
+                    <a routerLink="/users" class="nav_link tex"> 
+                        <i class='bx bx-user nav_icon'></i> 
+                        <span class="nav_name">Users</span>
+                    </a> 
+                    <a routerLink="/category" class="nav_link tex"> 
+                        <i class='bx bx-bookmark nav_icon'></i> 
+                        <span class="nav_name">Category</span> 
+                    </a> 
+                    <a href="#" class="nav_link tex"> 
+                        <i class='bx bx-folder nav_icon'></i> 
+                        <span class="nav_name">Files</span> 
+                    </a> 
+                    <a href="#" class="nav_link tex"> 
+                        <i class='bx bx-bar-chart-alt-2 nav_icon'></i> 
+                        <span class="nav_name">Stats</span> 
+                    </a> 
+                </div>
+            </div> 
+            <a routerLink="/login" class="nav_link tex"> 
+                <i class='bx bx-log-out nav_icon'></i> 
+                <span class="nav_name">SignOut</span> 
+            </a>
+        </nav>
+    </div>
+</div>
+
+

@@ -1,0 +1,40 @@
+
+<div class="row" >
+    <div class="col-sm-12">
+        <div class="dropdown m-4" style="float: right;">
+            <button class="dropbtn" id="loading"><i class="bx bx-cog  tex" style="font-size: 25px;"></i></button>
+            <div class="dropdown-content">
+                <a href="JavaScript:void(0);" (click)="light()" class="tex">Light Theme</a>
+                <a href="JavaScript:void(0);" (click)="dark()">Dark Theme</a>
+            </div>
+        </div>
+    </div>    
+</div>
+<div class="row">
+    <div class="form" style="margin: auto; margin-top: 6%;">
+        <h2>Sign Up</h2>
+        <div class="input">
+            <form action="" method="POST">
+                <div class="inputBox">
+                    <label for="">Name</label>
+                    <input type="text" name="name" id="name" placeholder="Enter Name">
+                </div>
+                <div class="inputBox">
+                    <label for="">Email</label>
+                    <input type="email" name="email" id="email" placeholder="Enter email">
+                </div>
+                <div class="inputBox">
+                    <label for="">Password</label>
+                    <input type="password" name="password" id="password" placeholder="Password">
+                </div>
+                <div class="inputBox">
+                    <input type="submit" name="" value="Sign In"> 
+                </div>
+            </form>
+        </div>
+        <p class="forgot">Already Created Account?<a routerLink="/login"> Login</a></p>
+    </div>
+</div>
+
+
+
