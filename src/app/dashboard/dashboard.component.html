@@ -1,10 +1,10 @@
 <div class="row">
     <!--- sidebar  -->
-    <div class="col-lg-2 p-0">
-        <app-sidebar> </app-sidebar>
+    <div class="p-0" style="transition: .5s;" [ngClass]="{'col-lg-1':toggleVal, 'col-lg-2': !toggleVal}">
+        <app-sidebar (sidebarToggle)=sidebarToggle($event)> </app-sidebar>
     </div>
     
-    <div class="col-lg-10 p-0 height-100"> 
+    <div class="p-0 height-100" style="transition: .5s;" [ngClass]="{'col-lg-11':toggleVal, 'col-lg-10': !toggleVal}"> 
         <div class="container-fluid ">
             <div class="col col-lg-12">
                 <div class="card1"> 

@@ -1,20 +1,23 @@
 <!----Nave bar ----------->
-<div class="nave p-0 fixed-top shadow-lg" style="background: aliceblue; height: 80px;"> 
+<div class="nave p-0 fixed-top shadow-lg b-color" style="height: 80px; "> 
     <div class="row ">
-        <div class="col-sm-6 mt-3 ">
+        <div class="col-sm-6 mt-3" style=" transition: .5s;">
                 <a href="#" class="tex" style="font-size: 25px; float: left; margin-left: 32px;"> 
                     <i style="font-size: 25px; padding-right: 10px;" class='bx bx-layer nav_logo-icon '></i> 
-                    <span class="nav_logo-name">AAAngular</span> 
+                    <span class="nav_logo-name" [ngClass]="{'N-move': toggleVal}">AAAngular</span> 
                 </a>
-            <a (click)="toggleSidebar()" href="javascript:void(0);"><i class="fa fa-bars tex" style="font-size: 25px; float: left;  margin: 10px 20px 0px 108px;"></i></a>
+                <a (click)="toggleSidebar()" href="javascript:void(0);">
+                    <i class="fa fa-bars tex" style="font-size: 25px; float: left;" [ngClass]="{'Sm1': toggleVal, 'Sm2': !toggleVal}"></i>
+                </a>
             <form>
                 <input type="text" class="form-control tex " style="border: none;" id="search" placeholder="Search...." [(ngModel)]="search" name="search">
-                <button type="submit" class="tex" (click)="searchVal()">Search</button> 
+                <button type="submit" class="tex" (click)="searchVal()">Search</button>          
             </form>
         </div>
         <div class="col-sm-6">
             <div style=" float: right;">
                 <div class="float-right">
+                    <span> {{value}}</span> 
                     <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-profiles/avatar-1.webp" class=" rounded-circle mt-2 imG" width="50px" >
                     <a routerLink="#" class="tex" style="margin: 20px; font-size: 25px;"><i class="fa fa-bell tex notification-info"></i></a>
                     <a routerLink="#" class="tex" style="margin: 20px; font-size: 25px;"><i class="fa fa-envelope tex"></i></a>
@@ -33,7 +36,7 @@
 </div>
 <!--- sidebar  -->
 <div class="col-lg-2 p-0">   
-    <div class="l-navbar shadow-lg" id="nav-bar" style="background: aliceblue; width: inherit; z-index: 1;" [ngClass]="{'w85': toggleVal}">
+    <div class="l-navbar shadow-lg b-color" id="nav-bar" style="background: aliceblue; width: inherit; z-index: 1;" [ngClass]="{'w85': toggleVal}">
         <nav class="nav" style="padding-left: 10px;">
             <div class="mt-5 pt-5">   
                 <div class="nav_list"> 

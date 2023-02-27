@@ -1,6 +1,19 @@
 .w85{
     width: 85px !important;
 }
+.N-move{
+    display: none;
+}
+.Sm1{
+    margin: 10px 20px 0px 55px;
+}
+.Sm2{
+    margin: 10px 20px 0px 106px;
+}
+.b-color{
+    backdrop-filter: blur(11px);
+    background-color: rgb(240 248 255 / 70%);
+}
 .edit{
     background:linear-gradient(315deg,#e91e63,#5d02ff) ;
     color:white;

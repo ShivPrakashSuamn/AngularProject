@@ -1,10 +1,10 @@
 <div class="row">
     <!--- sidebar  -->
-    <div class="col-lg-2 p-0">
-        <app-sidebar> </app-sidebar>
+    <div style="transition: .5s;" class="p-0" [ngClass]="{'col-lg-1': toggleVal,'col-lg-2':!toggleVal}">
+        <app-sidebar (sidebarToggle)=sidebarToggle($event)> </app-sidebar>
     </div>
     
-    <div class="col-lg-10 p-4 height-100"> 
+    <div class="p-4 height-100" style="transition: .5s;" [ngClass]="{'col-lg-11': toggleVal,'col-lg-10':!toggleVal}"> 
         <div class="col col-lg-12">
             <div class="card1">
                 <div class="m-4">
@@ -19,7 +19,7 @@
                         </div>
                         <div class="tex">
                             <div class="row" >
-                                <div class="col-md-12 mt-3 p-0"> 
+                                <div class="col-md-12 mt-3 p-1"> 
                                     <h1> Contacts </h1>
                                 </div> 	
                             </div>

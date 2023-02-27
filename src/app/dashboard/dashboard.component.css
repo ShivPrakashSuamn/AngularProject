@@ -6,6 +6,7 @@
     font-family: 'Poppins', sans-serif;
 }
 .edit{
+    border: none;
     background:linear-gradient(315deg,#e91e63,#5d02ff) ;
     color:white;
 }

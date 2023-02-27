@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Output } from '@angular/core';
+import { Component, EventEmitter, Output, SimpleChanges } from '@angular/core';
 
 @Component({
   selector: 'app-sidebar',
@@ -7,6 +7,7 @@ import { Component, EventEmitter, Output } from '@angular/core';
 })
 export class SidebarComponent {
   search:any;
+  value:any;
   toggleVal:any=false;
   @Output() sidebarToggle = new EventEmitter<{ toggleVal: boolean }>(); // event emitter
     // ------------------------- life cycle of angular
@@ -14,14 +15,14 @@ export class SidebarComponent {
         // it call first
     } 
 
-    ngOnChanges(){
-      console.log('ngOnChange')
+    ngOnChanges(changes: SimpleChanges){
+      console.log('ngOnChange');
     }
     ngOnInit() {   
-      console.log('ngOnInit')
-    }  
+      console.log('ngOnInit');
+    } 
     ngDoCheck(){
-      console.log('ngDoCheck')
+      console.log('ngDoCheck');
       // when any input change then it call
     }
     ngAfterContentInit(){
@@ -41,7 +42,7 @@ export class SidebarComponent {
     ngOnDestroy() {  
       console.log('ngOnDestroy')
         // component remove from dom then it method call
-        // this.toggleSidebar();
+         this.toggleSidebar();
     }  
 
 
@@ -53,7 +54,6 @@ export class SidebarComponent {
         this.toggleVal = true;
       }
       this.sidebarToggle.emit({ toggleVal: this.toggleVal }); // trow data to other component
-      console.log('toggleVal',this.toggleVal)
     }
     light(){
       document.body.style.background = "white";
@@ -62,7 +62,8 @@ export class SidebarComponent {
       document.body.style.background = "#060c21";
     }
     searchVal(){
-      console.log('this is search',this.search)
+      console.log('this is search',this.search);
+      this.value = this.search;
     }
 
 }

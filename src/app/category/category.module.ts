@@ -4,7 +4,6 @@ import { CategoryListComponent } from './category-list/category-list.component';
 import { CategoryCreateComponent } from './category-create/category-create.component';
 
 
-
 @NgModule({
   declarations: [
     CategoryListComponent,

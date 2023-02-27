@@ -6,5 +6,13 @@ import { Component } from '@angular/core';
   styleUrls: ['./dashboard.component.css']
 })
 export class DashboardComponent {
-    
+  toggleVal:boolean = false;
+
+  constructor() { 
+    // it call first 
+  } 
+    sidebarToggle(eventData: { toggleVal: boolean }){
+      this.toggleVal = eventData.toggleVal;
+      console.log('dashborad page inside sidebar Toggle', eventData.toggleVal);
+    }
 }

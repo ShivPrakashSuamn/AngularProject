@@ -1,10 +1,10 @@
 <div class="row">
     <!--- sidebar  -->
-    <div class="col-lg-2 p-0">
-        <app-sidebar> </app-sidebar>
+    <div style="transition: .5s;" class="p-0" [ngClass]="{'col-lg-1': toggleVal,'col-lg-2':!toggleVal}">
+        <app-sidebar (sidebarToggle)=sidebarToggle($event)> </app-sidebar>
     </div>
     
-    <div class="col-lg-10 p-0 height-100"> 
+    <div style="transition: .5s;" [ngClass]="{'col-lg-11': toggleVal,'col-lg-10':!toggleVal}"> 
         <div class = "box">
             <div class="tex" style = "font-family: Times New Roman, Times, serif; text-align: center;">
                 <h1> <b> New Created </b></h1>
@@ -28,9 +28,9 @@
                     <input type="checkbox"  name="yes"  > Subscribe to Newstetter 
                 </div>
                 <div style = "text-align: center; margin: 20px 20px 60px;">
-                    <input type="submit" class="btn btn-success"  style="float:left;" name= "submit" value = "Submit">
+                    <input type="submit" class="btn edit" style="float:left;" name= "submit" value = "Submit">
 
-                    <button class= "btn btn-primary "  style="float:right; "type="button" routerLink="/category"><b>Back..</b></button> 
+                    <button class= "btn edit" style="float:right; "type="button" routerLink="/category"><b>Back..</b></button> 
                 </div>
             </form>
         </div>
