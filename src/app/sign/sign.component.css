@@ -6,13 +6,15 @@
     box-sizing: border-box;
     font-family: 'Oswald', sans-serif;
 }
-
+.inputBorder{
+    border: 3px solid red;
+}
 .form
 {
     position: relative;
     background: #060c21;
     border: 1px solid #000;
-    width: 350px;
+    width: 400px;
     padding: 40px 40px 60px;
     border-radius: 10px;
     text-align: center;

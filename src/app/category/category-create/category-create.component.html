@@ -9,23 +9,25 @@
             <div class="tex" style = "font-family: Times New Roman, Times, serif; text-align: center;">
                 <h1> <b> New Created </b></h1>
             </div> <br>
-            <form class="form " action= "update.php" method="">
+            <form class="form " [formGroup]="createForm" (ngSubmit)="createSubmit()">
                 <div class="tex">
                     <label for="Title" > Title </label>
-                    <input type="next" class="form-control"  placeholder="Enter Title" name="title" > <br>
+                    <input type="next" class="form-control"  placeholder="Enter Title" name="title" formControlName="title"
+                        [style.border]="(submitted && f['title'].errors && f['title'].errors['required'])==true ? '1px solid red' :'1px solid #c6c6c6'"> <br>
                     
                     <label for="info" > Short Description </label>
-                    <textarea type="textarea" class="form-control"  placeholder="Write something.."  name="description">  </textarea> <br>
+                    <ckeditor [(ngModel)]="ckeditorContent" formControlName="description" style="background: transparent !important;" > </ckeditor> <br>
+
                     
                     <label for="Price" > Price </label>
-                    <input type="number" class="form-control" name="price" id="price" placeholder="Price.."> <br>
-                    
-                    
-                    <label for="gender"  > status : </label>
-                    <input type="radio"  value="status" name="yes" > Yes
-                    <input type="radio"  value="status" name="no" > No
+                    <input type="number" class="form-control" name="price" placeholder="Price.." formControlName="price" 
+                        [style.border]="(submitted && f['price'].errors && f['price'].errors['required'])==true ? '1px solid red' :'1px solid #c6c6c6'"> <br>
+
+                    <label for="status" > status : </label>	
+                        <input class="form-check-input" type="radio" formControlName="status" name="status" value="yes"/>Yes
+                        <input class="form-check-input" type="radio" formControlName="status" name="status" value="no"/>No
                     <br><br>
-                    <input type="checkbox"  name="yes"  > Subscribe to Newstetter 
+                    <input type="checkbox" class="form-check-input" name="Subscribe" value="yes" formControlName="Subscribe" /> Subscribe to Newstetter
                 </div>
                 <div style = "text-align: center; margin: 20px 20px 60px;">
                     <input type="submit" class="btn edit" style="float:left;" name= "submit" value = "Submit">
@@ -36,7 +38,6 @@
         </div>
     </div>
 </div>  
-
 
 
 

@@ -7,29 +7,34 @@
                 <a href="JavaScript:void(0);" (click)="dark()">Dark Theme</a>
             </div>
         </div>
-    </div>    
+    </div>
 </div>
+
+<ngx-ui-loader></ngx-ui-loader>
+
 <div class="form" style="margin: auto; margin-top: 6%;">
     <h2>{{head}}</h2>
     <div class="input">
-        <form action="" method="POST">
+        <form [formGroup]="loginForm" (ngSubmit)="loginSubmit()">
             <div class="inputBox">
                 <label for="">Email</label>
-                <input type="email" name="email" id="email" placeholder="Enter Email" required>
+                <input type="email" name="email" id="email" placeholder="Enter Email" formControlName="email"
+                    [style.border]="(submitted && f['email'].errors && f['email'].errors['required'])==true ? '3px solid red' :'0px solid white'">
+                <span *ngIf="submitted && f['email'].errors && f['email'].errors['required']" class="text-danger">Email
+                    field required</span>
             </div>
             <div class="inputBox">
                 <label for="">Password</label>
-                <input type="password" name="password" id="password" placeholder="Password">
+                <input type="password" name="password" id="password" placeholder="Password" formControlName="password"
+                    [style.border]="(submitted && f['password'].errors && f['password'].errors['required'])==true ? '3px solid red' :'0px solid white'">
+                <span *ngIf="submitted && f['password'].errors && f['password'].errors['required']"
+                    class="text-danger">Password field required</span>
             </div>
             <div class="inputBox">
-                <input type="submit" name="" value="Log In"> 
+                <input type="submit" name="" value="Log In">
             </div>
         </form>
     </div>
     <p class="forgot ">Create New Account <a routerLink="/signup">SignUp</a></p>
-    <button type="button" (click)="sayMessage()" class='alertM' [style.color]="fontcolor"> Alert message</button>
-    <!-- <button type="button" (click)="onEditClick()">Make text editable!</button>
-    <p [contentEditable]="canEdit" [style.color]="fontcolor">{{ message }}</p> -->
 </div>
-
 

@@ -10,15 +10,11 @@
 .box {
     margin: auto;
     margin-top: 150px;
-    width: 50%;
+    width: 75%;
     padding: 23px;
-    box-shadow: inset 0px 0px 30px 0px #773399;
+    box-shadow: inset 0px 0px 3px 0px #773399;
 }
-.tex{
-    background:linear-gradient(315deg,#e91e63,#5d02ff) ;
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-}
+
 .form-control{
     background: transparent;
 }

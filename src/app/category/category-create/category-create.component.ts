@@ -1,4 +1,6 @@
+
 import { Component } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-category-create',
@@ -6,14 +8,35 @@ import { Component } from '@angular/core';
   styleUrls: ['./category-create.component.css']
 })
 export class CategoryCreateComponent {
-  toggleVal:boolean = false;
+  toggleVal: boolean = false;
+  createForm: FormGroup;
+  submitted: any = false;
+  ckeditorContent = 'Write something..';
 
-  constructor() { 
-      // it call first 
-  } 
+  constructor(private fb: FormBuilder) {
+    // it call first 
+    this.createForm = fb.group({
+      title: ['', Validators.required],
+      description: ['', Validators.required],
+      price: ['', Validators.required],
+      status: ['', Validators.required],
+      Subscribe:['', Validators.required]
+    })
+  }
+  get f() {
+    return this.createForm.controls;
+  }
+  createSubmit() {
+    console.log('SubmitForm');
+    this.submitted = true;
+    if (this.createForm.valid) {
+      console.log('Create Form Data =', this.createForm.value);
+    }
+  }
 
   sidebarToggle(eventData: { toggleVal: boolean }) { // gettting value from child component
     this.toggleVal = eventData.toggleVal;
-    console.log('profile page inside sidebar toggle',eventData.toggleVal);
+    console.log('profile page inside sidebar toggle', eventData.toggleVal);
   }
+
 }

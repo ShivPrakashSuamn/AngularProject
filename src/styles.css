@@ -1,1 +1,13 @@
 /* You can add global styles to this file, and also import other style files */
+body
+{
+    margin: 0px;
+}
+.tex{
+    background:linear-gradient(315deg,#e91e63,#5d02ff) ;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }

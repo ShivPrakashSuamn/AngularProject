@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Output, SimpleChanges } from '@angular/core';
+import { Component, EventEmitter, Output } from '@angular/core';
 
 @Component({
   selector: 'app-sidebar',
@@ -15,7 +15,7 @@ export class SidebarComponent {
         // it call first
     } 
 
-    ngOnChanges(changes: SimpleChanges){
+    ngOnChanges(){
       console.log('ngOnChange');
     }
     ngOnInit() {   
@@ -33,16 +33,18 @@ export class SidebarComponent {
       console.log('ngAfterContentChecked')
     }
     ngAfterViewInit(){
-      console.log('ngAfterViewInit')
+      console.log('ngAfterViewInit');
+
     }
+
     ngAfterViewChecked(){
       // when any input change then it call
-      console.log('ngAfterViewChecked')
+
     }
+
     ngOnDestroy() {  
       console.log('ngOnDestroy')
         // component remove from dom then it method call
-         this.toggleSidebar();
     }  
 
 

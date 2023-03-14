@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { UserDataService } from '../_services/user-data.service'
 
 @Component({
   selector: 'app-users',
@@ -7,9 +8,10 @@ import { Component } from '@angular/core';
 })
 export class UsersComponent {
   toggleVal:boolean = false;
-
-  constructor() { 
+  users:any;
+  constructor( private userData:UserDataService) { 
       // it call first 
+     
   } 
 
   sidebarToggle(eventData: { toggleVal: boolean }) { // gettting value from child component

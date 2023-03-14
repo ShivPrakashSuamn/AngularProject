@@ -14,21 +14,24 @@
     <div class="form" style="margin: auto; margin-top: 6%;">
         <h2>Sign Up</h2>
         <div class="input">
-            <form action="" method="POST">
+            <form [formGroup]="signForm" (ngSubmit)="signSubmit()">
                 <div class="inputBox">
                     <label for="">Name</label>
-                    <input type="text" name="name" id="name" placeholder="Enter Name">
+                    <input type="text" name="name" id="name" placeholder="Enter Name" formControlName="name" 
+                        [style.border]="(submitted && f['name'].errors && f['name'].errors['required'])==true ? '3px solid red' :'0px solid white'">
                 </div>
                 <div class="inputBox">
                     <label for="">Email</label>
-                    <input type="email" name="email" id="email" placeholder="Enter email">
+                    <input type="email" name="email" id="email" placeholder="Enter email" formControlName="email" 
+                        [style.border]="(submitted && f['email'].errors && f['email'].errors['required'])==true ? '3px solid red' :'0px solid white'">
                 </div>
                 <div class="inputBox">
                     <label for="">Password</label>
-                    <input type="password" name="password" id="password" placeholder="Password">
+                    <input type="password" name="password" id="password" placeholder="Password" formControlName="password" 
+                        [style.border]="(submitted && f['password'].errors && f['password'].errors['required'])==true ? '3px solid red' :'0px solid white'">
                 </div>
                 <div class="inputBox">
-                    <input type="submit" name="" value="Sign In"> 
+                    <input type="submit" name="submit" value="Sign In"> 
                 </div>
             </form>
         </div>

@@ -14,6 +14,11 @@
     backdrop-filter: blur(11px);
     background-color: rgb(240 248 255 / 70%);
 }
+.hover-Bg:hover{
+    background: #e1e1e178;
+    width: 260px;
+    border-radius: 5px;
+}
 .edit{
     background:linear-gradient(315deg,#e91e63,#5d02ff) ;
     color:white;
