@@ -1,0 +1,93 @@
+<div class="row">
+    <!--- sidebar  -->
+    <div class="p-0" style="transition: .5s;" [ngClass]="{'col-lg-1': toggleVal,'col-lg-2':!toggleVal}">
+        <app-sidebar (sidebarToggle)=sidebarToggle($event)> </app-sidebar>
+    </div>
+    
+    <div class="p-0 height-100" style="transition: .5s;" [ngClass]="{'col-lg-11': toggleVal,'col-lg-10':!toggleVal}"> 
+        <div class="card1">
+            <div class="m-4">
+                <div class="box">              
+                    <!-- <div class="card-header ">
+                        <h4 class="has-btn"><span class="tex">Total Revanue</span> <span style="float: right;"><button type="button" class="btn squer-btn sm-btn edit">Download</button></span></h4>
+                    </div> -->
+                        <div class="chart-holder" style="position: relative;">
+                            <div class="box1"> 
+                                <div class="row" style="padding:5px 35px 0px ;">
+                                    <div class="col-sm-6 mt-3 tex">
+                                        <div style="float:left; ">
+                                            <h2> Template List </h2>
+                                        </div>	
+                                    </div>
+                                    <div class="col-sm-6"> 
+                                        <div style="float:right; margin:11px; "> 
+                                            <button class="btn btn-success btn-lg" type="button" routerLink="/template/create"> + Add New Page  </button>
+                                        </div>
+                                    </div>
+                                </div>
+                                <hr> 
+                            <div style="padding:10px 20px 20px ;">					
+                                <div class="row" style="padding: 10px "> 
+                                    <div class="col-sm-6">
+                                        <form>
+                                            <input type="text" id="search" class="int form-control tex" name="search" [(ngModel)]="search" placeholder="Keyword e.g:question,answer..">
+                                            <button type="button" class="btn btn-success btn-lg " style="width: 24%;" (click)="searchVal()"><i class="fa fa-filter" style="margin:0px; color:white;"></i>  Filter </button> 
+                                            <button type="reset" class="btn  btn-lg fa1" style="margin-left: 3px; width:17%; background: #ffb000b8;"> Reset </button> 
+                                        </form>
+                                    </div>
+                                </div> 
+            
+                                <table class="table table-striped tabel-lg" >
+                                    <thead class="text-info" >
+                                        <tr  style="text-align:left;">
+                                            <th> Id </th>
+                                            <th> Title </th>
+                                            <th> Short Description </th> 
+                                            <th> Category </th>
+                                            <th> Thumbnail </th>
+                                            <th> Status</th>
+                                            <th> Created</th>
+                                            <th> Action </th> 
+                                        </tr>
+                                    </thead>
+                                    <tbody class="tex">
+                                        <tr>
+                                            <td> 1. </td>
+                                            <td> Support </td>
+                                            <td> Support  </td>
+                                            <td> Bilder  </td>
+                                            <td> image  </td>
+                                            <td> 1  </td>
+                                            <td> 10 April, 2021 03:52AM </td> 
+                                            <td>    							
+                                                <a href="#"><i class=" fa1 fa fa-pencil-square-o" aria-hidden="true"></i> </a>
+                                                <a href="#"><i class="fa1 fa fa-trash" aria-hidden="true"></i></a>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>2. </td>
+                                            <td> About Us </td>
+                                            <td> about-us   </td>
+                                            <td> Bilder  </td>
+                                            <td> image  </td>
+                                            <td> 1  </td>
+                                            <td> 17 September, 2019 23:31 PM </td> 
+                                            <td> 
+                                                <a href="#"><i class=" fa1 fa fa-pencil-square-o" aria-hidden=" true"></i> </a>
+                                                <a href="#"><i class="fa1 fa fa-trash " aria-hidden="true"></i></a>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>  
+                            </div> 
+                        </div>
+                    </div>
+                </div>
+                <br>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+

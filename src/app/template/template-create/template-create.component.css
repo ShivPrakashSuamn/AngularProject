@@ -1,0 +1,31 @@
+
+
+.cen {
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    background-color: #f7f7f7;
+}
+
+.box {
+    margin: auto;
+    margin-top: 150px;
+    width: 75%;
+    padding: 23px;
+    box-shadow: inset 0px 0px 3px 0px #773399;
+}
+
+.form-control{
+    background: transparent;
+}
+form textarea{
+    background: transparent;
+}
+.edit{
+    border: none;
+    background:linear-gradient(315deg,#e91e63,#5d02ff) ;
+    color:white;
+}
+.edit:hover{
+    background:linear-gradient(315deg,#5d02ff,#e91e63) ;
+}

@@ -1,12 +1,12 @@
 import { Component } from '@angular/core';
-import { UserDataService } from '../_services/user-data.service';
+import { UserDataService } from '../../_services/user-data.service';
 
 @Component({
-  selector: 'app-users',
-  templateUrl: './users.component.html',
-  styleUrls: ['./users.component.css']
+  selector: 'app-contact-list',
+  templateUrl: './contact-list.component.html',
+  styleUrls: ['./contact-list.component.css']
 })
-export class UsersComponent {
+export class ContactListComponent {
   toggleVal:boolean = false;
   users:any;
   constructor( private userData:UserDataService) { 

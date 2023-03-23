@@ -20,6 +20,10 @@ import { ProfileComponent } from './profile/profile.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { CategoryListComponent } from './category/category-list/category-list.component';
 import { CategoryCreateComponent } from './category/category-create/category-create.component';
+import { TemplateListComponent } from './template/template-list/template-list.component';
+import { TemplateCreateComponent } from './template/template-create/template-create.component';
+import { ContactListComponent } from './contact/contact-list/contact-list.component';
+import { ContactCreateComponent } from './contact/contact-create/contact-create.component';
 const ngxUiLoaderConfig: NgxUiLoaderConfig = {
   bgsColor: 'red',
   // bgsOpacity: 0.5,
@@ -59,7 +63,11 @@ const ngxUiLoaderConfig: NgxUiLoaderConfig = {
     CategoryListComponent,
     CategoryCreateComponent,
     SidebarComponent,
-    UsersComponent
+    UsersComponent,
+    TemplateListComponent,
+    TemplateCreateComponent,
+    ContactListComponent,
+    ContactCreateComponent
   ],
   imports: [
     BrowserModule,

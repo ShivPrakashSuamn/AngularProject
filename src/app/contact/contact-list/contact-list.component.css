@@ -1,0 +1,32 @@
+
+.card1{
+    font-family: 'Poppins', sans-serif;
+    margin-top: 90px;
+}
+.edit{
+    
+    background:linear-gradient(315deg,#e91e63,#5d02ff) ;
+    color:white;
+}
+.edit:hover{
+    background:linear-gradient(315deg,#5d02ff,#e91e63) ;
+}
+.edit:hover:active{
+    color: rgba(255, 255, 255, 0.521);
+    background:linear-gradient(315deg,#e91e6271,#5f02ff8c) ;
+}
+.tex{
+    background:linear-gradient(315deg,#e91e63,#5d02ff) ;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+.box{ 
+    padding: 16px 15px 0px 2px;
+}
+
+h1 { font-size:55px; }
+
+.t_row a {
+    font-size: 26px;
+    text-decoration: none;
+}
