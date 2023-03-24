@@ -12,6 +12,7 @@ import { TemplateListComponent } from './template/template-list/template-list.co
 import { TemplateCreateComponent } from './template/template-create/template-create.component';
 import { ContactListComponent } from './contact/contact-list/contact-list.component';
 import { ContactCreateComponent } from './contact/contact-create/contact-create.component';
+import { ContactImportComponent } from './contact/contact-import/contact-import.component';
 
 const routes: Routes = [
   {path: 'login', component: LoginComponent},
@@ -30,6 +31,7 @@ const routes: Routes = [
 
   {path: 'contact', component: ContactListComponent},
       {path: 'contact/create', component: ContactCreateComponent},    
+      {path: 'contact/import', component: ContactImportComponent}    
 ];
 
 @NgModule({

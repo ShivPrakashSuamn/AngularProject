@@ -1,7 +1,7 @@
 
 .card1{
     font-family: 'Poppins', sans-serif;
-    margin-top: 90px;
+    margin-top: 95px;
 }
 .edit{
     
@@ -19,9 +19,6 @@
     background:linear-gradient(315deg,#e91e63,#5d02ff) ;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
-}
-.box{ 
-    padding: 16px 15px 0px 2px;
 }
 
 h1 { font-size:55px; }

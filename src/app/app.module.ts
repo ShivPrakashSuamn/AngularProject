@@ -24,6 +24,7 @@ import { TemplateListComponent } from './template/template-list/template-list.co
 import { TemplateCreateComponent } from './template/template-create/template-create.component';
 import { ContactListComponent } from './contact/contact-list/contact-list.component';
 import { ContactCreateComponent } from './contact/contact-create/contact-create.component';
+import { ContactImportComponent } from './contact/contact-import/contact-import.component';
 const ngxUiLoaderConfig: NgxUiLoaderConfig = {
   bgsColor: 'red',
   // bgsOpacity: 0.5,
@@ -67,7 +68,8 @@ const ngxUiLoaderConfig: NgxUiLoaderConfig = {
     TemplateListComponent,
     TemplateCreateComponent,
     ContactListComponent,
-    ContactCreateComponent
+    ContactCreateComponent,
+    ContactImportComponent
   ],
   imports: [
     BrowserModule,

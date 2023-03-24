@@ -28,7 +28,7 @@ export class SignComponent {
     console.log('submitform');
     this.submitted = true;
     if(this.signForm.valid){
-      console.log('Sign Up Form Valid =', this.signForm.value);
+      console.log('Sign Up Form Value =', this.signForm.value);
     }
   }
 
