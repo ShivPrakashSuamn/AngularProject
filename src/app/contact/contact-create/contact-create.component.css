@@ -69,6 +69,8 @@ h1 { font-size:55px; }
     height: 70px;
     border-radius: 8px;
     margin: 15px;
+    padding: 24px;
+    color: #f052ff96;
   }
  
   .cancelbtn{

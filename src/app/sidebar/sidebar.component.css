@@ -15,9 +15,15 @@
     background-color: rgb(240 248 255 / 70%);
 }
 .hover-Bg:hover{
-    background: #e1e1e178;
+    background: linear-gradient(315deg,#ff02ec1f,#bbe91e33);
     width: 260px;
     border-radius: 5px;
+}
+.active{
+    background: linear-gradient(315deg,#ff02ec5c,#bbe91e70);
+    width: 260px;
+    border-radius: 5px;
+    color:white;
 }
 .edit{
     background:linear-gradient(315deg,#e91e63,#5d02ff) ;

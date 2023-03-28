@@ -11,7 +11,11 @@
                     <div class="">              
                         <div class="row mb-3" >
                             <div class="col-md-6 p-1 "> 
-                                <h2><b class="tex">Add New Contact</b></h2>
+                                <h2><b class="tex">
+                                    <span *ngIf="id == undefined">Add New</span>
+                                    <span *ngIf="id != undefined">Edit</span>
+                                     Contact</b>
+                                </h2>
                                 <p style="margin: 0; color: #b6b6b6d9;">Hare you can manage all your contact ditails.</p>
                             </div>
                             <div class="col-md-6 p-1"> 
@@ -25,13 +29,15 @@
                             <div class="row" >
                                 <div class="col-md-4 text-center">
                                     <div>
-                                        <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-profiles/avatar-1.webp" class="card-img-top rounded-circle mb-3" style="width: 150px;"/>
+                                        <img src="../../../assets/images/user1.png" class="card-img-top rounded-circle mb-3" style="width: 160px; height: 155px;;"/>
                                         <p class="text-mute">Recommended image size: 150px X 150px</p>
                                         <div class="form-group imgUpload mx-auto">
                                             <label for="exampleInputFile">Upload</label>
-                                            <input type="file" id="exampleInputFile" style="display: none;" name="image" formControlName="image"/>
+                                            <input type="file" id="exampleInputFile" style="display: none;" name="file" formControlName="file"/>
                                         </div>
-                                        <div class="blank-box"  [style.border]="(submitted && f['image'].errors && f['image'].errors['required'])==true ? '1px solid red' :'0px solid #c6c6c6'"> </div>
+                                        <div class="blank-box" [style.border]="(submitted && f['file'].errors && f['file'].errors['required'])==true ? '1px solid red' :'0px solid #c6c6c6'">
+                                            <span > {{getImageName()}}</span>
+                                        </div>
                                     </div>
                                 </div> 
                                 <div class="col-md-8">
@@ -58,14 +64,14 @@
                                             <label for="city" class="tex">City :</label>
                                             <input type="text" class="form-control bg-transparent" name="city" placeholder="Your city" formControlName="city"
                                                 [style.border]="(submitted && f['city'].errors && f['city'].errors['required'])==true ? '1px solid red' :'1px solid #c6c6c6'" /><br>
-                                            <label for="pincord" class="tex">Pin Code :</label>
-                                            <input type="number" class="form-control bg-transparent" name="pincord" placeholder="Pin code" formControlName="pincord"
-                                                [style.border]="(submitted && f['pincord'].errors && f['pincord'].errors['required'])==true ? '1px solid red' :'1px solid #c6c6c6'" /><br>
+                                            <label for="pincode" class="tex">Pin Code :</label>
+                                            <input type="text" class="form-control bg-transparent" name="pincode" placeholder="Pin code" formControlName="pincode"
+                                                [style.border]="(submitted && f['pincode'].errors && f['pincode'].errors['required'])==true ? '1px solid red' :'1px solid #c6c6c6'" /><br>
                                             <label for="phone" class="tex">Phone:</label>
-                                            <input type="number" class="form-control bg-transparent" name="phone" placeholder="Mobile no" formControlName="phone"
+                                            <input type="text" class="form-control bg-transparent" name="phone" placeholder="Mobile no" formControlName="phone"
                                                 [style.border]="(submitted && f['phone'].errors && f['phone'].errors['required'])==true ? '1px solid red' :'1px solid #c6c6c6'" /><br>
                                             <div class="float-end">
-                                                <input type="submit" class="btn cancelbtn" (click)="exit()" value="Cancal" name="cancal">
+                                                <input type="reset" class="btn cancelbtn" (click)="reset()" value="Cancal" name="cancal">
                                                 <input type="submit" class="btn battcolor" value="SAVE" name="submit">
                                             </div>
                                         </div>

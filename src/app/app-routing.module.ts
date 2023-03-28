@@ -30,8 +30,9 @@ const routes: Routes = [
       {path: 'template/create', component: TemplateCreateComponent},
 
   {path: 'contact', component: ContactListComponent},
-      {path: 'contact/create', component: ContactCreateComponent},    
-      {path: 'contact/import', component: ContactImportComponent}    
+  {path: 'contact/update/:id', component: ContactCreateComponent},
+  {path: 'contact/create', component: ContactCreateComponent},    
+  {path: 'contact/import', component: ContactImportComponent}    
 ];
 
 @NgModule({

@@ -10,6 +10,7 @@ import { CKEditorModule } from 'ng2-ckeditor';
 import { ToastrModule } from 'ngx-toastr';
 import { NgxUiLoaderModule, NgxUiLoaderConfig,SPINNER, POSITION, PB_DIRECTION, NgxUiLoaderRouterModule, NgxUiLoaderHttpModule } from 'ngx-ui-loader';
 import { HttpClientModule } from '@angular/common/http';
+import {NgxPaginationModule} from 'ngx-pagination'; // pagination import 
 
 import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
@@ -82,6 +83,7 @@ const ngxUiLoaderConfig: NgxUiLoaderConfig = {
     MatButtonModule,
     CKEditorModule,
     ToastrModule.forRoot(), // ToastrModule added
+    NgxPaginationModule, // pagination ---
  
     NgxUiLoaderModule.forRoot(ngxUiLoaderConfig),
     NgxUiLoaderRouterModule, // import this module for showing loader automatically when navigating between app routes

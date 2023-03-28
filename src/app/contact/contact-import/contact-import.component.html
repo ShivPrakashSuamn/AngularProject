@@ -11,7 +11,7 @@
                     <div class="">              
                         <div class="row mb-3" >
                             <div class="col-md-6 p-1 "> 
-                                <h2><b class="tex">Import from PC</b></h2>
+                                <h2><b class="tex">Import From PC</b></h2>
                                 <p style="margin: 0; color: #b6b6b6d9;">Hare you are manage your all contacts ditails.</p>
                             </div>
                             <div class="col-md-6 p-1"> 
@@ -29,12 +29,12 @@
                                         <p class="text-mute">Drag to Drop files here to Upload or</p>
                                         <div class="form-group imgUpload mx-auto edit">
                                             <label for="exampleInputFile">Seletct File To Upload</label>
-                                            <input type="file" id="exampleInputFile" style="display: none;" name="csvFile" formControlName="csvFile"/>
+                                            <input type="file" id="exampleInputFile" style="display: none;" name="csvFile" formControlName="csvFile" accept=".csv"/>
                                         </div>
                                     </div>
                                     <div class="row mt-3 " style="font-size: 13px;">
                                         <div class="col-md-6 tex">
-                                            <a routerLink="#"><i class='bx bx-download nav_icon' style="font-size: 18px;"></i> Click here to download thi sample file.</a>
+                                            <button class="sample" (click)="sampleData()"><i class='bx bx-download nav_icon' style="font-size: 18px;"></i> Click here to download thi sample file.</button>
                                         </div>
                                         <div class="col-md-6 text-mute">
                                             <p class="float-end"> Accepted File : CSV | XLS | XLSX </p>
@@ -42,15 +42,15 @@
                                     </div>
                                     <div style="display: flex;" class="tex">
                                         <p><i class='bx bx-file nav_icon' style="font-size: 50px;"></i></p>
-                                        <h5 style="padding: 15px;"><b>No File Selected</b></h5>
+                                        <h5 style="padding: 15px;"><b><span > {{getImageName()}}</span></b></h5>
                                     </div>
                                     <div class="row mt-3 " style="font-size: 13px;">
                                         <div class="col-md-6 tex">
-                                           <p> <input type="checkbox" class="form-check-input" style="margin-right: 6px;" name="yes" /> I hane Permission To Add This Contact To List.</p>
+                                           <!-- <p> <input type="checkbox" class="form-check-input" style="margin-right: 6px;" name="yes" /> I hane Permission To Add This Contact To List.</p> -->
                                         </div>
                                         <div class="col-md-6">
                                             <div class="float-end">
-                                                <input type="submit" class="btn cancelbtn" (click)="exit()" value="Cancal" name="cancal">
+                                                <input type="submit" class="btn cancelbtn" (click)="reset()"  value="Cancal" name="cancal">
                                                 <input type="submit" class="btn battcolor" value="SAVE" name="submit">
                                             </div>
                                         </div>

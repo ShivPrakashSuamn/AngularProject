@@ -70,3 +70,8 @@ h1 {
     color: #6404f4;
     padding: 9px 30px;
 }
+.sample{
+    background: transparent;
+    border: none;
+    font-size: 14px;
+}

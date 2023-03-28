@@ -1,55 +1,55 @@
 import { Component, EventEmitter, Output } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-sidebar',
   templateUrl: './sidebar.component.html',
   styleUrls: ['./sidebar.component.css']
 })
+
 export class SidebarComponent {
   search:any;
   value:any;
   toggleVal:any=false;
+  rootUrl:any;
   @Output() sidebarToggle = new EventEmitter<{ toggleVal: boolean }>(); // event emitter
-    // ------------------------- life cycle of angular
-    constructor() { 
-        // it call first
-    } 
 
+    // ------------------    life cycle of angular    ----------------------- ||
+
+    constructor(private router : Router) { }
+    
     ngOnChanges(){
-      console.log('ngOnChange');
+      // console.log('ngOnChange');
     }
     ngOnInit() {   
-      console.log('ngOnInit');
+      this.rootUrl = this.router.url;
+      // console.log('ngOnInit');
     } 
     ngDoCheck(){
-      console.log('ngDoCheck');
+      // console.log('ngDoCheck');
       // when any input change then it call
     }
     ngAfterContentInit(){
-      console.log('ngAfterContentInit')
+      // console.log('ngAfterContentInit')
     }
     ngAfterContentChecked(){
       // when any input change then it call
-      console.log('ngAfterContentChecked')
+      // console.log('ngAfterContentChecked')
     }
     ngAfterViewInit(){
-      console.log('ngAfterViewInit');
-
+      // console.log('ngAfterViewInit');
     }
-
     ngAfterViewChecked(){
       // when any input change then it call
-
     }
-
     ngOnDestroy() {  
-      console.log('ngOnDestroy')
+      // console.log('ngOnDestroy')
         // component remove from dom then it method call
     }  
 
+    // -----------------     custome methods       ------------------------- ||
 
-    // -----------------------------------------------    custome methods   
-    toggleSidebar(){
+    toggleSidebar(){  //  sidebar manage --------
       if(this.toggleVal){
         this.toggleVal = false;
       }else{
@@ -57,15 +57,22 @@ export class SidebarComponent {
       }
       this.sidebarToggle.emit({ toggleVal: this.toggleVal }); // trow data to other component
     }
-    light(){
+    light(){          //  White color design-----
       document.body.style.background = "white";
     }
-    dark(){
+    dark(){           //  Black color design-----
       document.body.style.background = "#060c21";
     }
-    searchVal(){
+    searchVal(){      //  Search function  ------
       console.log('this is search',this.search);
       this.value = this.search;
     }
-
+   
+    getActive(menu:string){  // Active list-----
+      if(this.rootUrl.includes(menu)){
+        return true;
+      }else{
+        return false;
+      }
+    }
 }

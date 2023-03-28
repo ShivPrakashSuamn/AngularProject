@@ -102,3 +102,7 @@ button[type="submit"] {
     width: 30px;
     height: 40px;
   }
+  .spas {
+    padding: 0;
+    font-size:30px;
+  }
