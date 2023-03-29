@@ -25,7 +25,7 @@
                             </div> 	
                         </div>  
                         <hr>
-                        <form class="form" [formGroup]="createForm" (ngSubmit)="createSubmit()"class="mt-4">  	
+                        <form class="form" [formGroup]="createForm" (ngSubmit)="submit()"class="mt-4" enctype="multipart/form-data">  	
                             <div class="row" >
                                 <div class="col-md-4 text-center">
                                     <div>
@@ -33,9 +33,9 @@
                                         <p class="text-mute">Recommended image size: 150px X 150px</p>
                                         <div class="form-group imgUpload mx-auto">
                                             <label for="exampleInputFile">Upload</label>
-                                            <input type="file" id="exampleInputFile" style="display: none;" name="file" formControlName="file"/>
+                                            <input type="file" id="exampleInputFile" style="display: none;" name="file" (change)="handleFileUpload($event.target)"/>
                                         </div>
-                                        <div class="blank-box" [style.border]="(submitted && f['file'].errors && f['file'].errors['required'])==true ? '1px solid red' :'0px solid #c6c6c6'">
+                                        <div class="blank-box" >
                                             <span > {{getImageName()}}</span>
                                         </div>
                                     </div>
@@ -65,8 +65,8 @@
                                             <input type="text" class="form-control bg-transparent" name="city" placeholder="Your city" formControlName="city"
                                                 [style.border]="(submitted && f['city'].errors && f['city'].errors['required'])==true ? '1px solid red' :'1px solid #c6c6c6'" /><br>
                                             <label for="pincode" class="tex">Pin Code :</label>
-                                            <input type="text" class="form-control bg-transparent" name="pincode" placeholder="Pin code" formControlName="pincode"
-                                                [style.border]="(submitted && f['pincode'].errors && f['pincode'].errors['required'])==true ? '1px solid red' :'1px solid #c6c6c6'" /><br>
+                                            <input type="text" class="form-control bg-transparent" name="pin_code" placeholder="Pin code" formControlName="pin_code"
+                                                [style.border]="(submitted && f['pin_code'].errors && f['pin_code'].errors['required'])==true ? '1px solid red' :'1px solid #c6c6c6'" /><br>
                                             <label for="phone" class="tex">Phone:</label>
                                             <input type="text" class="form-control bg-transparent" name="phone" placeholder="Mobile no" formControlName="phone"
                                                 [style.border]="(submitted && f['phone'].errors && f['phone'].errors['required'])==true ? '1px solid red' :'1px solid #c6c6c6'" /><br>

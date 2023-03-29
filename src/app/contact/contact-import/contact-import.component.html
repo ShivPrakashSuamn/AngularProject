@@ -21,7 +21,7 @@
                             </div> 	
                         </div>  
                         <hr>
-                        <form [formGroup]="fileForm" (ngSubmit)="createSubmit()" class="mt-5">  	
+                        <form [formGroup]="fileForm" (ngSubmit)="submit()" class="mt-5" enctype="multipart/form-data">  	
                             <div class="row" >
                                 <div class="col-md-12">
                                     <div class="blank-box text-center"  [style.border]="(submitted && f['csvFile'].errors && f['csvFile'].errors['required'])==true ? '#ff00e29e dotted' :'#d5d7d6 dotted'">
@@ -29,7 +29,7 @@
                                         <p class="text-mute">Drag to Drop files here to Upload or</p>
                                         <div class="form-group imgUpload mx-auto edit">
                                             <label for="exampleInputFile">Seletct File To Upload</label>
-                                            <input type="file" id="exampleInputFile" style="display: none;" name="csvFile" formControlName="csvFile" accept=".csv"/>
+                                            <input type="file" id="exampleInputFile" style="display: none;" name="csvFile" formControlName="csvFile" accept=".csv" (change)="handleFileUpload($event.target)"/>
                                         </div>
                                     </div>
                                     <div class="row mt-3 " style="font-size: 13px;">

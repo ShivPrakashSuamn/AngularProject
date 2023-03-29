@@ -3,9 +3,6 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { AlertService } from '../../_services/alert.service';
 import { ActivatedRoute } from '@angular/router';
 import { ApiService } from 'src/app/_services/api.service';
-//import { RequestOptions } from '@angular/http';
-//import { RequestOptions } from '@angular/common/http';
-import { HttpHeaders } from '@angular/common/http';
 
 @Component({
   selector: 'app-contact-create',
@@ -19,22 +16,22 @@ export class ContactCreateComponent {
   data: any = [];
   id: any = undefined;
   img: any;
+  profileImage:any;
 
   // ----------------    life cycle of angular    --------------------  ||
 
   constructor(private fb: FormBuilder, private alertService: AlertService, private route: ActivatedRoute, private apiService: ApiService) {
-    // it call first 
     this.createForm = fb.group({
-      file: ['', Validators.required],
       fname: ['', Validators.required],
       lname: ['', Validators.required],
       email: ['', Validators.required],
       dob: ['', Validators.required],
       address: ['', Validators.required],
       city: ['', Validators.required],
-      pincode: ['', Validators.required],
-      phone: ['', Validators.required]
-    })
+      pin_code: ['', Validators.required],
+      phone: ['', Validators.required],
+      //file: ['', Validators.required]
+    });
   }
 
   ngOnInit() {        //  ngOninit Function -------------------------
@@ -51,29 +48,50 @@ export class ContactCreateComponent {
 
   // ----------------    custome methods   --------------------------  ||
 
-  createSubmit() {    // Submit Form  --------------------------------
+  handleFileUpload(target:any){  // iamge handle --------------
+    this.profileImage = target.files[0];
+  }
+
+  submit() {    // Submit Form  --------------------------------
     console.log('Submit Button Click');
     this.submitted = true;
     if (this.createForm.valid) {
       this.alertService.success('Data Save SuccessFull'); // Alert---
-      console.log('Create Form Data =', this.createForm.value);
+     // console.log('Create Form Data =', this.createForm.value);
       let url: string = `/contact/store`;
+      if(this.id){
+        url = `/contact/update?id=${this.id}`; 
+      }
       const body = this.createForm.value;
+     // console.log('boxy',body,this.profileImage)
       let formData: FormData = new FormData();
       formData.append('fname', body.fname)
-      formData.append('lnama', body.lnama)
+      formData.append('lname', body.lname)
       formData.append('email', body.email)
       formData.append('dob', body.dob)
       formData.append('address', body.address)
       formData.append('city', body.city)
-      formData.append('pincode', body.pincode)
+      formData.append('pincode', body.pin_code)
       formData.append('phone', body.phone)
-      formData.append('file', body.file)
+      console.log('---id',this.id)
+      if(this.id == undefined){
+        if(this.profileImage){
+          formData.append('file', this.profileImage,this.profileImage.name);
+        } else {
+          formData.delete('file');
+        }
+      }else if (this.id != ''){
+        if(this.profileImage){
+          formData.append('file', this.profileImage,this.profileImage.name);
+        }else{
+          formData.delete('file');
+        }
+      }
       let headers = new Headers();
       headers.append('Content-Type', 'multipart/form-data');
       headers.append('Accept', 'application/json');
-
       let options = { headers: headers };
+
       this.apiService.post(url, formData, options).subscribe((data: any) => {
         console.log('fda---', data)
       });
@@ -99,8 +117,9 @@ export class ContactCreateComponent {
         var dt = new Date(userData.dob);
         var day = ("0" + dt.getDate()).slice(-2);
         var month = ("0" + (dt.getMonth() + 1)).slice(-2);
-        var dob = dt.getFullYear() + "-" + month + "-" + day;
+        var dob = dt.getFullYear() +"-"+ month +"-"+ day;
         this.img = userData.image;
+        var pin = userData.pin_code;
         this.createForm = this.fb.group({
           fname: [`${userData.fname}`, Validators.required],
           lname: [`${userData.lname}`, Validators.required],
@@ -108,11 +127,9 @@ export class ContactCreateComponent {
           dob: [`${dob}`, Validators.required],
           address: [`${userData.address}`, Validators.required],
           city: [`${userData.city}`, Validators.required],
-          pincord: [`${userData.pin_code}`, Validators.required],
-          phone: [`${userData.phone}`, Validators.required],
-          image: [`${this.img}`, Validators.required]
+          pin_code: [`${pin}`, Validators.required],
+          phone: [`${userData.phone}`, Validators.required]
         });
-        // this.createSubmit()
       } else {
         this.alertService.error('Data Fatch Failed..');  // data.message -----
       }
@@ -120,8 +137,8 @@ export class ContactCreateComponent {
   }
 
   getImageName() {     // Selecte image name -------------------------
-    if (this.createForm.value.file) {
-      return this.createForm.value.file.slice(12);
+    if(this.profileImage) {
+      return this.profileImage.name;
     } else if (this.img) {
       return this.img;
     } else {

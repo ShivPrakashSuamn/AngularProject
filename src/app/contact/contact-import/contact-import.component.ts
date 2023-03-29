@@ -14,6 +14,7 @@ export class ContactImportComponent {
   fileForm: FormGroup;
   submitted: any = false;
   ckeditorContent = 'Write something..';
+  profileImage:any;
 
   // ----------------    life cycle of angular    --------------------  ||
 
@@ -25,21 +26,29 @@ export class ContactImportComponent {
 
   // -----------------    custome methods   --------------------------  ||
 
-  get f() {
+  get f() {           //  
     return this.fileForm.controls;
   }
-  createSubmit() {
+
+  handleFileUpload(target:any){  // file handle  ------------------------
+    this.profileImage = target.files[0];
+    console.log('==--',this.profileImage);
+  }
+
+  submit() {          //  CSV upload file   -----------------------------
     console.log('SubmitForm');
     this.submitted = true;
     if(this.fileForm.valid){
       this.alertService.success('CSV_File Save SuccessFull');
       console.log('Create Form Data =', this.fileForm.value.csvFile);
-      //pic = this.createForm.value.image;
       let url:string = `/contact/csv`;
-      const body= this.fileForm.value;
-      console.log('bbbb',body);
-     // headers.append('Content-Type', 'multipart/form-data');
-      this.apiService.post(url, body, Option).subscribe((data:any)=>{
+      let formData: FormData = new FormData();
+      formData.append('file', this.profileImage,this.profileImage.name);
+      let headers = new Headers();
+        headers.append('Content-Type', 'multipart/form-data');
+        headers.append('Accept', 'application/json');
+      let options = { headers: headers };
+      this.apiService.post(url, formData, options).subscribe((data:any)=>{
         console.log('fda---',data)
       });
     } else {
