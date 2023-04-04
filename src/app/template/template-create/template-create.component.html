@@ -4,45 +4,83 @@
         <app-sidebar (sidebarToggle)=sidebarToggle($event)> </app-sidebar>
     </div>
     
-    <div style="transition: .5s;" [ngClass]="{'col-lg-11': toggleVal,'col-lg-10':!toggleVal}"> 
-        <div class = "box">
-            <div class="tex" style = "font-family: Times New Roman, Times, serif; text-align: center;">
-                <h1> <b> New Created </b></h1>
-            </div> <br>
-            <form class="form " [formGroup]="createForm" (ngSubmit)="createSubmit()">
-                <div class="tex">
-                    <label for="Title" > Title </label>
-                    <input type="next" class="form-control"  placeholder="Enter Title" name="title" formControlName="title"
-                        [style.border]="(submitted && f['title'].errors && f['title'].errors['required'])==true ? '1px solid red' :'1px solid #c6c6c6'"> <br>
-                    
-                    <label for="info" > Short Description </label>
-                    <ckeditor [(ngModel)]="ckeditorContent" formControlName="description" style="background: transparent !important;" > </ckeditor> <br><br>
-
-                    
-                    <label for="category" > Category </label>
-                    <input type="text" class="form-control" name="category" placeholder="Enter Category.." formControlName="category" 
-                        [style.border]="(submitted && f['category'].errors && f['category'].errors['required'])==true ? '1px solid red' :'1px solid #c6c6c6'"> <br>
-
-                    <label for="thumbnail" > Thumbnail </label>
-                    <input type="file" class="form-control" name="thumbnail" placeholder="Enter Thumbnail.." formControlName="thumbnail" 
-                        [style.border]="(submitted && f['thumbnail'].errors && f['thumbnail'].errors['required'])==true ? '1px solid red' :'1px solid #c6c6c6'"> <br>    
-
-                    <label for="status" > status : </label>	
-                        <input class="form-check-input" type="radio" formControlName="status" name="status" value="yes"/>Yes
-                        <input class="form-check-input" type="radio" formControlName="status" name="status" value="no"/>No
-                    <br><br>
-                    <input type="checkbox" class="form-check-input" name="Subscribe" value="yes" formControlName="Subscribe" /> Subscribe to Newstetter
+    <div class="p-0 height-100" style="transition: .5s;" [ngClass]="{'col-lg-11': toggleVal,'col-lg-10':!toggleVal}"> 
+        <div class="container-fluid ">
+            <div class="col col-lg-12">
+                <div class="card1">
+                    <div class="m-3">
+                        <div class="p-3">              
+                            <div class="row mb-3" >
+                                <div class="col-md-6 p-0"> 
+                                    <h2>
+                                        <b class="tex">Add New Template</b>
+                                    </h2>
+                                    <p style="margin: 0; color: #b6b6b6d9;">Hare you can manage all your Template ditails.</p>
+                                </div>
+                                <div class="col-md-6 p-0"> 
+                                    <span style="float: right;">
+                                        <button routerLink="/template" type="button" class="btn squer-btn sm-btn edit icn"><i class='bx bx-chevrons-left nav_icon'></i>back</button>
+                                    </span>
+                                </div> 	
+                            </div>  
+                            <hr>
+                            <form class="form" [formGroup]="createForm" (ngSubmit)="submit()"class="mt-4" enctype="multipart/form-data">  	
+                                <div class="row" >
+                                    <div class="col-md-4">
+                                        <div class="">
+                                            <h4 class="tex "> Template file :</h4>
+                                            <div class="blank-box text-center mt-4"  [style.border]="(submitted && f['file'].errors && f['file'].errors['required'])==true ? '#ff00e29e dotted' :'#d5d7d6 dotted'">
+                                                <i [ngStyle]="{'color': uploadClock ? '#1caa028a' : '#b6b6b6d9'}" class='bx bx-desktop nav_icon' style="font-size: 100px;"></i>
+                                                <p class="text-mute">Drag to Drop files here to Upload or</p>
+                                                <div class="form-group imgUpload mx-auto edit">
+                                                    <label for="exampleInputFile">Seletct Template File To Upload</label>
+                                                    <input type="file" id="exampleInputFile" style="display: none;" name="file" formControlName="file"accept=".zip"(change)="handleFileUpload($event.target)"/>
+                                                </div>
+                                            </div>
+                                            <div class="tex text-center">
+                                                <h6 style="padding: 15px;"><b><span > {{getZipName()}}</span></b></h6>
+                                            </div>
+                                        </div>
+                                    </div> 
+                                    <div class="col-md-8 p-0" style="padding-left: 13px;">
+                                        <h4 class="tex" style="padding-left: 13px;"> Basic information :</h4>
+                                        <div class="row mt-3">
+                                            <div class="col-md-12">
+                                                <label for="category" class="tex"> Category :</label>
+                                                <select formControlName="category" name="category" class="form-select bg-transparent"
+                                                    [style.border]="(submitted && f['category'].errors && f['category'].errors['required'])==true ? '1px solid red' :'1px solid #c6c6c6'" >
+                                                    <option> Select Category</option>
+                                                    <option value="morning">Morning Time</option>
+                                                    <option value="yoga">Yoga</option>
+                                                    <option value="travels">Travels</option>
+                                                    <option value="study">Study</option>
+                                                  </select> <br>
+                                                <label for="title" class="tex"> Title :</label>
+                                                <input type="text" class="form-control bg-transparent" name="title" placeholder="Enter Title" formControlName="title"
+                                                    [style.border]="(submitted && f['title'].errors && f['title'].errors['required'])==true ? '1px solid red' :'1px solid #c6c6c6'" /><br>  
+                                                <label for="description" class="tex"> description :</label>
+                                                <input type="text" class="form-control bg-transparent" name="description" placeholder="Description.." formControlName="description"
+                                                    [style.border]="(submitted && f['description'].errors && f['description'].errors['required'])==true ? '1px solid red' :'1px solid #c6c6c6'" /><br>
+                                                 <div class="float-end">
+                                                    <input type="reset" class="btn cancelbtn" (click)="reset()" value="Cancal" name="cancal">
+                                                    <input type="submit" class="btn battcolor" value="SAVE" name="submit">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!-- <ckeditor
+                                            [(ngModel)]="ckeditorContent">
+                                        </ckeditor> -->
+                                    </div>
+                                </div> 
+                            </form>     
+                        </div>
+                        <br>
+                    </div>
                 </div>
-                <div style = "text-align: center; margin: 20px 20px 60px;">
-                    <input type="submit" class="btn edit" style="float:left;" name= "submit" value = "Submit">
-
-                    <button class= "btn edit" style="float:right; "type="button" routerLink="/template"><b>Back..</b></button> 
-                </div>
-            </form>
+            </div>
         </div>
     </div>
-</div>  
-
-
+</div>
+<script src="https://cdn.ckeditor.com/4.19.1/full-all/ckeditor.js"></script>
 
 

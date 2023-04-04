@@ -4,83 +4,85 @@
         <app-sidebar (sidebarToggle)=sidebarToggle($event)> </app-sidebar>
     </div>
     
-    <div class="p-4 height-100" style="transition: .5s;" [ngClass]="{'col-lg-11': toggleVal,'col-lg-10':!toggleVal}"> 
-        <div class="col col-lg-12">
-            <div class="card1">
-                <div class="m-4">
-                    <div class="">              
-                        <div class="row mb-3" >
-                            <div class="col-md-6 p-1 "> 
-                                <h2><b class="tex">
-                                    <span *ngIf="id == undefined">Add New</span>
-                                    <span *ngIf="id != undefined">Edit</span>
-                                     Contact</b>
-                                </h2>
-                                <p style="margin: 0; color: #b6b6b6d9;">Hare you can manage all your contact ditails.</p>
-                            </div>
-                            <div class="col-md-6 p-1"> 
-                                <span style="float: right;">
-                                    <button routerLink="/contact" type="button" class="btn squer-btn sm-btn edit icn"><i class='bx bx-chevrons-left nav_icon'></i>back</button>
-                                </span>
-                            </div> 	
-                        </div>  
-                        <hr>
-                        <form class="form" [formGroup]="createForm" (ngSubmit)="submit()"class="mt-4" enctype="multipart/form-data">  	
-                            <div class="row" >
-                                <div class="col-md-4 text-center">
-                                    <div>
-                                        <img src="../../../assets/images/user1.png" class="card-img-top rounded-circle mb-3" style="width: 160px; height: 155px;;"/>
-                                        <p class="text-mute">Recommended image size: 150px X 150px</p>
-                                        <div class="form-group imgUpload mx-auto">
-                                            <label for="exampleInputFile">Upload</label>
-                                            <input type="file" id="exampleInputFile" style="display: none;" name="file" (change)="handleFileUpload($event.target)"/>
+    <div class="p-0 height-100" style="transition: .5s;" [ngClass]="{'col-lg-11': toggleVal,'col-lg-10':!toggleVal}"> 
+        <div class="container-fluid ">
+            <div class="col col-lg-12">
+                <div class="card1">
+                    <div class="m-3">
+                        <div class="p-3">              
+                            <div class="row mb-3" >
+                                <div class="col-md-6 p-0"> 
+                                    <h2><b class="tex">
+                                        <span *ngIf="id == undefined">Add New</span>
+                                        <span *ngIf="id != undefined">Edit</span>
+                                        Contact</b>
+                                    </h2>
+                                    <p style="margin: 0; color: #b6b6b6d9;">Hare you can manage all your contact ditails.</p>
+                                </div>
+                                <div class="col-md-6 p-0"> 
+                                    <span style="float: right;">
+                                        <button routerLink="/contact" type="button" class="btn squer-btn sm-btn edit icn"><i class='bx bx-chevrons-left nav_icon'></i>back</button>
+                                    </span>
+                                </div> 	
+                            </div>  
+                            <hr>
+                            <form class="form" [formGroup]="createForm" (ngSubmit)="submit()"class="mt-4" enctype="multipart/form-data">  	
+                                <div class="row" >
+                                    <div class="col-md-4 text-center">
+                                        <div>
+                                            <img src="../../../assets/images/user1.png" class="card-img-top rounded-circle mb-3" style="width: 160px; height: 155px;;"/>
+                                            <p class="text-mute">Recommended image size: 150px X 150px</p>
+                                            <div class="form-group imgUpload mx-auto">
+                                                <label for="exampleInputFile">Upload</label>
+                                                <input type="file" id="exampleInputFile" style="display: none;" name="file" (change)="handleFileUpload($event.target)"/>
+                                            </div>
+                                            <div class="blank-box" >
+                                                <span > {{getImageName()}}</span>
+                                            </div>
                                         </div>
-                                        <div class="blank-box" >
-                                            <span > {{getImageName()}}</span>
-                                        </div>
-                                    </div>
-                                </div> 
-                                <div class="col-md-8">
-                                    <h4 class="tex"> Basic information :</h4>
-                                    <div class="row mt-3">
-                                        <div class="col-md-6">
-                                            <label for="fname" class="tex"> First Name :</label>
-                                            <input type="text" class="form-control bg-transparent" name="fname" placeholder="Enter first name" formControlName="fname"
-                                                [style.border]="(submitted && f['fname'].errors && f['fname'].errors['required'])==true ? '1px solid red' :'1px solid #c6c6c6'" /><br>
-                                            <label for="lname" class="tex"> Last Name :</label>
-                                            <input type="text" class="form-control bg-transparent" name="lname" placeholder="Enter last name" formControlName="lname"
-                                                [style.border]="(submitted && f['lname'].errors && f['lname'].errors['required'])==true ? '1px solid red' :'1px solid #c6c6c6'" /><br>
-                                            <label for="email" class="tex">Email :</label>
-                                            <input type="email"class="form-control bg-transparent" name="email" placeholder="Enter email" formControlName="email"
-                                                [style.border]="(submitted && f['email'].errors && f['email'].errors['required'])==true ? '1px solid red' :'1px solid #c6c6c6'" /><br>
-                                            <label for="date" class="tex">Date of birth :</label>
-                                            <input type="date" class="form-control bg-transparent" name="dob" formControlName="dob"
-                                                [style.border]="(submitted && f['dob'].errors && f['dob'].errors['required'])==true ? '1px solid red' :'1px solid #c6c6c6'" />
-                                        </div>
-                                        <div class="col-md-6"> 
-                                            <label for="address" class="tex"> Address :</label>
-                                            <input type="text" class="form-control bg-transparent" name="address" placeholder="Address.." formControlName="address"
-                                                [style.border]="(submitted && f['address'].errors && f['address'].errors['required'])==true ? '1px solid red' :'1px solid #c6c6c6'" /><br>
-                                            <label for="city" class="tex">City :</label>
-                                            <input type="text" class="form-control bg-transparent" name="city" placeholder="Your city" formControlName="city"
-                                                [style.border]="(submitted && f['city'].errors && f['city'].errors['required'])==true ? '1px solid red' :'1px solid #c6c6c6'" /><br>
-                                            <label for="pincode" class="tex">Pin Code :</label>
-                                            <input type="text" class="form-control bg-transparent" name="pin_code" placeholder="Pin code" formControlName="pin_code"
-                                                [style.border]="(submitted && f['pin_code'].errors && f['pin_code'].errors['required'])==true ? '1px solid red' :'1px solid #c6c6c6'" /><br>
-                                            <label for="phone" class="tex">Phone:</label>
-                                            <input type="text" class="form-control bg-transparent" name="phone" placeholder="Mobile no" formControlName="phone"
-                                                [style.border]="(submitted && f['phone'].errors && f['phone'].errors['required'])==true ? '1px solid red' :'1px solid #c6c6c6'" /><br>
-                                            <div class="float-end">
-                                                <input type="reset" class="btn cancelbtn" (click)="reset()" value="Cancal" name="cancal">
-                                                <input type="submit" class="btn battcolor" value="SAVE" name="submit">
+                                    </div> 
+                                    <div class="col-md-8 p-0">
+                                        <h4 class="tex"> Basic information :</h4>
+                                        <div class="row mt-3">
+                                            <div class="col-md-6">
+                                                <label for="fname" class="tex"> First Name :</label>
+                                                <input type="text" class="form-control bg-transparent" name="fname" placeholder="Enter first name" formControlName="fname"
+                                                    [style.border]="(submitted && f['fname'].errors && f['fname'].errors['required'])==true ? '1px solid red' :'1px solid #c6c6c6'" /><br>
+                                                <label for="lname" class="tex"> Last Name :</label>
+                                                <input type="text" class="form-control bg-transparent" name="lname" placeholder="Enter last name" formControlName="lname"
+                                                    [style.border]="(submitted && f['lname'].errors && f['lname'].errors['required'])==true ? '1px solid red' :'1px solid #c6c6c6'" /><br>
+                                                <label for="email" class="tex">Email :</label>
+                                                <input type="email"class="form-control bg-transparent" name="email" placeholder="Enter email" formControlName="email"
+                                                    [style.border]="(submitted && f['email'].errors && f['email'].errors['required'])==true ? '1px solid red' :'1px solid #c6c6c6'" /><br>
+                                                <label for="date" class="tex">Date of birth :</label>
+                                                <input type="date" class="form-control bg-transparent" name="dob" formControlName="dob"
+                                                    [style.border]="(submitted && f['dob'].errors && f['dob'].errors['required'])==true ? '1px solid red' :'1px solid #c6c6c6'" />
+                                            </div>
+                                            <div class="col-md-6"> 
+                                                <label for="address" class="tex"> Address :</label>
+                                                <input type="text" class="form-control bg-transparent" name="address" placeholder="Address.." formControlName="address"
+                                                    [style.border]="(submitted && f['address'].errors && f['address'].errors['required'])==true ? '1px solid red' :'1px solid #c6c6c6'" /><br>
+                                                <label for="city" class="tex">City :</label>
+                                                <input type="text" class="form-control bg-transparent" name="city" placeholder="Your city" formControlName="city"
+                                                    [style.border]="(submitted && f['city'].errors && f['city'].errors['required'])==true ? '1px solid red' :'1px solid #c6c6c6'" /><br>
+                                                <label for="pincode" class="tex">Pin Code :</label>
+                                                <input type="text" class="form-control bg-transparent" name="pin_code" placeholder="Pin code" formControlName="pin_code"
+                                                    [style.border]="(submitted && f['pin_code'].errors && f['pin_code'].errors['required'])==true ? '1px solid red' :'1px solid #c6c6c6'" /><br>
+                                                <label for="phone" class="tex">Phone:</label>
+                                                <input type="text" class="form-control bg-transparent" name="phone" placeholder="Mobile no" formControlName="phone"
+                                                    [style.border]="(submitted && f['phone'].errors && f['phone'].errors['required'])==true ? '1px solid red' :'1px solid #c6c6c6'" /><br>
+                                                <div class="float-end">
+                                                    <input type="reset" class="btn cancelbtn" (click)="reset()" value="Cancal" name="cancal">
+                                                    <input type="submit" class="btn battcolor" value="SAVE" name="submit">
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
-                                </div>
-                            </div> 
-                        </form>     
+                                </div> 
+                            </form>     
+                        </div>
+                        <br>
                     </div>
-                    <br>
                 </div>
             </div>
         </div>

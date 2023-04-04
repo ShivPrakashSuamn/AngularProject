@@ -1,13 +1,33 @@
-/* You can add global styles to this file, and also import other style files */
-body
-{
-    margin: 0px;
-}
-.tex{
-    background:linear-gradient(315deg,#e91e63,#5d02ff) ;
+
+.tex {
+    background: linear-gradient(315deg, #e91e63, #5d02ff);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
 }
 
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+body {
+    margin: 0;
+    font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+.row{
+    margin-left: 0px !important;
+    margin-right: 0px !important;
+}
+::-webkit-scrollbar {
+    width: 4px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+    background: white;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+    background: linear-gradient(315deg, #4457fa, #ca3bf5);
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+    background: rgb(247, 9, 9);
+}

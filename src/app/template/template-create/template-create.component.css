@@ -1,31 +1,98 @@
-
-
-.cen {
-    align-items: center;
-    justify-content: center;
-    display: flex;
-    background-color: #f7f7f7;
+.card1 {
+  width: 100%;
+  margin-top: 100px;
+  font-family: 'Poppins', sans-serif;
+  padding-left: 1px;
 }
 
-.box {
-    margin: auto;
-    margin-top: 150px;
-    width: 75%;
-    padding: 23px;
-    box-shadow: inset 0px 0px 3px 0px #773399;
+.edit {
+  background: linear-gradient(315deg, #e91e63, #5d02ff);
+  color: white;
 }
 
-.form-control{
-    background: transparent;
+.edit:hover {
+  background: linear-gradient(315deg, #5d02ff, #e91e63);
 }
-form textarea{
-    background: transparent;
+
+.edit:hover:active {
+  color: rgba(255, 255, 255, 0.521);
+  background: linear-gradient(315deg, #e91e6271, #5f02ff8c);
 }
-.edit{
-    border: none;
-    background:linear-gradient(315deg,#e91e63,#5d02ff) ;
-    color:white;
+
+.tex {
+  background: linear-gradient(315deg, #e91e63, #5d02ff);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
-.edit:hover{
-    background:linear-gradient(315deg,#5d02ff,#e91e63) ;
+
+.icn {
+  font-size: 16px;
+  padding: 8px 30px;
+}
+
+.icn i {
+  font-size: 15px;
+  padding-right: 8px;
+}
+
+.battcolor {
+  border: 1px solid #ff3382;
+  color: #6404f4;
+  font-size: 15px;
+  padding: 8px 20px;
+}
+
+h1 {
+  font-size: 55px;
+}
+
+.t_row a {
+  font-size: 26px;
+  text-decoration: none;
+}
+
+.t_row a i {
+  margin-right: 15px;
+  font-size: 21px;
+}
+
+.dropbutton {
+  border: 1px solid #da1b72b0;
+  padding: 6px 20px;
+  color: #761aff;
+  margin: 0px 8px;
+}
+
+.text-mute {
+  color: #b6b6b6d9;
+  margin: 0;
+}
+
+.blank-box {
+  background: #d8d8d836;
+  height: auto;
+  border-radius: 10px;
+  border-style: dotted;
+  border-color: #d5d7d6;
+  padding: 20px;
+}
+
+.cancelbtn {
+  border: 1px solid #ff3382a1;
+  color: #6404f48f;
+  margin-right: 15px;
+  padding: 8px 22px;
+}
+
+.battcolor {
+  border: 1px solid #ff3382;
+  color: #6404f4;
+  padding: 9px 30px;
+}
+
+.imgUpload {
+  width: 70%;
+  padding: 8px;
+  border-radius: 5px;
+  margin-top: 15px;
 }

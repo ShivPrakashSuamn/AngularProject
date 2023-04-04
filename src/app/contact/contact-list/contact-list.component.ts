@@ -30,7 +30,7 @@ export class ContactListComponent {
 
   // ---------------------    life cycle of angular    --------------------  ||
 
-  constructor(private apiService : ApiService,private alertService:AlertService) {  } 
+  constructor(private apiService:ApiService,private alertService:AlertService){  } 
 
   ngOnInit() {
     this.getData();
@@ -44,7 +44,7 @@ export class ContactListComponent {
       console.log('data',data.data.data);
         if(data && data.status){
           this.page = data.data.page;
-          this.data = data.data.data;
+          this.data = data.data.data; 
           this.totalRows = data.data.total;
         }else{
           this.alertService.error('Data Fatch Failed..');  // data.message -----
@@ -77,16 +77,16 @@ export class ContactListComponent {
   exportList() {        //  Export All Data in list   --------------------------
     Swal.fire({
       title: 'Export List !',
-      text: 'SAVE thi whole list in CSV file',
+      text: 'Save Thi Whole List in CSV File',
       //icon: 'warning',
       showCancelButton: true,
-      confirmButtonText: 'Yes, go ahead.',
-      cancelButtonText: 'No, let me think',
+      confirmButtonText: 'Yes, go Ahead.',
+      cancelButtonText: 'No, Let me Think',
     }).then((result) => {
       if (result.value) {
-        console.log('CSV file download');
+        console.log('CSV File Download');
         var options = { 
-          title: 'Your title',
+          title: 'Your Title',
           fieldSeparator: ',',
           quoteStrings: '"',
           decimalseparator: '.',
@@ -96,11 +96,11 @@ export class ContactListComponent {
           useBom: false,
           headers: ["Id","First Name","Last Name","Email","Date of Birth","Phone no","Image","Address","City","Pin code","Status","Created"]
         };
-        new ngxCsv(this.data, "Contact list", options);  // download CSV ------
-        Swal.fire('SuccessFully !', 'List removed successfully.', 'success');
+        new ngxCsv(this.data, "Contact List", options);  // download CSV ------
+        Swal.fire('SuccessFully !', 'List Removed Successfully.', 'success');
 
       } else if (result.dismiss === Swal.DismissReason.cancel) {
-        Swal.fire('Cancelled', 'List  still in our database.', 'error');
+        Swal.fire('Cancelled', 'List  Still in Our Database.', 'error');
       }
     });
   }
@@ -121,36 +121,36 @@ export class ContactListComponent {
       }else{
         this.alertService.error('Data Fatch Failed..');  // data.message -----
       }
-      Swal.fire(
-        `Name : ${this.fname} ${this.lname}`,
-        ` Email : ${this.email} <br>
-          Date of Birth : ${this.dob.slice(0,10)}<br>
-          Address : ${this.address} ${this.city}<br>
-          Phone : ${this.phone} <br>
-          Pin Cord : ${this.pincode} `,
-        'success'
-      );
+      // Swal.fire(
+      //   `Name : ${this.fname} ${this.lname}`,
+      //   ` Email : ${this.email} <br>
+      //     Date of Birth : ${this.dob.slice(0,10)}<br>
+      //     Address : ${this.address} ${this.city}<br>
+      //     Phone : ${this.phone} <br>
+      //     Pin Cord : ${this.pincode} `,
+      //   'success'
+      // );
     });
   }
 
   deleteRow(id:any) {   //  Delete Row Function     ----------------------------
     Swal.fire({
       title: 'DELETE ROW ?',
-      text: 'Do you want to delete this row',
+      text: 'Do You Want to Delete This Row',
       icon: 'warning',
       showCancelButton: true,
-      confirmButtonText: 'Yes, go ahead.',
-      cancelButtonText: 'No, let me think',
+      confirmButtonText: 'Yes, go Ahead.',
+      cancelButtonText: 'No, Let me Think',
     }).then((result) => {
       if (result.value) {
-        Swal.fire('SuccessFully !', 'Row deleted Successfully.', 'success');
+        Swal.fire('SuccessFully !', 'Row Deleted Successfully.', 'success');
         let url:string = `/contact/delete?id=${id}`;
         this.apiService.get(url).subscribe((data:any) => {
           this.getData(); 
           console.log('deleteRow Status -',data.status) ;   
         });
       } else if (result.dismiss === Swal.DismissReason.cancel) {
-        Swal.fire('Cancelled', 'Row still in our database.', 'error');
+        Swal.fire('Cancelled', 'Row Still in Our Database.', 'error');
       }
     });
   }

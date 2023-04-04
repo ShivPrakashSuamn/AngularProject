@@ -2,13 +2,12 @@
 <div class="nave p-0 fixed-top shadow-lg b-color" style="height: 80px; ">
     <div class="row ">
         <div class="col-sm-6 mt-3" style=" transition: .5s;">
-            <a href="#" class="tex" style="font-size: 25px; float: left; margin-left: 32px;">
+            <a href="#" class="tex" style="font-size: 25px; float: left; margin-left: 20px;">
                 <i style="font-size: 25px; padding-right: 10px;" class='bx bx-layer nav_logo-icon '></i>
                 <span class="nav_logo-name" [ngClass]="{'N-move': toggleVal}">AAAngular</span>
             </a>
             <a (click)="toggleSidebar()" href="javascript:void(0);">
-                <i class="fa fa-bars tex" style="font-size: 25px; float: left;"
-                    [ngClass]="{'Sm1': toggleVal, 'Sm2': !toggleVal}"></i>
+                <i class="fa fa-bars tex" style="font-size: 25px; float: left;" [ngClass]="{'Sm1': toggleVal, 'Sm2': !toggleVal}"></i>
             </a>
             <form>
                 <input type="text" class="form-control tex " style="border: none;" placeholder="Search...."
@@ -23,13 +22,14 @@
                     <mat-slide-toggle style="margin: 20px;"></mat-slide-toggle>
                     <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-profiles/avatar-1.webp"
                         class=" rounded-circle mt-2 imG" width="50px">
-                    <a routerLink="#" class="tex" style="margin: 20px; font-size: 25px;"><i
-                            class="fa fa-bell tex notification-info"></i></a>
-                    <a routerLink="#" class="tex" style="margin: 20px; font-size: 25px;"><i
-                            class="fa fa-envelope tex"></i></a>
+                    <a routerLink="#" class="tex" style="margin: 20px; font-size: 25px;">
+                        <i class="fa fa-bell tex notification-info"></i></a>
+                    <a routerLink="#" class="tex" style="margin: 20px; font-size: 25px;">
+                        <i class="fa fa-envelope tex "></i></a>
                     <div class="dropdown m-4">
-                        <button class="dropbtn" id="loading"><i class="fa fa-cog  tex"
-                                style="font-size: 25px;"></i></button>
+                        <button class="dropbtn" id="loading">
+                            <i class="fa fa-cog  tex" style="font-size: 25px;"></i>
+                        </button>
                         <div class="dropdown-content">
                             <a href="JavaScript:void(0);" (click)="light()" class="tex">Light Theme</a>
                             <a href="JavaScript:void(0);" (click)="dark()">Dark Theme</a>
@@ -48,38 +48,38 @@
         <nav class="nav" style="padding-left: 10px;">
             <div class="mt-5 pt-5">
                 <div class="nav_list">
-                    <ul style="list-style-type: none; padding: 0px;" >
-                        <li  [class.active]="rootUrl==='/dashboard'"class="hover-Bg" >
+                    <ul style="list-style-type: none; padding: 0px;">
+                        <li [class.active]="rootUrl==='/dashboard'" class="hover-Bg">
                             <a routerLink="/dashboard" class="nav_link active tex">
                                 <i class='bx bx-category nav_icon'></i>
                                 <span class="nav_name">Dashboard</span>
                             </a>
                         </li>
-                        <li  [class.active]="rootUrl==='/profile'" class="hover-Bg">
+                        <li [class.active]="rootUrl==='/profile'" class="hover-Bg">
                             <a routerLink="/profile" class="nav_link tex">
                                 <i class='bx bx-user-circle nav_icon'></i>
                                 <span class="nav_name">Profile</span>
                             </a>
                         </li>
-                        <li  [class.active]="rootUrl==='/users'" class="hover-Bg" >
+                        <li [class.active]="rootUrl==='/users'" class="hover-Bg">
                             <a routerLink="/users" class="nav_link tex">
                                 <i class='bx bx-user nav_icon'></i>
                                 <span class="nav_name">Users</span>
                             </a>
                         </li>
-                        <li  [class.active]="getActive('contact')" class="hover-Bg" >
+                        <li [class.active]="getActive('contact')" class="hover-Bg">
                             <a routerLink="/contact" class="nav_link tex">
                                 <i class='bx bx-user-pin nav_icon'></i>
                                 <span class="nav_name">Contact</span>
                             </a>
                         </li>
-                        <li  [class.active]="getActive('template')" class="hover-Bg" >
+                        <li [class.active]="getActive('template')" class="hover-Bg">
                             <a routerLink="/template" class="nav_link tex">
                                 <i class='bx bx-wallet-alt nav_icon'></i>
                                 <span class="nav_name">Template</span>
                             </a>
                         </li>
-                        <li  [class.active]="getActive('category')" class="hover-Bg" >
+                        <li [class.active]="getActive('category')" class="hover-Bg">
                             <a routerLink="/category" class="nav_link tex">
                                 <i class='bx bx-library nav_icon'></i>
                                 <span class="nav_name">Category</span>
@@ -88,7 +88,7 @@
                     </ul>
                 </div>
             </div>
-            <div >
+            <div>
                 <a routerLink="/login" class="nav_link tex">
                     <i class='bx bx-log-out nav_icon'></i>
                     <span class="nav_name">SignOut</span>

@@ -1,7 +1,9 @@
 
 .card1{
-    font-family: 'Poppins', sans-serif;
-    margin-top: 90px;
+  width: 100%;
+  margin-top: 100px;
+  font-family: 'Poppins', sans-serif;
+  padding-left: 1px;
 }
 .edit{
     
@@ -22,7 +24,6 @@
 }
 .icn{
     font-size: 16px;
-    margin-right: 10px;
     padding: 8px 20px;
 }
 .icn i {
@@ -55,10 +56,10 @@ input[type="search"] {
     border-radius: inherit;
   }
   
-  input[type="search"]::placeholder {
+input[type="search"]::placeholder {
     color: #bbb;
   }
-  button[type="submit"]:focus,
+button[type="submit"]:focus,
     input[type="search"]:focus {
     box-shadow: 0 0 3px 0 #1183d6;
     border-color: #1183d6;
@@ -94,13 +95,21 @@ button[type="submit"] {
   }
   .dropbutton{
     border: 1px solid #da1b72b0;
-    /* padding: 6px 20px; */
     color: #761aff;
     margin: 0px 8px;
   }
   .pic{
     width: 30px;
     height: 40px;
+  }
+  .pic_text{
+    width: 36px;  
+    border-radius: 50%;
+    text-align: center;
+    padding: 5px 10px;
+    font-size: 20px;
+    box-shadow: 0px 0px 6px 0px #ed65fd;
+    text-transform: capitalize;
   }
   .spas {
     padding: 0;

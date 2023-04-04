@@ -37,7 +37,7 @@ export class ContactCreateComponent {
   ngOnInit() {        //  ngOninit Function -------------------------
     this.id = this.route.snapshot.params['id'];
     if (this.id != undefined) {
-      console.log('id-->', this.id)
+      console.log('id edit -->', this.id)
       this.getData();
     }
   }
@@ -48,15 +48,14 @@ export class ContactCreateComponent {
 
   // ----------------    custome methods   --------------------------  ||
 
-  handleFileUpload(target:any){  // iamge handle --------------
+  handleFileUpload(target:any){  // iamge handle    ----------------
     this.profileImage = target.files[0];
   }
 
-  submit() {    // Submit Form  --------------------------------
+  submit() {    // Submit Form    -----------------------------------
     console.log('Submit Button Click');
     this.submitted = true;
     if (this.createForm.valid) {
-      this.alertService.success('Data Save SuccessFull'); // Alert---
      // console.log('Create Form Data =', this.createForm.value);
       let url: string = `/contact/store`;
       if(this.id){
@@ -73,7 +72,6 @@ export class ContactCreateComponent {
       formData.append('city', body.city)
       formData.append('pincode', body.pin_code)
       formData.append('phone', body.phone)
-      console.log('---id',this.id)
       if(this.id == undefined){
         if(this.profileImage){
           formData.append('file', this.profileImage,this.profileImage.name);
@@ -93,8 +91,9 @@ export class ContactCreateComponent {
       let options = { headers: headers };
 
       this.apiService.post(url, formData, options).subscribe((data: any) => {
-        console.log('fda---', data)
+        console.log('Form Result -', data)
       });
+      this.alertService.success('Data Save SuccessFull'); // Alert---
     } else {
       this.alertService.error('This is input Empty');
     }

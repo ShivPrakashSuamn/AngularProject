@@ -15,6 +15,7 @@ export class ContactImportComponent {
   submitted: any = false;
   ckeditorContent = 'Write something..';
   profileImage:any;
+  uploadClock:any = false;
 
   // ----------------    life cycle of angular    --------------------  ||
 
@@ -67,6 +68,7 @@ export class ContactImportComponent {
 
   getImageName(){     // Selecte image name -----------------------------
     if(this.fileForm.value.csvFile){ 
+      this.uploadClock = true;
       return this.fileForm.value.csvFile.slice(12); 
     } else {
       return 'Selete to File upload above ?';
