@@ -21,11 +21,11 @@ export class SignComponent {
     }) 
   }
 
-  get f (){
+  get f (){     //  Foem controls  -----------
     return this.signForm.controls;
   }
 
-  submit(){
+  submit(){    //  Submit databes -----------
     console.log('Submit Bottun Ckick');
     this.submitted = true;
     if(this.signForm.valid){
@@ -33,31 +33,30 @@ export class SignComponent {
       let url = '/auth/register';
       let body = this.signForm.value;
 
-      let formData = new FormData();
-      formData.append('fname', body.fname);
-      formData.append('lname', body.lname);
-      formData.append('email', body.email);
-      formData.append('password', body.password);
-
       let headers = new Headers();
       headers.append('Content-Type', 'multipart/form-data');
       headers.append('Accept', 'application/json');
       let options = { headers: headers };
-
-      this.apiService.post(url, formData, options).subscribe((data:any)=>{
-        console.log('Form Result -', data)
+      // Post data Node ----
+      this.apiService.post(url, body, options).subscribe((data:any)=>{
+        console.log('Form Result -', data.message)
+        if(data.status){
         this.alertService.success(data.message);
+        } else {
+          this.alertService.warning(data.message);
+        }
       })
     } else {
       this.alertService.error('This is input Empty');
     }
   }
 
-  light(){
+  light(){     //  Ligth  Mood -------------
     document.body.style.background = "white";
   }
-  dark(){
+  dark(){     //  Daek  Mood  --------------
     document.body.style.background = "#060c21";
+    
   }
 
 }

@@ -56,31 +56,37 @@
                             </a>
                         </li>
                         <li [class.active]="rootUrl==='/profile'" class="hover-Bg">
-                            <a routerLink="/profile" class="nav_link tex">
+                            <a routerLink="/profile" class="nav_link tex" style="margin-bottom: 18px;">
                                 <i class='bx bx-user-circle nav_icon'></i>
                                 <span class="nav_name">Profile</span>
                             </a>
                         </li>
                         <li [class.active]="rootUrl==='/users'" class="hover-Bg">
-                            <a routerLink="/users" class="nav_link tex">
+                            <a routerLink="/users" class="nav_link tex" style="margin-bottom: 18px;">
                                 <i class='bx bx-user nav_icon'></i>
                                 <span class="nav_name">Users</span>
                             </a>
                         </li>
                         <li [class.active]="getActive('contact')" class="hover-Bg">
-                            <a routerLink="/contact" class="nav_link tex">
+                            <a routerLink="/contact" class="nav_link tex" style="margin-bottom: 18px;">
                                 <i class='bx bx-user-pin nav_icon'></i>
                                 <span class="nav_name">Contact</span>
                             </a>
                         </li>
+                        <li [class.active]="getActive('compaign')" class="hover-Bg">
+                            <a routerLink="/compaign" class="nav_link tex" style="margin-bottom: 18px;">
+                                <i class='bx bx-user-pin nav_icon'></i>
+                                <span class="nav_name">Compaign</span>
+                            </a>
+                        </li>
                         <li [class.active]="getActive('template')" class="hover-Bg">
-                            <a routerLink="/template" class="nav_link tex">
+                            <a routerLink="/template" class="nav_link tex" style="margin-bottom: 18px;">
                                 <i class='bx bx-wallet-alt nav_icon'></i>
                                 <span class="nav_name">Template</span>
                             </a>
                         </li>
                         <li [class.active]="getActive('category')" class="hover-Bg">
-                            <a routerLink="/category" class="nav_link tex">
+                            <a routerLink="/category" class="nav_link tex" style="margin-bottom: 18px;">
                                 <i class='bx bx-library nav_icon'></i>
                                 <span class="nav_name">Category</span>
                             </a>

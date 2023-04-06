@@ -10,7 +10,12 @@ import { AlertService } from 'src/app/_services/alert.service';
 export class TemplateListComponent {
   toggleVal:boolean = false;
   search:any = '';
-  data:any = [];
+  limit:any = 10;
+  page:any = 1;
+  totalRows:any = 0;
+  order_by:any = 'id'; 
+  order_type:any = 'desc';
+  data:any=[];
 
   // ---------------------    life cycle of angular    --------------------  ||
 
@@ -25,7 +30,7 @@ export class TemplateListComponent {
   // ---------------------      custome methods      -----------------------  ||
 
   getData(){
-    let url:string = `/template?search=${this.search}`;
+    let url:string = `/template?limit=${this.limit}&page=${this.page}&order_by=${this.order_by}&order_type=${this.order_type}&search=${this.search}`;
     this.apiService.get(url).subscribe((data:any)=>{
       console.log('data->', data.data.data)
       if(data && data.status){

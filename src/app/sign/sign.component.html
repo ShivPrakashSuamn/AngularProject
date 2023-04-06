@@ -12,35 +12,35 @@
 </div>
 <div class="row">
     <div class="form" style="margin: auto; margin-top: 6%;">
-        <h2>Sign Up</h2>
+        <h2 class="tex">Sign Up</h2>
         <div class="input">
             <form [formGroup]="signForm" (ngSubmit)="submit()">
                 <div class="inputBox">
                     <div class="row">
                         <div class="col-md-6 p-1">
-                            <label for="">First Name</label>
-                            <input type="text" name="fname" id="fname" placeholder="Enter Name" formControlName="fname" 
-                                [style.border]="(submitted && f['fname'].errors && f['fname'].errors['required'])==true ? '3px solid red' :'0px solid white'">
+                            <label class="tex">First Name</label>
+                            <input type="text" name="fname" class="form-control bg-transparent" placeholder="Enter Name" formControlName="fname" 
+                                [style.border]="(submitted && f['fname'].errors && f['fname'].errors['required'])==true ? '1px solid red' :'1px solid #d5d5d5'">
                         </div>
                         <div class="col-md-6 p-1">
-                            <label for=""> Last Name</label>
-                            <input type="text" name="lname" id="lname" placeholder="Enter Name" formControlName="lname" 
-                                [style.border]="(submitted && f['lname'].errors && f['lname'].errors['required'])==true ? '3px solid red' :'0px solid white'">
+                            <label class="tex"> Last Name</label>
+                            <input type="text" name="lname"  class="form-control bg-transparent" placeholder="Enter Name" formControlName="lname" 
+                                [style.border]="(submitted && f['lname'].errors && f['lname'].errors['required'])==true ? '1px solid red' :'1px solid #d5d5d5'">
                         </div>
                     </div>
                 </div>
                 <div class="inputBox">
-                    <label for="">Email</label>
-                    <input type="email" name="email" placeholder="Enter email" formControlName="email" 
-                        [style.border]="(submitted && f['email'].errors && f['email'].errors['required'])==true ? '3px solid red' :'0px solid white'">
+                    <label class="tex">Email</label>
+                    <input type="email" name="email" class="form-control bg-transparent" placeholder="Enter email" formControlName="email" 
+                        [style.border]="(submitted && f['email'].errors && f['email'].errors['required'])==true ? '1px solid red' :'1px solid #d5d5d5'">
                 </div>
                 <div class="inputBox">
-                    <label for="">Password</label>
-                    <input type="password" name="password" placeholder="password" formControlName="password" 
-                        [style.border]="(submitted && f['password'].errors && f['password'].errors['required'])==true ? '3px solid red' :'0px solid white'">
+                    <label class="tex">Password</label>
+                    <input type="password" name="password" class="form-control bg-transparent" placeholder="password" formControlName="password" 
+                        [style.border]="(submitted && f['password'].errors && f['password'].errors['required'])==true ? '1px solid red' :'1px solid #d5d5d5'">
                 </div>
                 <div class="inputBox">
-                    <input type="submit" name="submit" value="Sign In"> 
+                    <input type="submit" name="submit" value="Sign In" > 
                 </div>
             </form>
         </div>

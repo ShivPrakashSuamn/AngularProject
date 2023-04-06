@@ -105,7 +105,7 @@ export class UsersComponent {
           noDownload: false,
           showTitle: false,
           useBom: false,
-          headers: ["Id","Name","Email","Password","Created"]
+          headers: ["Id","First Name", "Last Name","Email","Password","Created"]
         };
         new ngxCsv(this.data, "Contact list", options);  // download CSV ------
         Swal.fire('SuccessFully !', 'List removed successfully.', 'success');

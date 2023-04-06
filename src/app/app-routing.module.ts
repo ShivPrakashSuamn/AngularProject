@@ -13,6 +13,8 @@ import { TemplateCreateComponent } from './template/template-create/template-cre
 import { ContactListComponent } from './contact/contact-list/contact-list.component';
 import { ContactCreateComponent } from './contact/contact-create/contact-create.component';
 import { ContactImportComponent } from './contact/contact-import/contact-import.component';
+import { CompaignListComponent } from './compaign/compaign-list/compaign-list.component';
+import { CompaignCreateComponent } from './compaign/compaign-create/compaign-create.component';
 
 const routes: Routes = [
   {path: 'login', component: LoginComponent},
@@ -25,14 +27,14 @@ const routes: Routes = [
      {path: 'category/create', component: CategoryCreateComponent},
   // {path: 'category/upate/:id', component: CategoryCreateOrUpdateComponent},
   // {path: 'category/show/:id', component: CategoryShowComponent},
-
   {path: 'template', component: TemplateListComponent},
       {path: 'template/create', component: TemplateCreateComponent},
-
   {path: 'contact', component: ContactListComponent},
-  {path: 'contact/update/:id', component: ContactCreateComponent},
-  {path: 'contact/create', component: ContactCreateComponent},    
-  {path: 'contact/import', component: ContactImportComponent}    
+    {path: 'contact/update/:id', component: ContactCreateComponent},
+    {path: 'contact/create', component: ContactCreateComponent},    
+    {path: 'contact/import', component: ContactImportComponent},
+  {path: 'compaign', component:CompaignListComponent},
+    {path: 'compaign/create', component:CompaignCreateComponent}
 ];
 
 @NgModule({

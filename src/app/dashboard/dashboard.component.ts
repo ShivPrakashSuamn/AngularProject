@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { ApiService } from '../_services/api.service';
+import { HttpHeaders } from '@angular/common/http';
 
 @Component({
   selector: 'app-dashboard',
@@ -6,13 +8,25 @@ import { Component } from '@angular/core';
   styleUrls: ['./dashboard.component.css']
 })
 export class DashboardComponent {
-  toggleVal:boolean = false;
+  toggleVal: boolean = false;
 
-  constructor() { 
+  constructor(private apiService: ApiService) {
     // it call first 
-  } 
-    sidebarToggle(eventData: { toggleVal: boolean }){
-      this.toggleVal = eventData.toggleVal;
-      console.log('dashborad page inside sidebar Toggle', eventData.toggleVal);
-    }
+  }
+  ngOnInit(){
+    this.getdata();
+  }
+
+  getdata(){
+    let url:string  = '/auth/profile';
+    let headers = new HttpHeaders().set("authorization",`Bearer ${localStorage.getItem('token')}`);
+    this.apiService.post(url, {}, {headers}).subscribe((data:any)=>{
+      console.log('da->',data);
+    });
+  }
+
+  sidebarToggle(eventData: { toggleVal: boolean }) {
+    this.toggleVal = eventData.toggleVal;
+    console.log('dashborad page inside sidebar Toggle', eventData.toggleVal);
+  }
 }

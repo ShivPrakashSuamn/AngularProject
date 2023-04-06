@@ -33,7 +33,8 @@
                                             <thead>
                                                 <tr>
                                                     <th (click)="sortBy('id')">  id <i class='bx bx-sort nav_icon'></i></th> 
-                                                    <th (click)="sortBy('name')" style="color: blue;"> Name <i class='bx bx-sort nav_icon'></i></th>
+                                                    <th (click)="sortBy('fname')" style="color: blue;"> First Name <i class='bx bx-sort nav_icon'></i></th>
+                                                    <th (click)="sortBy('lname')"> Last Name <i class='bx bx-sort nav_icon'></i></th>
                                                     <th (click)="sortBy('email')"> Email Address <i class='bx bx-sort nav_icon'></i></th>
                                                     <th> Created </th>
                                                     <th> </th>
@@ -42,9 +43,10 @@
                                             <tbody>
                                                 <tr *ngFor="let row of data" >
                                                     <td> {{row.id}} </td> 
-                                                    <td> {{row.name}}  </td>
+                                                    <td> {{row.fname}}  </td>
+                                                    <td> {{row.lname}}  </td>
                                                     <td> {{row.email}}  </td> 
-                                                    <td> {{row.created}}  </td> 
+                                                    <td> {{row.create}}  </td> 
                                                     <td class="t_row p-0"> 
                                                         <a herf="JavaScript:void(0)" (click)="deleteRow(row.id)"><span class="btn spas">&times;</span></a>
                                                     </td> 
