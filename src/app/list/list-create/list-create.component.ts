@@ -1,15 +1,15 @@
 import { Component } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, FormArray, FormControl, Validators } from '@angular/forms';
 import { AlertService } from 'src/app/_services/alert.service';
 import { ApiService } from 'src/app/_services/api.service';
-import { ActivatedRoute } from '@angular/router'
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
-  selector: 'app-compaign-create',
-  templateUrl: './compaign-create.component.html',
-  styleUrls: ['./compaign-create.component.css']
+  selector: 'app-list-create',
+  templateUrl: './list-create.component.html',
+  styleUrls: ['./list-create.component.css']
 })
-export class CompaignCreateComponent {
+export class ListCreateComponent {
   toggleVal: boolean = false;
   createForm: FormGroup;
   submitted: any = false;
@@ -29,7 +29,7 @@ export class CompaignCreateComponent {
   }
 
   ngOnInit() {        //  ngOninit Function -------------------------
-
+   this.getdata();
   }
 
   get f() {
@@ -37,6 +37,18 @@ export class CompaignCreateComponent {
   }
 
   // ----------------    custome methods   --------------------------  ||
+
+  getdata(){     //  get contact data  ------------------------------
+    let url =  `/contact?limit=${this.limit}&page=${this.page}&order_by=${this.order_by}&order_type=${this.order_type}`;
+    this.apiService.get(url).subscribe((data:any)=>{
+      console.log('data->', data.data.data);
+      if(data && data.status){
+        this.data = data.data.data; 
+      }else{
+        this.alertService.error('Data Fatch Failed..');  // data.message -----
+      }
+    });
+  }
 
   submit() {    // Submit Form    -----------------------------------
     console.log('Submit Button Click');

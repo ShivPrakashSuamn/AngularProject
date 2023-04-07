@@ -1,7 +1,7 @@
 <div class="row">
   <!--- sidebar  ---------------->
   <div style="transition: .5s;" class="p-0" [ngClass]="{'col-lg-1': toggleVal,'col-lg-2':!toggleVal}">
-      <app-sidebar (sidebarToggle)=sidebarToggle($event)> </app-sidebar>
+    <app-sidebar (sidebarToggle)=sidebarToggle($event)> </app-sidebar>
   </div>
   <!--- ProFile Page ------------->
   <div style="transition: .5s;" [ngClass]="{'col-lg-11': toggleVal,'col-lg-10':!toggleVal}">
@@ -11,19 +11,51 @@
           <div class="align-items-center">
             <div class="col col-lg-12">
               <div class="card1">
-                <div class="rounded-top text-white d-flex flex-row" style="background:linear-gradient(315deg,#e91e63,#5d02ff); height:200px;">
+                <div class="rounded-top text-white d-flex flex-row"
+                  style="background:linear-gradient(315deg,#e91e63,#5d02ff); height:200px;">
                   <div class="ms-4 mt-5 d-flex flex-column" style="width: 150px;">
                     <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-profiles/avatar-1.webp"
                       alt="Generic placeholder image" class="img-fluid img-thumbnail mt-4 mb-2"
                       style="width: 150px; z-index: 1">
-                    <button type="button" class="btn edit" style="z-index: 1;"> Edit profile </button>
+                    <button type="button" class="btn edit mt-1" style="z-index: 1;" data-bs-toggle="modal" data-bs-target="#exampleModal"> Edit profile </button>
+                    <button type="button" class="btn resetp mt-2" style="z-index: 1;" > Reset password </button>
+                    <!-- edit Form -->
+                    <form class="form"[formGroup]="createForm" (ngSubmit)="submit()">
+                      <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal-dialog">
+                          <div class="modal-content">
+                            <div class="modal-header">
+                              <h5 class="modal-title tex" id="exampleModalLabel"><b>Update Profile : </b></h5>
+                              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+                              <label for="fname" class="tex"> First Name :</label>
+                              <input type="text" class="form-control bg-transparent" name="fname" placeholder="Enter first name" formControlName="fname"
+                                  [style.border]="(submitted && f['fname'].errors && f['fname'].errors['required'])==true ? '1px solid red' :'1px solid #c6c6c6'" /><br>
+                              <label for="lname" class="tex"> Last Name :</label>
+                              <input type="text" class="form-control bg-transparent" name="lname" placeholder="Enter last name" formControlName="lname"
+                                  [style.border]="(submitted && f['lname'].errors && f['lname'].errors['required'])==true ? '1px solid red' :'1px solid #c6c6c6'" /><br>
+                              <label for="email" class="tex">Email :</label>
+                              <input type="email"class="form-control bg-transparent" name="email" placeholder="Enter email" formControlName="email"
+                                  [style.border]="(submitted && f['email'].errors && f['email'].errors['required'])==true ? '1px solid red' :'1px solid #c6c6c6'" /><br>
+                            </div>
+                            <div class="modal-footer">
+                              <!-- <button type="button" class="btn btn-secondary edit" data-bs-dismiss="modal">Close</button> -->
+                              <input type="reset" class="btn cancelbtn" (click)="reset()" value="Cancal" name="cancal">
+                              <input type="submit" class="btn battcolor edit" value="SAVE" name="submit">
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </form>
+                    <!-- end -->
                   </div>
                   <div class="ms-3" style="margin-top: 130px;">
                     <h5>Andy Horwitz</h5>
                     <p>New York</p>
                   </div>
                 </div>
-                <div class="p-4 text-black" style="background-color: #b9b8bbfa;">
+                <div class="p-5 text-black" style="background-color: #b9b8bbfa;">
                   <div class="d-flex justify-content-end text-center py-1">
                     <div>
                       <p class="mb-1 h5 tex">253</p>
@@ -55,22 +87,22 @@
                   </div>
                   <div class="row g-2">
                     <div class="col mb-2">
-                      <img src="https://mdbcdn.b-cdn.net/img/Photos/Lightbox/Original/img%20(112).webp"
-                        alt="image 1" class="w-100 rounded-3">
+                      <img src="https://mdbcdn.b-cdn.net/img/Photos/Lightbox/Original/img%20(112).webp" alt="image 1"
+                        class="w-100 rounded-3">
                     </div>
                     <div class="col mb-2">
-                      <img src="https://mdbcdn.b-cdn.net/img/Photos/Lightbox/Original/img%20(107).webp"
-                        alt="image 1" class="w-100 rounded-3">
+                      <img src="https://mdbcdn.b-cdn.net/img/Photos/Lightbox/Original/img%20(107).webp" alt="image 1"
+                        class="w-100 rounded-3">
                     </div>
                   </div>
                   <div class="row g-2">
                     <div class="col">
-                      <img src="https://mdbcdn.b-cdn.net/img/Photos/Lightbox/Original/img%20(108).webp"
-                        alt="image 1" class="w-100 rounded-3">
+                      <img src="https://mdbcdn.b-cdn.net/img/Photos/Lightbox/Original/img%20(108).webp" alt="image 1"
+                        class="w-100 rounded-3">
                     </div>
                     <div class="col">
-                      <img src="https://mdbcdn.b-cdn.net/img/Photos/Lightbox/Original/img%20(114).webp"
-                        alt="image 1" class="w-100 rounded-3">
+                      <img src="https://mdbcdn.b-cdn.net/img/Photos/Lightbox/Original/img%20(114).webp" alt="image 1"
+                        class="w-100 rounded-3">
                     </div>
                   </div>
                 </div>

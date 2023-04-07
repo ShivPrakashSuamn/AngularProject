@@ -73,9 +73,15 @@
                                 <span class="nav_name">Contact</span>
                             </a>
                         </li>
+                        <li [class.active]="getActive('list')" class="hover-Bg">
+                            <a routerLink="/list" class="nav_link tex" style="margin-bottom: 18px;">
+                                <i class='bx bx-list-ol nav_icon'></i>
+                                <span class="nav_name">List</span>
+                            </a>
+                        </li>
                         <li [class.active]="getActive('compaign')" class="hover-Bg">
                             <a routerLink="/compaign" class="nav_link tex" style="margin-bottom: 18px;">
-                                <i class='bx bx-user-pin nav_icon'></i>
+                                <i class='bx bx-blanket nav_icon'></i>
                                 <span class="nav_name">Compaign</span>
                             </a>
                         </li>
