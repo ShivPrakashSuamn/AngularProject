@@ -33,7 +33,6 @@ export class ContactImportComponent {
 
   handleFileUpload(target:any){  // file handle  ------------------------
     this.profileImage = target.files[0];
-    console.log('==--',this.profileImage);
   }
 
   submit() {          //  CSV upload file   -----------------------------
@@ -41,7 +40,7 @@ export class ContactImportComponent {
     this.submitted = true;
     if(this.fileForm.valid){
       this.alertService.success('CSV_File Save SuccessFull');
-      console.log('Create Form Data =', this.fileForm.value.csvFile);
+      // console.log('Create Form Data =', this.fileForm.value.csvFile);
       let url:string = `/contact/csv`;
       let formData: FormData = new FormData();
       formData.append('file', this.profileImage,this.profileImage.name);
@@ -50,7 +49,7 @@ export class ContactImportComponent {
         headers.append('Accept', 'application/json');
       let options = { headers: headers };
       this.apiService.post(url, formData, options).subscribe((data:any)=>{
-        console.log('fda---',data)
+       // console.log('fda---',data)
       });
     } else {
       this.alertService.error('This is input Empty');
@@ -75,7 +74,5 @@ export class ContactImportComponent {
     }
   }
 
-  sampleData() {      // Display Sample data  ---------------------------
-    Swal.fire('Sample File',`sample data`,'success' );
-  }
+
 }

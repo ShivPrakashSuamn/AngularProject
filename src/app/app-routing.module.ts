@@ -38,6 +38,7 @@ const routes: Routes = [
   {path: 'compaign', component:CompaignListComponent},
     {path: 'compaign/create', component:CompaignCreateComponent},
   {path: 'list', component:ListIndexComponent},
+    {path: 'list/update/:id', component:ListCreateComponent},
     {path: 'list/create', component:ListCreateComponent},
 ];
 

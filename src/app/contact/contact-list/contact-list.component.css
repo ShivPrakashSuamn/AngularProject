@@ -124,3 +124,8 @@ button[type="submit"] {
   .overflow:hover {
     overflow: visible;
   }
+  .profile-image{
+    width: 35px;
+    height: 35px;
+    margin-bottom: 0px !important;
+  }

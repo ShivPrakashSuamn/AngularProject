@@ -11,6 +11,10 @@
 .Sm2{
     margin: 10px 20px 0px 106px;
 }
+.man-box{
+    backdrop-filter: blur(11px) !important;
+    background-color: rgb(240 248 255 / 70%) !important;
+}
 .b-color{
     backdrop-filter: blur(11px);
     background-color: rgb(240 248 255 / 70%);

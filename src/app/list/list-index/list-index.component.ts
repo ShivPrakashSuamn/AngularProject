@@ -105,9 +105,9 @@ export class ListIndexComponent {
     let url:string = `/list/show?id=${id}`;
     this.apiService.get(url).subscribe((data:any) => {
       if(data && data.status){
-        this.title = data.data[0].title;
-        this.Select_Contact = data.data[0].contact_id;
-        this.Create_Data = data.data[0].create;
+        this.title = data.data.data[0].title;
+        this.Select_Contact = data.data.data[0].total_contacts;
+        this.Create_Data = data.data.data[0].create;
       }else{
         this.alertService.error('Data Fatch Failed..');  // data.message -----
       }
