@@ -13,15 +13,17 @@ export class DashboardComponent {
   constructor(private apiService: ApiService) {
     // it call first 
   }
-  ngOnInit(){
+  ngOnInit() {
     this.getdata();
   }
 
-  getdata(){
-    let url:string  = '/auth/profile';
-    let headers = new HttpHeaders().set("authorization",`Bearer ${localStorage.getItem('token')}`);
-    this.apiService.post(url, {}, {headers}).subscribe((data:any)=>{
-      console.log('da->',data);
+
+
+  getdata() {
+    let url: string = '/auth/profile';
+    let headers = new HttpHeaders().set("authorization", `Bearer ${localStorage.getItem('token')}`);
+    this.apiService.get(url, { headers }).subscribe((data: any) => {
+      console.log('da->', data);
     });
   }
 

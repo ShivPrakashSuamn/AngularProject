@@ -1,0 +1,68 @@
+- login 
+- register
+- forgot password
+- reset password
+- dashboard
+    - total contacts
+    - total sent mail
+    - total list
+    - total compaign
+    - total open mail
+- contacts
+    - Create
+        - form
+        - csv
+    - update
+    - delete
+    - show
+    - index 
+- list 
+    - create [title,contact_ids]
+    - update 
+    - delete 
+    - index
+- compaign 
+    - create
+    - select template List
+        - preview (image display)
+        - select template 
+    - editor 
+    - publish
+        - publish time 
+        - select list 
+        - publish[sent mail] 
+        - draft[save for future]
+- profile 
+    - update
+    - reset password
+- analytics
+
+
+
+admin 
+    - users
+        - create
+        - update
+        - delete
+        - show
+        - index
+    - tempalate
+        - create
+        - update
+        - delete
+        - show
+        - index
+    - plans
+        - create
+        - update
+        - delete
+        - show
+        - index
+    - payment
+        - index
+        - update
+    - settings
+        - update
+        - list
+        - reset password
+    
