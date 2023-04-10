@@ -22,3 +22,19 @@
     border-radius: 10px;
     color:#d83cff;
 }
+.cancelbtn{
+    border: 1px solid #ff3382a1;
+    color: #6404f48f;
+    margin-right: 15px;
+    padding: 8px 15px;
+  }
+.battcolor{
+    border: 1px solid #ff3382;
+    /* color: #6404f4; */
+    padding: 8px 22px;
+}
+.resetp{
+    border: 1px solid #f82783;
+    margin: 7px 0px;
+    color: #dd44f0;
+}

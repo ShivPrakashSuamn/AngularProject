@@ -28,6 +28,9 @@ import { ContactCreateComponent } from './contact/contact-create/contact-create.
 import { ContactImportComponent } from './contact/contact-import/contact-import.component';
 import { CompaignListComponent } from './compaign/compaign-list/compaign-list.component';
 import { CompaignCreateComponent } from './compaign/compaign-create/compaign-create.component';
+import { ListIndexComponent } from './list/list-index/list-index.component';
+import { ListCreateComponent } from './list/list-create/list-create.component';
+
 const ngxUiLoaderConfig: NgxUiLoaderConfig = {
   bgsColor: 'red',
   // bgsOpacity: 0.5,
@@ -74,7 +77,9 @@ const ngxUiLoaderConfig: NgxUiLoaderConfig = {
     ContactCreateComponent,
     ContactImportComponent,
     CompaignListComponent,
-    CompaignCreateComponent
+    CompaignCreateComponent,
+    ListIndexComponent,
+    ListCreateComponent
   ],
   imports: [
     BrowserModule,

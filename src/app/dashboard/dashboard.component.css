@@ -85,3 +85,9 @@
     margin-top: -5px;
     margin-bottom: 5px;
 }
+.p-tag{
+    font-size: 11px;
+    margin: -10px 0px;
+    width: 55px;
+    color: #969b99;
+}

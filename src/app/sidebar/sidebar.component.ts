@@ -12,7 +12,9 @@ export class SidebarComponent {
   value:any;
   toggleVal:any=false;
   rootUrl:any;
+  mail_opne:any;
   @Output() sidebarToggle = new EventEmitter<{ toggleVal: boolean }>(); // event emitter
+  @Output() emailOpne = new EventEmitter<{ emailval: boolean }>(); // event emitter
 
     // ------------------    life cycle of angular    ----------------------- ||
 
@@ -48,6 +50,15 @@ export class SidebarComponent {
     }  
 
     // -----------------     custome methods       ------------------------- ||
+
+    envelopechang(){  //  Email one of  ---------
+      if(this.mail_opne){
+        this.mail_opne = false;
+      } else {
+        this.mail_opne = true;
+      }
+      this.emailOpne.emit({ emailval: this.mail_opne });
+    }
 
     toggleSidebar(){  //  sidebar manage --------
       if(this.toggleVal){

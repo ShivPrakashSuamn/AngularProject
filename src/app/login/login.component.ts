@@ -51,12 +51,12 @@ export class LoginComponent {
       this.apiService.post(url, body, options).subscribe((data:any)=>{
         console.log('Form Result ->', data.data.token)
         if(data.status){
-        this.alertService.success(data.message);
-        localStorage.setItem('token',data.data.token);  // Token store ---
-        this.route.navigate(['/dashboard']);  // Location set -- 
-        } else {
-          this.alertService.info(data.message);
-        }
+          this.alertService.success(data.message);
+          localStorage.setItem('token',data.data.token);  // Token store ---
+          this.route.navigate(['/dashboard']);  // Location set -- 
+          } else {
+            this.alertService.warning(data.message);
+          }
       });
     } else {
       this.alertService.error('This is input Empty');

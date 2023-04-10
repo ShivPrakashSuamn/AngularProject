@@ -53,7 +53,7 @@
                                                 <tr *ngFor="let row of data" >
                                                     <td>{{row.id}}</td> 
                                                     <td >
-                                                        <span *ngIf="row.image != 'null'"><img src="http://localhost:3001/uploads/images/{{row.image}}" class="card-img-top rounded-circle mb-3" style="width: 36px; height: 36px;"/></span>
+                                                        <span *ngIf="row.image != 'null'"><img src="http://localhost:3001/uploads/images/{{row.image}}" class="card-img-top rounded-circle mb-3 profile-image" /></span>
                                                         <span *ngIf="row.image == 'null'" class="pic_text"><span>{{row.fname.substr(0,1)}}</span></span>
                                                     </td>
                                                     <td> {{row.fname}} </td>
@@ -63,7 +63,7 @@
                                                     <td> {{row.phone}} </td> 
                                                     <!-- <td> <div class='overflow'>{{row.address}}</div></td>  -->
                                                     <td> {{row.city}} </td> 
-                                                    <td> {{row.create}} </td> 
+                                                    <td> {{row.create | date:'short'}} </td> 
                                                     <td class="t_row p-0 text-center"> 
                                                         <a routerLink="/contact/update/{{row.id}}" data-dismiss="alert"><i class='bx bx-pencil nav_icon'></i></a>
                                                         <a herf="JavaScript:void(0)" (click)="showRow(row.id)" data-bs-toggle="modal" data-bs-target="#exampleModal" data-dismiss="alert"><i class='bx bx-show nav_icon btn spas'></i></a>

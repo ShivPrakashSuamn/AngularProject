@@ -1,5 +1,5 @@
 <!----Nave bar ----------->
-<div class="nave p-0 fixed-top shadow-lg b-color" style="height: 80px; ">
+<div class="nave p-0 fixed-top shadow-lg b-color" style="height: 75px; ">
     <div class="row ">
         <div class="col-sm-6 mt-3" style=" transition: .5s;">
             <a href="#" class="tex" style="font-size: 25px; float: left; margin-left: 20px;">
@@ -22,28 +22,50 @@
                     <mat-slide-toggle style="margin: 20px;"></mat-slide-toggle>
                     <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-profiles/avatar-1.webp"
                         class=" rounded-circle mt-2 imG" width="50px">
-                    <a routerLink="#" class="tex" style="margin: 20px; font-size: 25px;">
-                        <i class="fa fa-bell tex notification-info"></i></a>
-                    <a routerLink="#" class="tex" style="margin: 20px; font-size: 25px;">
-                        <i class="fa fa-envelope tex "></i></a>
-                    <div class="dropdown m-4">
-                        <button class="dropbtn" id="loading">
-                            <i class="fa fa-cog  tex" style="font-size: 25px;"></i>
-                        </button>
-                        <div class="dropdown-content">
-                            <a href="JavaScript:void(0);" (click)="light()" class="tex">Light Theme</a>
-                            <a href="JavaScript:void(0);" (click)="dark()">Dark Theme</a>
-                        </div>
+                    <div class="btn-group">
+                        <a routerLink="#" class="tex" style="margin: 20px; font-size: 25px;" data-bs-toggle="dropdown" aria-expanded="false">
+                            <i class="fa fa-bell tex notification-info"></i>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="#">All Notification -</a></li>
+                            <li><a class="dropdown-item" href="#">Follow -</a></li>
+                            <li><a class="dropdown-item" href="#">Unfollow </a></li>
+                            <li><hr class="dropdown-divider"></li>
+                            <li><a class="dropdown-item" href="#">Separated link</a></li>
+                        </ul>
+                    </div>
+                    <div class="btn-group">
+                        <a routerLink="#" style="margin: 20px; font-size: 25px;" (click)="envelopechang()" data-bs-toggle="dropdown" aria-expanded="false">
+                            <i class="fa " [ngClass]="{'fa-envelope-open':mail_opne, 'fa-envelope': !mail_opne}" style="color: #6304f0b5;"> 
+                                <span matBadge="5" matBadgeColor="accent" style="right: -7px !important;"></span>
+                            </i>        
+                        </a>
+                        <ul class="dropdown-menu" style="margin-top: 6px !important;">
+                            <li><a class="dropdown-item" href="#">Opne Email -</a></li>
+                            <li><a class="dropdown-item" href="#">Send Email -</a></li>
+                            <li><a class="dropdown-item" href="#">Something else here</a></li>
+                            <li><hr class="dropdown-divider"></li>
+                            <li><a class="dropdown-item" href="#">Separated link</a></li>
+                        </ul>
+                    </div>
+                    <div class="btn-group">
+                        <a routerLink="#" class="tex" id="loading" style="margin: 20px; font-size: 25px;" data-bs-toggle="dropdown" aria-expanded="false">
+                            <i class="fa fa-cog tex" style="font-size: 25px;"></i>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="JavaScript:void(0);" (click)="light()"style="color: #6304f0b5;">Light Theme</a></li>
+                            <li><a class="dropdown-item" href="JavaScript:void(0);" (click)="dark()">Dark Theme</a></li>
+                        </ul>
                     </div>
                 </div>
             </div>
         </div>
-        <hr style="margin: -5px;">
+        <hr style="margin: -3px;">
     </div>
 </div>
 <!--- sidebar  -->
 <div class="col-lg-2 p-0">
-    <div class="l-navbar shadow-lg b-color" id="nav-bar" style="background: aliceblue; width: inherit; z-index: 1;"
+    <div class="l-navbar shadow-lg b-color man-box" id="nav-bar" style="background: aliceblue; width: inherit; z-index: 1;"
         [ngClass]="{'w85': toggleVal}">
         <nav class="nav" style="padding-left: 10px;">
             <div class="mt-5 pt-5">
@@ -73,9 +95,15 @@
                                 <span class="nav_name">Contact</span>
                             </a>
                         </li>
+                        <li [class.active]="getActive('list')" class="hover-Bg">
+                            <a routerLink="/list" class="nav_link tex" style="margin-bottom: 18px;">
+                                <i class='bx bx-list-ol nav_icon'></i>
+                                <span class="nav_name">List</span>
+                            </a>
+                        </li>
                         <li [class.active]="getActive('compaign')" class="hover-Bg">
                             <a routerLink="/compaign" class="nav_link tex" style="margin-bottom: 18px;">
-                                <i class='bx bx-user-pin nav_icon'></i>
+                                <i class='bx bx-blanket nav_icon'></i>
                                 <span class="nav_name">Compaign</span>
                             </a>
                         </li>

@@ -15,6 +15,8 @@ import { ContactCreateComponent } from './contact/contact-create/contact-create.
 import { ContactImportComponent } from './contact/contact-import/contact-import.component';
 import { CompaignListComponent } from './compaign/compaign-list/compaign-list.component';
 import { CompaignCreateComponent } from './compaign/compaign-create/compaign-create.component';
+import { ListIndexComponent } from './list/list-index/list-index.component';
+import { ListCreateComponent } from './list/list-create/list-create.component';
 
 const routes: Routes = [
   {path: 'login', component: LoginComponent},
@@ -34,7 +36,10 @@ const routes: Routes = [
     {path: 'contact/create', component: ContactCreateComponent},    
     {path: 'contact/import', component: ContactImportComponent},
   {path: 'compaign', component:CompaignListComponent},
-    {path: 'compaign/create', component:CompaignCreateComponent}
+    {path: 'compaign/create', component:CompaignCreateComponent},
+  {path: 'list', component:ListIndexComponent},
+    {path: 'list/update/:id', component:ListCreateComponent},
+    {path: 'list/create', component:ListCreateComponent},
 ];
 
 @NgModule({
