@@ -15,6 +15,10 @@
     backdrop-filter: blur(11px) !important;
     background-color: rgb(240 248 255 / 70%) !important;
 }
+.icon-dark{
+    margin-left: 10px;
+    font-size: 25px;
+}
 .b-color{
     backdrop-filter: blur(11px);
     background-color: rgb(240 248 255 / 70%);

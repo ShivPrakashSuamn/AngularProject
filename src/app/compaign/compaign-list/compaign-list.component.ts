@@ -33,7 +33,7 @@ export class CompaignListComponent {
 
   getData() {           //  Data Get databes   ---------------------------------
     let url:string = `/template?limit=${this.limit}&page=${this.page}&order_by=${this.order_by}&order_type=${this.order_type}&search=${this.search}`;
-    this.apiService.get(url).subscribe((data:any) => {
+    this.apiService.get(url, {}).subscribe((data:any) => {
       console.log('data',data.data);
         if(data && data.status){
           this.page = data.data.page;
@@ -83,7 +83,7 @@ export class CompaignListComponent {
       if (result.value) {
         Swal.fire('SuccessFully !', 'Row Deleted Successfully.', 'success');
         let url:string = `/template/delete?id=${id}`;
-        this.apiService.get(url).subscribe((data:any) => {
+        this.apiService.get(url, {}).subscribe((data:any) => {
           this.getData(); 
           console.log('deleteRow Status -',data.status) ;   
         });

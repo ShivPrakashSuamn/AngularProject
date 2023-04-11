@@ -31,7 +31,7 @@ export class TemplateListComponent {
 
   getData(){
     let url:string = `/template?limit=${this.limit}&page=${this.page}&order_by=${this.order_by}&order_type=${this.order_type}&search=${this.search}`;
-    this.apiService.get(url).subscribe((data:any)=>{
+    this.apiService.get(url , {}).subscribe((data:any)=>{
       console.log('data->', data.data.data)
       if(data && data.status){
         this.data = data.data.data;

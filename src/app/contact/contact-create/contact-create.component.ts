@@ -110,7 +110,7 @@ export class ContactCreateComponent {
 
   getData() {          // Upadte data get end input fill  ------------
     let url: string = `/contact/show?id=${this.id}`;
-    this.apiService.get(url).subscribe((data: any) => {
+    this.apiService.get(url , {}).subscribe((data: any) => {
       if (data && data.status) {
         let userData = data.data[0];
         var dt = new Date(userData.dob);

@@ -34,7 +34,7 @@ export class UsersComponent {
   
   getData(){            //  Get data databes   -------------------------------- 
     let url = `/user?limit=${this.limit}&page=${this.page}&order_by=${this.order_by}&order_type=${this.order_type}&search=${this.search}`;
-    this.apiService.get(url).subscribe((data:any)=>{
+    this.apiService.get(url , {}).subscribe((data:any)=>{
       if(data && data.status){
         this.data = data.data.data; 
         this.page = data.data.page;
@@ -76,7 +76,7 @@ export class UsersComponent {
       if (result.value) {
         Swal.fire('SuccessFully !', 'Row deleted Successfully.', 'success');
         let url:string = `/user/delete?id=${id}`;
-        this.apiService.get(url).subscribe((data:any) => {
+        this.apiService.get(url , {}).subscribe((data:any) => {
           this.getData(); 
           console.log('deleteRow Status -',data.status) ;   
         });

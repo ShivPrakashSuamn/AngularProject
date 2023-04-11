@@ -40,7 +40,7 @@ export class ContactListComponent {
 
   getData() {           //  Data Get databes   ---------------------------------
     let url:string = `/contact?limit=${this.limit}&page=${this.page}&order_by=${this.order_by}&order_type=${this.order_type}&search=${this.search}`;
-    this.apiService.get(url).subscribe((data:any) => {
+    this.apiService.get(url , {}).subscribe((data:any) => {
       console.log('data',data.data.data);
         if(data && data.status){
           this.page = data.data.page;
@@ -108,7 +108,7 @@ export class ContactListComponent {
   showRow(id:any) {     //  Display one line of Data  --------------------------
     console.log('id -->', id);
     let url:string = `/contact/show?id=${id}`;
-    this.apiService.get(url).subscribe((data:any) => {
+    this.apiService.get(url , {}).subscribe((data:any) => {
       if(data && data.status){
         this.fname = data.data[0].fname;
         this.lname = data.data[0].lname;
@@ -145,7 +145,7 @@ export class ContactListComponent {
       if (result.value) {
         Swal.fire('SuccessFully !', 'Row Deleted Successfully.', 'success');
         let url:string = `/contact/delete?id=${id}`;
-        this.apiService.get(url).subscribe((data:any) => {
+        this.apiService.get(url , {}).subscribe((data:any) => {
           this.getData(); 
           console.log('deleteRow Status -',data.status) ;   
         });

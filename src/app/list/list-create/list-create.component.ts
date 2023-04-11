@@ -32,7 +32,7 @@ export class ListCreateComponent {
     });
   }
 
-  ngOnInit() {        //  ngOninit Function -------------------------
+  ngOnInit() {        //  ngOninit Function    ---------------------------
     this.getdata();
     this.id = this.route.snapshot.params['id'];
     if (this.id != undefined) {
@@ -47,9 +47,9 @@ export class ListCreateComponent {
 
   // -------------------------    custome methods   --------------------------  ||
 
-  getdata() {     //  get contact data  ------------------------------
+  getdata() {     //  get contact data    ------------------------------
     let url = `/contact?limit=${this.limit}&page=${this.page}&order_by=${this.order_by}&order_type=${this.order_type}`;
-    this.apiService.get(url).subscribe((data: any) => {
+    this.apiService.get(url , {}).subscribe((data: any) => {
       if (data && data.status) {
         this.data = data.data.data;
         this.data.map((item: any) => {
@@ -71,7 +71,7 @@ export class ListCreateComponent {
     }
   }
 
-  selectAll() {    //  Select All user   ------------------------------
+  selectAll() {      //  Select All user   ------------------------------
     if (this.allSelect) {
       this.data.map((item: any) => {
         item.checked = false;
@@ -87,23 +87,20 @@ export class ListCreateComponent {
     }
   }
 
-  updateDataGet() {    //  Update Data Get  --------------------------- 
+  updateDataGet() {  //  Update Data Get   ------------------------------ 
     let url: string = `/list/show?id=${this.id}`;
-    this.apiService.get(url).subscribe((data: any) => {
+    this.apiService.get(url , {}).subscribe((data: any) => {
       if (data && data.status) {
         let userData = data.data;
-        //console.log('dataa-', userData.checkbox)
 
-        userData.checkbox.map((item: any) => {
-          this.inputData = item.contact_id;
-          this.data.map((item: any) => {
-            if (this.inputData == item.id) {
-              item.checked = true;
-              this.contacts.push(item.id);
+        userData.checkbox.map((item1: any) => {
+          this.data.map((item2: any) => {
+            if (item1.contact_id == item2.id) {
+              item2.checked = true;
+              this.contacts.push(item2.id);
             }
           });
         });
-        console.log('b---', this.contacts)
         this.createForm = this.fb.group({
           title: [`${userData.data[0].title}`, Validators.required],
         });
@@ -113,7 +110,7 @@ export class ListCreateComponent {
     });
   }
 
-  submit() {      // Submit Form    -----------------------------------
+  submit() {        //   Submit Form     ---------------------------------
     console.log('Submit Button Click');
     this.submitted = true;
     if (this.createForm.valid) {
@@ -139,7 +136,7 @@ export class ListCreateComponent {
     console.log('profile page inside sidebar toggle', eventData.toggleVal);
   }
 
-  reset() {           // Form  reset  --------------------------------
+  reset() {         // Form  reset      ---------------------------------
     this.createForm.reset();
   }
 
