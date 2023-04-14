@@ -37,6 +37,7 @@ const routes: Routes = [
     {path: 'contact/create', component: ContactCreateComponent},    
     {path: 'contact/import', component: ContactImportComponent},
   {path: 'compaign', component:CompaignListComponent},
+    {path: 'compaign/update/:id', component:CompaignCreateComponent},
     {path: 'compaign/create', component:CompaignCreateComponent},
   {path: 'list', component:ListIndexComponent},
     {path: 'list/update/:id', component:ListCreateComponent},

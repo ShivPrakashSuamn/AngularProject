@@ -20,6 +20,9 @@ export class CompaignListComponent {
   data:any=[];
   delete:any;
 
+  title:any ;
+  thumbnail:any;
+  created:any;
 
   // ---------------------    life cycle of angular    --------------------  ||
 
@@ -40,7 +43,7 @@ export class CompaignListComponent {
           this.data = data.data.data; 
           this.totalRows = data.data.total;
         }else{
-          this.alertService.error('Data Fatch Failed..');  // data.message -----
+          this.alertService.error(data.message);  // data.message -----
         }
       }
     );
@@ -68,7 +71,16 @@ export class CompaignListComponent {
   }
 
   showRow(id:any) {     //  Display one line of Data  --------------------------
-    
+    let url = '/template/show?id='+id;
+    this.apiService.get(url, {}).subscribe((data:any) => {
+      if(data && data.status){
+        this.title = data.data[0].title;
+        this.thumbnail = data.data[0].thumbnail;
+        this.created = data.data[0].created;
+      } else {
+        this.alertService.error(data.message);
+      }
+    });
   }
 
   deleteRow(id:any) {   //  Delete Row Function     ----------------------------

@@ -25,7 +25,10 @@
                                         <div class="col-lg-9 p-0 mt-2">
                                             <h4 style=" padding: 0px 40px;">
                                                 <b class="tex">
-                                                    <i class="fa fa-caret-right" style="padding-right: 18px;"></i>Add New Compaign
+                                                    <i class="fa fa-caret-right" style="padding-right: 18px;"></i>
+                                                    <span *ngIf="id == undefined">Add New</span>
+                                                    <span *ngIf="id != undefined">Edit</span>
+                                                    Compaign
                                                 </b>
                                             </h4>
                                         </div>

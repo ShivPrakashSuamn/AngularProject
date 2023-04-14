@@ -19,6 +19,8 @@ export class CompaignCreateComponent {
   order_by:any = 'id'; 
   order_type:any = 'asc';
   data:any = [];
+  id:any = '';
+  title:any = '';
 
   // ----------------    life cycle of angular    --------------------  ||
 
@@ -29,7 +31,10 @@ export class CompaignCreateComponent {
   }
 
   ngOnInit() {        //  ngOninit Function -------------------------
-
+    this.id = this.route.snapshot.params['id'];
+    if(this.id){
+      this.updateDataGet();
+    }
   }
 
   get f() {
@@ -55,6 +60,14 @@ export class CompaignCreateComponent {
     } else {
       this.alertService.error('This is input Empty');
     }
+  }
+
+  updateDataGet() {  //  Update Data Get   ------------------------------
+    let url:string = `/template/show?id=${this.id}`;
+    this.apiService.get(url, {}).subscribe((data:any)=>{
+      console.log("data->", data)
+      this.title = data.data[0].title;
+    })
   }
 
   sidebarToggle(eventData: { toggleVal: boolean }) { //Sidebar manage 
