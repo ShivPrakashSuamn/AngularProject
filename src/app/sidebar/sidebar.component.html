@@ -2,7 +2,7 @@
 <div class="nave p-0 fixed-top shadow-lg b-color" style="height: 75px; ">
     <div class="row ">
         <div class="col-sm-6 mt-3" style=" transition: .5s;">
-            <a href="#" class="tex" style="font-size: 25px; float: left; margin-left: 20px;">
+            <a href="javascript:void(0)" class="tex" style="font-size: 25px; float: left; margin-left: 20px;">
                 <i style="font-size: 25px; padding-right: 10px;" class='bx bx-layer nav_logo-icon '></i>
                 <span class="nav_logo-name" [ngClass]="{'N-move': toggleVal}">AAAngular</span>
             </a>
@@ -26,12 +26,12 @@
                         <a routerLink="#" class="tex" style="margin: 20px; font-size: 25px;" data-bs-toggle="dropdown" aria-expanded="false">
                             <i class="fa fa-bell tex notification-info"></i>
                         </a>
-                        <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" href="#">All Notification -</a></li>
-                            <li><a class="dropdown-item" href="#">Follow -</a></li>
-                            <li><a class="dropdown-item" href="#">Unfollow </a></li>
+                        <ul class="dropdown-menu listColor">
+                            <li><a class="dropdown-item" href="javascript:void(0)"><span class="tex">All Notification -</span></a></li>
+                            <li><a class="dropdown-item" href="javascript:void(0)"><span class="tex">Follow - 5 K</span></a></li>
+                            <li><a class="dropdown-item" href="#"><span class="tex">Unfollow - 0 K</span></a></li>
                             <li><hr class="dropdown-divider"></li>
-                            <li><a class="dropdown-item" href="#">Separated link</a></li>
+                            <li><a class="dropdown-item" href="javascript:void(0)"><span class="tex">Separated link</span></a></li>
                         </ul>
                     </div>
                     <div class="btn-group">
@@ -40,27 +40,27 @@
                                 <span matBadge="5" matBadgeColor="accent" style="right: -7px !important;"></span>
                             </i>        
                         </a>
-                        <ul class="dropdown-menu" style="margin-top: 6px !important;">
-                            <li><a class="dropdown-item" href="#">Opne Email -</a></li>
-                            <li><a class="dropdown-item" href="#">Send Email -</a></li>
-                            <li><a class="dropdown-item" href="#">Something else here</a></li>
+                        <ul class="dropdown-menu listColor" style="margin-top: 6px !important;">
+                            <li><a class="dropdown-item" href="javascript:void(0)"><span class="tex">Opne Email -</span></a></li>
+                            <li><a class="dropdown-item" href="javascript:void(0)"><span class="tex">Send Email -</span></a></li>
+                            <li><a class="dropdown-item" href="javascript:void(0)"><span class="tex">Something else here</span></a></li>
                             <li><hr class="dropdown-divider"></li>
-                            <li><a class="dropdown-item" href="#">Separated link</a></li>
+                            <li><a class="dropdown-item" href="javascript:void(0)"><span class="tex">Separated link</span></a></li>
                         </ul>
                     </div>
                     <div class="btn-group">
                         <a routerLink="#" class="tex" id="loading" style="margin: 20px; font-size: 25px;" data-bs-toggle="dropdown" aria-expanded="false">
                             <i class="fa fa-cog tex" style="font-size: 25px;"></i>
                         </a>
-                        <ul class="dropdown-menu">
+                        <ul class="dropdown-menu listColor">
                             <li>
                                 <a class="dropdown-item" href="JavaScript:void(0);" (click)="light()"style="color: #6304f0b5;">
-                                    Light Theme <i type='solid' class='bx bx-brightness-half nav_icon icon-dark'></i>
+                                    Light Theme <img src="../assets/images/brightness.png" class="rounded-circle imgSet" />          
                                 </a>
                             </li>
                             <li>
                                 <a class="dropdown-item" href="JavaScript:void(0);" (click)="dark()">
-                                    Dark Theme <i type='solid'  class='bx bx-brightness nav_icon icon-dark'></i>
+                                    Dark Theme <img src="../assets/images/darc.png" class="rounded-circle imgSet" style="color: black;"/>   
                                 </a>
                             </li>
                         </ul>

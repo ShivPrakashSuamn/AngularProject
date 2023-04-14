@@ -6,7 +6,7 @@
   padding-left: 1px;
 }
 .edit{
-    
+    border: none;
     background:linear-gradient(315deg,#e91e63,#5d02ff) ;
     color:white;
 }

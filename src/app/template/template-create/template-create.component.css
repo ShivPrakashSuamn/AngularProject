@@ -8,6 +8,7 @@
 .edit {
   background: linear-gradient(315deg, #e91e63, #5d02ff);
   color: white;
+  border: none;
 }
 
 .edit:hover {
