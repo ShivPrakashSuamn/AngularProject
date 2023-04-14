@@ -36,7 +36,7 @@ export class ListCreateComponent {
     this.getdata();
     this.id = this.route.snapshot.params['id'];
     if (this.id != undefined) {
-      console.log('id edit -->', this.id)
+      console.log('Update Id =', this.id)
       this.updateDataGet();
     }
   }
@@ -92,7 +92,6 @@ export class ListCreateComponent {
     this.apiService.get(url , {}).subscribe((data: any) => {
       if (data && data.status) {
         let userData = data.data;
-
         userData.checkbox.map((item1: any) => {
           this.data.map((item2: any) => {
             if (item1.contact_id == item2.id) {

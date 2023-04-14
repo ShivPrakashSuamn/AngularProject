@@ -37,7 +37,7 @@ export class ContactCreateComponent {
   ngOnInit() {        //  ngOninit Function -------------------------
     this.id = this.route.snapshot.params['id'];
     if (this.id != undefined) {
-      console.log('id edit -->', this.id)
+      console.log('Update id =', this.id)
       this.getData();
     }
   }
@@ -56,13 +56,11 @@ export class ContactCreateComponent {
     console.log('Submit Button Click');
     this.submitted = true;
     if (this.createForm.valid) {
-     // console.log('Create Form Data =', this.createForm.value);
       let url: string = `/contact/store`;
       if(this.id){
         url = `/contact/update?id=${this.id}`; 
       }
       const body = this.createForm.value;
-     // console.log('boxy',body,this.profileImage)
       let formData: FormData = new FormData();
       formData.append('fname', body.fname)
       formData.append('lname', body.lname)

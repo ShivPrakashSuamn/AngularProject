@@ -39,7 +39,7 @@ export class ListImportComponent {
     this.submitted = true;
     if (this.fileForm.valid) {
       this.alertService.success('CSV_File Save SuccessFull');
-      console.log('Create Form Data =', this.fileForm.value);
+      // console.log('Create Form Data =', this.fileForm.value);
       let url: string = `/list/csv`;
       let formData: FormData = new FormData();
       formData.append('title', this.fileForm.value.title);
@@ -49,7 +49,7 @@ export class ListImportComponent {
         headers.append('Accept', 'application/json');
       let options = { headers: headers };
       this.apiService.post(url, formData, options).subscribe((data:any)=>{
-        console.log('fda---',data)
+        this.alertService.success(data.message);
       });
     } else {
       this.alertService.error('This is input Empty');

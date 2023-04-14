@@ -13,12 +13,6 @@ export class CompaignCreateComponent {
   toggleVal: boolean = false;
   createForm: FormGroup;
   submitted: any = false;
-  limit:any = 100;
-  page:any = 1;
-  totalRows:any = 0;
-  order_by:any = 'id'; 
-  order_type:any = 'asc';
-  data:any = [];
   id:any = '';
   title:any = '';
 

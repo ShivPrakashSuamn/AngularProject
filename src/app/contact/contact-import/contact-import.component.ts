@@ -48,9 +48,9 @@ export class ContactImportComponent {
         headers.append('Content-Type', 'multipart/form-data');
         headers.append('Accept', 'application/json');
       let options = { headers: headers };
-      // this.apiService.post(url, formData, options).subscribe((data:any)=>{
-      //  // console.log('fda---',data)
-      // });
+      this.apiService.post(url, formData, options).subscribe((data:any)=>{
+        console.log('req_Data = ',data)
+      });
     } else {
       this.alertService.error('This is input Empty');
     }

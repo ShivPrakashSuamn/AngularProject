@@ -41,7 +41,7 @@ export class ContactListComponent {
   getData() {           //  Data Get databes   ---------------------------------
     let url:string = `/contact?limit=${this.limit}&page=${this.page}&order_by=${this.order_by}&order_type=${this.order_type}&search=${this.search}`;
     this.apiService.get(url , {}).subscribe((data:any) => {
-      console.log('data',data.data.data);
+      // console.log('data',data.data.data);
         if(data && data.status){
           this.page = data.data.page;
           this.data = data.data.data; 
@@ -106,7 +106,7 @@ export class ContactListComponent {
   }
 
   showRow(id:any) {     //  Display one line of Data  --------------------------
-    console.log('id -->', id);
+    console.log('Show id =', id);
     let url:string = `/contact/show?id=${id}`;
     this.apiService.get(url , {}).subscribe((data:any) => {
       if(data && data.status){

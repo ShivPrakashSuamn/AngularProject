@@ -23,7 +23,7 @@ export class DashboardComponent {
     let url: string = '/auth/profile';
     let headers = new HttpHeaders().set("authorization", `Bearer ${localStorage.getItem('token')}`);
     this.apiService.get(url, { headers }).subscribe((data: any) => {
-      console.log('da->', data);
+      console.log('data ', data);
     });
   }
 
