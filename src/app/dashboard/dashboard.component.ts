@@ -16,9 +16,6 @@ export class DashboardComponent {
   ngOnInit() {
     this.getdata();
   }
-
-
-
   getdata() {
     let url: string = '/auth/profile';
     let headers = new HttpHeaders().set("authorization", `Bearer ${localStorage.getItem('token')}`);
