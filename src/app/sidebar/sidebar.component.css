@@ -51,7 +51,7 @@
 
 .active {
     background: linear-gradient(315deg, #ff02ec5c, #bbe91e70);
-    width: 260px;
+    width: auto;
     border-radius: 5px;
     color: white;
 }
