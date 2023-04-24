@@ -45,7 +45,7 @@
 
 .hover-Bg:hover {
     background: linear-gradient(315deg, #ff02ec1f, #bbe91e33);
-    width: 260px;
+    width: auto;
     border-radius: 5px;
 }
 

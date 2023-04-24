@@ -16,7 +16,6 @@ import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
 import { SignComponent } from './sign/sign.component';
 import { SidebarComponent } from './sidebar/sidebar.component';
-import { UsersComponent } from './users/users.component';
 import { ProfileComponent } from './profile/profile.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { CategoryListComponent } from './category/category-list/category-list.component';
@@ -71,7 +70,6 @@ const ngxUiLoaderConfig: NgxUiLoaderConfig = {
     CategoryListComponent,
     CategoryCreateComponent,
     SidebarComponent,
-    UsersComponent,
     TemplateListComponent,
     TemplateCreateComponent,
     ContactListComponent,

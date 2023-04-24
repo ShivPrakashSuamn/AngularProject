@@ -4,7 +4,7 @@
         <div class="col-sm-6 mt-3" style=" transition: .5s;">
             <a href="javascript:void(0)" class="tex" style="font-size: 25px; float: left; margin-left: 20px;">
                 <i style="font-size: 25px; padding-right: 10px;" class='bx bx-layer nav_logo-icon '></i>
-                <span class="nav_logo-name" [ngClass]="{'N-move': toggleVal}">AAAngular</span>
+                <span class="nav_logo-name" [ngClass]="{'N-move': toggleVal}">User UI</span>
             </a>
             <a (click)="toggleSidebar()" href="javascript:void(0);">
                 <i class="fa fa-bars tex" style="font-size: 25px; float: left;" [ngClass]="{'Sm1': toggleVal, 'Sm2': !toggleVal}"></i>
@@ -49,7 +49,7 @@
                         </ul>
                     </div>
                     <div class="btn-group">
-                        <a routerLink="#" class="tex" id="loading" style="margin: 20px; font-size: 25px;" data-bs-toggle="dropdown" aria-expanded="false">
+                        <a href="javascript:void(0);" class="tex" id="loading" style="margin: 20px; font-size: 25px;" data-bs-toggle="dropdown" aria-expanded="false">
                             <i class="fa fa-cog tex" style="font-size: 25px;"></i>
                         </a>
                         <ul class="dropdown-menu listColor">
@@ -89,12 +89,6 @@
                             <a routerLink="/profile" class="nav_link tex" style="margin-bottom: 18px;">
                                 <i class='bx bx-user-circle nav_icon'></i>
                                 <span class="nav_name">Profile</span>
-                            </a>
-                        </li>
-                        <li [class.active]="rootUrl==='/users'" class="hover-Bg">
-                            <a routerLink="/users" class="nav_link tex" style="margin-bottom: 18px;">
-                                <i class='bx bx-user nav_icon'></i>
-                                <span class="nav_name">Users</span>
                             </a>
                         </li>
                         <li [class.active]="getActive('contact')" class="hover-Bg">
