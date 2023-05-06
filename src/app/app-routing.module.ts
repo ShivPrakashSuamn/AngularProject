@@ -17,6 +17,7 @@ import { CompaignCreateComponent } from './compaign/compaign-create/compaign-cre
 import { ListIndexComponent } from './list/list-index/list-index.component';
 import { ListCreateComponent } from './list/list-create/list-create.component';
 import { ListImportComponent } from './list/list-import/list-import.component';
+import { PaginationComponent } from './pagination/pagination.component';
 
 const routes: Routes = [
   {path: 'login', component: LoginComponent},
@@ -41,6 +42,7 @@ const routes: Routes = [
     {path: 'list/update/:id', component:ListCreateComponent},
     {path: 'list/create', component:ListCreateComponent},
     {path: 'list/import', component:ListImportComponent},
+  {path: 'pagination', component:PaginationComponent}  
 ];
 
 @NgModule({

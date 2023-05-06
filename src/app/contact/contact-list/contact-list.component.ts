@@ -14,11 +14,12 @@ export class ContactListComponent {
   limit:any = 10;
   page:any = 1;
   totalRows:any = 0;
+  totalPage:any = 0;
   order_by:any = 'id'; 
   order_type:any = 'desc';
   toggleVal:boolean = false;
   data:any=[];
-  delete:any;
+
   fname:string = '';
   lname:string = '';
   email:string = '';
@@ -41,11 +42,11 @@ export class ContactListComponent {
   getData() {           //  Data Get databes   ---------------------------------
     let url:string = `/contact?limit=${this.limit}&page=${this.page}&order_by=${this.order_by}&order_type=${this.order_type}&search=${this.search}`;
     this.apiService.get(url , {}).subscribe((data:any) => {
-      // console.log('data',data.data.data);
         if(data && data.status){
           this.page = data.data.page;
           this.data = data.data.data; 
           this.totalRows = data.data.total;
+          this.totalPage = data.data.totalPage;
         }else{
           this.alertService.error('Data Fatch Failed..');  // data.message -----
         }
@@ -54,7 +55,8 @@ export class ContactListComponent {
   }
 
   pageChange(e:any){    //  Page Change funcation   -----------------------------
-    console.log('pageChange',e)
+    this.page = e;
+    this.getData();
   }
 
   getTOFROM(){          //  pagination List  offset  ----------------------------

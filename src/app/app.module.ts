@@ -30,6 +30,7 @@ import { CompaignCreateComponent } from './compaign/compaign-create/compaign-cre
 import { ListIndexComponent } from './list/list-index/list-index.component';
 import { ListCreateComponent } from './list/list-create/list-create.component';
 import { ListImportComponent } from './list/list-import/list-import.component';
+import { PaginationComponent } from './pagination/pagination.component';
 
 const ngxUiLoaderConfig: NgxUiLoaderConfig = {
   bgsColor: 'red',
@@ -79,7 +80,8 @@ const ngxUiLoaderConfig: NgxUiLoaderConfig = {
     CompaignCreateComponent,
     ListIndexComponent,
     ListCreateComponent,
-    ListImportComponent
+    ListImportComponent,
+    PaginationComponent
   ],
   imports: [
     BrowserModule,
