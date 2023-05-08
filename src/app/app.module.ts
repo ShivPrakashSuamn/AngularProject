@@ -31,6 +31,7 @@ import { ListIndexComponent } from './list/list-index/list-index.component';
 import { ListCreateComponent } from './list/list-create/list-create.component';
 import { ListImportComponent } from './list/list-import/list-import.component';
 import { PaginationComponent } from './pagination/pagination.component';
+import { NoPageComponent } from './no-page/no-page.component';
 
 const ngxUiLoaderConfig: NgxUiLoaderConfig = {
   bgsColor: 'red',
@@ -81,7 +82,8 @@ const ngxUiLoaderConfig: NgxUiLoaderConfig = {
     ListIndexComponent,
     ListCreateComponent,
     ListImportComponent,
-    PaginationComponent
+    PaginationComponent,
+    NoPageComponent
   ],
   imports: [
     BrowserModule,

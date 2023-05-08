@@ -28,7 +28,7 @@ export class ContactListComponent {
   address:string = '';
   city:string = '';
   pincode:string = '';
-
+  image:String = '';
   // ---------------------    life cycle of angular    --------------------  ||
 
   constructor(private apiService:ApiService,private alertService:AlertService){  } 
@@ -120,18 +120,10 @@ export class ContactListComponent {
         this.address = data.data[0].address;
         this.city = data.data[0].city;
         this.pincode = data.data[0].pin_code;
+        this.image = data.data[0].image;
       }else{
         this.alertService.error('Data Fatch Failed..');  // data.message -----
       }
-      // Swal.fire(
-      //   `Name : ${this.fname} ${this.lname}`,
-      //   ` Email : ${this.email} <br>
-      //     Date of Birth : ${this.dob.slice(0,10)}<br>
-      //     Address : ${this.address} ${this.city}<br>
-      //     Phone : ${this.phone} <br>
-      //     Pin Cord : ${this.pincode} `,
-      //   'success'
-      // );
     });
   }
 

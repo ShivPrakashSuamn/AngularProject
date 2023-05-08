@@ -18,6 +18,7 @@ import { ListIndexComponent } from './list/list-index/list-index.component';
 import { ListCreateComponent } from './list/list-create/list-create.component';
 import { ListImportComponent } from './list/list-import/list-import.component';
 import { PaginationComponent } from './pagination/pagination.component';
+import { NoPageComponent } from './no-page/no-page.component';
 
 const routes: Routes = [
   {path: 'login', component: LoginComponent},
@@ -42,7 +43,9 @@ const routes: Routes = [
     {path: 'list/update/:id', component:ListCreateComponent},
     {path: 'list/create', component:ListCreateComponent},
     {path: 'list/import', component:ListImportComponent},
-  {path: 'pagination', component:PaginationComponent}  
+  {path: 'pagination', component:PaginationComponent}, 
+  
+  {path: '**', component:NoPageComponent}
 ];
 
 @NgModule({

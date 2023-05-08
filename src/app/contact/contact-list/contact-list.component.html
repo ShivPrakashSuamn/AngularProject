@@ -81,11 +81,19 @@
                                             <div class="modal-dialog">
                                                 <div class="modal-content">
                                                     <div class="modal-header">
-                                                        <h5 class="modal-title tex" id="exampleModalLabel">Only One Line Data : </h5>
+                                                        <h5 class="modal-title tex" id="exampleModalLabel"> One Line Data : </h5>
                                                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                                     </div>
                                                     <div class="modal-body">
-                                                        <table class="table ">
+                                                        <table class="table table-bordered">
+                                                            <tr>  
+                                                                <th></th>  
+                                                                <td></td>          
+                                                                <td rowspan="8" class="p-0">
+                                                                    <span *ngIf="image != 'null' && image"><img src="http://localhost:3001/uploads/images/{{image}}" class="rounded-circle p-0 show-image"/></span>
+                                                                    <span *ngIf="image == 'null'" class="p-0"><div class="text-image tex"><b style="font-size: 70px;">{{fname.substr(0,1)}}</b></div></span>
+                                                                </td>
+                                                            </tr>
                                                             <tr>
                                                                 <th> Name :</th>
                                                                 <td> {{fname}} {{lname}}</td>
@@ -95,7 +103,7 @@
                                                                 <td> {{email}}</td>
                                                             </tr>
                                                             <tr>
-                                                                <th> Data of Birth :</th>
+                                                                <th> D of B :</th>
                                                                 <td> {{dob.substr(0,10)}}</td>
                                                             </tr>
                                                             <tr>

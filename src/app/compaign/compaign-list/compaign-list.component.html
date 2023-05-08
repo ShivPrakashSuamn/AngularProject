@@ -51,9 +51,9 @@
                                             <tr *ngFor="let row of data">
                                                 <td (click)="sortBy('id')">{{row.id}}</td>
                                                 <td class="p-1">
-                                                    <img src="../../../assets/images/tmp1.png" class="rounded tableImg" />
-                                                    <!-- <span *ngIf="row.image != 'null'"><img src="http://localhost:3001/uploads/images/{{row.image}}" class="card-img-top rounded-circle mb-3" style="width: 38px; height: 40px;"/></span>
-                                                        <span *ngIf="row.image == 'null'" class="pic_text"><span>{{row.fname.substr(0,1)}}</span></span> -->
+                                                    <!-- <img src="../../../assets/images/tmp1.png" class="rounded tableImg" /> -->
+                                                    <span *ngIf="row.image != 'null'"><img src="http://localhost:3001{{row.thumbnail}}" class="tableImg rounded"/></span>
+                                                      <!--   <span *ngIf="row.image == 'null'" class="pic_text"><span>{{row.fname.substr(0,1)}}</span></span> -->
                                                 </td>
                                                 <td (click)="sortBy('title')"> {{row.title}} </td>
                                                 <td> {{row.created | date:'medium'}} </td>
@@ -102,7 +102,7 @@
                                         </div>
                                     </div>
                                     <!-- end -->
-                                    <div>
+                                    <div *ngIf="totalPage"> 
                                         <span class="tex" style="margin: 0; color: #b6b6b6d9;"> Show </span>
                                         <div class="btn-group">
                                             <select class="form-select dropbutton" aria-label="Default select example"
@@ -117,7 +117,7 @@
                                             {{totalRows}} entries</span>
                                         <!-- Pagination  System Design   -->
                                         <div style=" float: right;">
-
+                                            <app-pagination [totalPage]="totalPage" [page]="page" (newPage)="pageChange($event)"> </app-pagination>
                                         </div>
                                     </div>
                                 </div>

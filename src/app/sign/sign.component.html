@@ -40,6 +40,11 @@
                         [style.border]="(submitted && f['password'].errors && f['password'].errors['required'])==true ? '1px solid red' :'1px solid #d5d5d5'">
                 </div>
                 <div class="inputBox">
+                    <label class="tex">Mobile</label>
+                    <input type="text" name="mobile" class="form-control bg-transparent" placeholder="Mobile no.." formControlName="mobile" 
+                        [style.border]="(submitted && f['mobile'].errors && f['mobile'].errors['required'])==true ? '1px solid red' :'1px solid #d5d5d5'">
+                </div>
+                <div class="inputBox">
                     <input type="submit" name="submit" value="Sign In" > 
                 </div>
             </form>

@@ -17,7 +17,8 @@ export class SignComponent {
       fname:['', Validators.required],
       lname:['', Validators.required],
       email:['', Validators.required],
-      password:['', Validators.required]
+      password:['', Validators.required],
+      mobile:['', Validators.required]
     }) 
   }
 
@@ -45,7 +46,7 @@ export class SignComponent {
         } else {
           this.alertService.warning(data.message);
         }
-      })
+      });
     } else {
       this.alertService.error('This is input Empty');
     }
