@@ -86,4 +86,9 @@ export class SidebarComponent {
         return false;
       }
     }
+    
+    logout(){        //  Logout Page  ----------
+      localStorage.clear();
+      this.router.navigate(['/login']);
+    }
 }

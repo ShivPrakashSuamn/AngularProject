@@ -9,7 +9,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { CKEditorModule } from 'ng2-ckeditor';
 import { ToastrModule } from 'ngx-toastr';
 import { NgxUiLoaderModule, NgxUiLoaderConfig,SPINNER, POSITION, PB_DIRECTION, NgxUiLoaderRouterModule, NgxUiLoaderHttpModule } from 'ngx-ui-loader';
-import { HttpClientModule } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import {NgxPaginationModule} from 'ngx-pagination'; // pagination import 
 
 import { AppComponent } from './app.component';
@@ -32,6 +32,7 @@ import { ListCreateComponent } from './list/list-create/list-create.component';
 import { ListImportComponent } from './list/list-import/list-import.component';
 import { PaginationComponent } from './pagination/pagination.component';
 import { NoPageComponent } from './no-page/no-page.component';
+import { HttpInterceptorInterceptor } from './http-interceptor.interceptor';
 
 const ngxUiLoaderConfig: NgxUiLoaderConfig = {
   bgsColor: 'red',
@@ -103,7 +104,12 @@ const ngxUiLoaderConfig: NgxUiLoaderConfig = {
     NgxUiLoaderHttpModule,
     HttpClientModule
   ],
-  providers: [],
+  providers: [{
+      provide: HTTP_INTERCEPTORS,
+      useClass: HttpInterceptorInterceptor,
+      multi: true
+    }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

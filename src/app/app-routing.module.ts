@@ -19,33 +19,31 @@ import { ListCreateComponent } from './list/list-create/list-create.component';
 import { ListImportComponent } from './list/list-import/list-import.component';
 import { PaginationComponent } from './pagination/pagination.component';
 import { NoPageComponent } from './no-page/no-page.component';
+import { AuthGuard } from './_services/auth.guard';
 
 const routes: Routes = [
-  {path: 'login', component: LoginComponent},
-  {path: 'signup', component: SignComponent},
-  {path: 'sidebar', component: SidebarComponent},
-  {path: 'profile', component: ProfileComponent},
-  {path: 'dashboard', component: DashboardComponent},
-  {path: 'category', component: CategoryListComponent},
-     {path: 'category/create', component: CategoryCreateComponent},
-  // {path: 'category/upate/:id', component: CategoryCreateOrUpdateComponent},
-  // {path: 'category/show/:id', component: CategoryShowComponent},
-  {path: 'template', component: TemplateListComponent},
-      {path: 'template/create', component: TemplateCreateComponent},
-  {path: 'contact', component: ContactListComponent},
-    {path: 'contact/update/:id', component: ContactCreateComponent},
-    {path: 'contact/create', component: ContactCreateComponent},    
-    {path: 'contact/import', component: ContactImportComponent},
-  {path: 'compaign', component:CompaignListComponent},
-    {path: 'compaign/update/:id', component:CompaignCreateComponent},
-    {path: 'compaign/create', component:CompaignCreateComponent},
-  {path: 'list', component:ListIndexComponent},
-    {path: 'list/update/:id', component:ListCreateComponent},
-    {path: 'list/create', component:ListCreateComponent},
-    {path: 'list/import', component:ListImportComponent},
-  {path: 'pagination', component:PaginationComponent}, 
-  
-  {path: '**', component:NoPageComponent}
+  { path: '', redirectTo: '/login', pathMatch: 'full' },
+  { path: 'login', component: LoginComponent },
+  { path: 'signup', component: SignComponent},
+  { path: 'profile', component: ProfileComponent, canActivate: [AuthGuard] },
+  { path: 'dashboard', component: DashboardComponent, canActivate: [AuthGuard] },
+  { path: 'category', component: CategoryListComponent, canActivate: [AuthGuard] },
+  { path: 'category/create', component: CategoryCreateComponent, canActivate: [AuthGuard] },
+  { path: 'template', component: TemplateListComponent, canActivate: [AuthGuard] },
+  { path: 'template/create', component: TemplateCreateComponent, canActivate: [AuthGuard] },
+  { path: 'contact', component: ContactListComponent, canActivate: [AuthGuard] },
+  { path: 'contact/update/:id', component: ContactCreateComponent, canActivate: [AuthGuard]},
+  { path: 'contact/create', component: ContactCreateComponent , canActivate: [AuthGuard]},
+  { path: 'contact/import', component: ContactImportComponent, canActivate: [AuthGuard] },
+  { path: 'compaign', component: CompaignListComponent , canActivate: [AuthGuard]},
+  { path: 'compaign/update/:id', component: CompaignCreateComponent , canActivate: [AuthGuard]},
+  { path: 'compaign/create', component: CompaignCreateComponent , canActivate: [AuthGuard]},
+  { path: 'list', component: ListIndexComponent , canActivate: [AuthGuard]},
+  { path: 'list/update/:id', component: ListCreateComponent , canActivate: [AuthGuard]},
+  { path: 'list/create', component: ListCreateComponent, canActivate: [AuthGuard] },
+  { path: 'list/import', component: ListImportComponent , canActivate: [AuthGuard]},
+  { path: 'pagination', component: PaginationComponent , canActivate: [AuthGuard]},
+  { path: '**', component: NoPageComponent , canActivate: [AuthGuard] }
 ];
 
 @NgModule({

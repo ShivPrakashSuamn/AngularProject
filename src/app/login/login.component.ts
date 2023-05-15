@@ -18,6 +18,10 @@ export class LoginComponent {
   // -------------------------------------------      life cycle of angular
 
   constructor(private fb: FormBuilder, private alertService: AlertService, private loaderService: NgxUiLoaderService,private apiService:ApiService,private route:Router) {
+  
+    if(this.apiService.isLoggedIn()){
+      this.route.navigate(['/dashboard']);
+    }
     // it call first
     this.loginForm = fb.group({
       email: ['', Validators.required],
@@ -52,6 +56,7 @@ export class LoginComponent {
         console.log('Form Result ->', data.data.token)
         if(data.status){
           this.alertService.success(data.message);
+          localStorage.setItem('isLoggedIn',"1");  
           localStorage.setItem('token',data.data.token);  // Token store ---
           this.route.navigate(['/dashboard']);  // Location set -- 
           } else {
