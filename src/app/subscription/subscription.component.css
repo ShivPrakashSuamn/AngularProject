@@ -1,0 +1,134 @@
+.man-box {
+    width: 90%;
+    margin: auto;
+}
+
+.box {
+    box-shadow: 0px 1px 3px 0px #eb0bf3bf;
+    border-radius: 15px;
+}
+
+.box h2 {
+    font-family: "Mulish rev=1";
+}
+
+.feature{
+    margin-top: 118px;
+    font-family: "Mulish rev=1";
+}
+.f-plan{
+    font-family: "Mulish rev=1";
+    margin-top: 45px;
+}
+
+.month {
+    font-size: 20px;
+    color: #8f8c8c;
+}
+
+.peg {
+    font-size: 15px;
+    color: #8e8c8cd9;
+}
+
+p {
+    color: #8f8c8c;
+}
+
+
+.team {
+    text-align: center;
+    padding-top: 10px;
+    margin-top: 100px;
+}
+
+h1 {
+    font-family: "Mulish rev=1";
+}
+
+.switch {
+    position: relative;
+    display: inline-block;
+    width: 60px;
+    height: 34px;
+    position: absolute;
+    margin-top: -5px;
+}
+
+.switch input {
+    opacity: 0;
+    width: 0;
+    height: 20px;
+}
+
+.slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ccc;
+    -webkit-transition: .4s;
+    transition: .4s;
+}
+
+.slider:before {
+    position: absolute;
+    content: "";
+    height: 26px;
+    width: 26px;
+    left: 4px;
+    bottom: 4px;
+    background-color: white;
+    -webkit-transition: .4s;
+    transition: .4s;
+}
+
+input:checked+.slider {
+    background-color: #9f26fee3;
+}
+
+input:focus+.slider {
+    box-shadow: 0 0 1px #2196F3;
+}
+
+input:checked+.slider:before {
+    -webkit-transform: translateX(26px);
+    -ms-transform: translateX(26px);
+    transform: translateX(26px);
+}
+
+/* Rounded sliders */
+.slider.round {
+    border-radius: 34px;
+}
+
+.slider.round:before {
+    border-radius: 50%;
+}
+.edit {
+    background: linear-gradient(315deg, #e91e63, #5d02ff);
+    color: white;
+    border: none;
+    padding: 6px 30px;
+    border-radius: 20px;
+}
+
+.edit:hover {
+    background: linear-gradient(315deg, #5d02ff, #e91e63);
+}
+
+.edit:hover:active {
+    color: rgba(255, 255, 255, 0.521);
+    background: linear-gradient(315deg, #e91e6271, #5f02ff8c);
+}
+
+.free-text {
+    color: yellowgreen;
+    text-decoration: dotted;
+    text-decoration-line: underline;
+}
+.right-arow{
+    font-size: 20px;
+}

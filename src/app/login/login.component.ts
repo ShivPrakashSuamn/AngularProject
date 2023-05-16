@@ -40,10 +40,10 @@ export class LoginComponent {
   
   loginSubmit() {    //  Login Form  --------------
     this.loaderService.startLoader('A1', 'A1');
-    console.log('submitform ');
+    console.log('submitform');
     this.submitted = true;
     if (this.loginForm.valid) {
-      console.log('form valid', this.loginForm.value) //after proper submit you will get value in this 
+     // console.log('form valid', this.loginForm.value) //after proper submit you will get value in this 
       let url = '/auth/login';
       let body = this.loginForm.value;
 

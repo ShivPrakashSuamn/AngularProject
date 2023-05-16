@@ -20,6 +20,7 @@ import { ListImportComponent } from './list/list-import/list-import.component';
 import { PaginationComponent } from './pagination/pagination.component';
 import { NoPageComponent } from './no-page/no-page.component';
 import { AuthGuard } from './_services/auth.guard';
+import { SubscriptionComponent } from './subscription/subscription.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/login', pathMatch: 'full' },
@@ -41,8 +42,9 @@ const routes: Routes = [
   { path: 'list', component: ListIndexComponent , canActivate: [AuthGuard]},
   { path: 'list/update/:id', component: ListCreateComponent , canActivate: [AuthGuard]},
   { path: 'list/create', component: ListCreateComponent, canActivate: [AuthGuard] },
-  { path: 'list/import', component: ListImportComponent , canActivate: [AuthGuard]},
-  { path: 'pagination', component: PaginationComponent , canActivate: [AuthGuard]},
+  { path: 'list/import', component: ListImportComponent, canActivate: [AuthGuard]},
+  { path: 'pagination', component: PaginationComponent, canActivate: [AuthGuard]},
+  { path: 'subscription', component: SubscriptionComponent, canActivate: [AuthGuard]},
   { path: '**', component: NoPageComponent , canActivate: [AuthGuard] }
 ];
 
