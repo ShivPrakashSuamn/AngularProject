@@ -18,8 +18,8 @@ export class SubscriptionComponent {
 
   ngOnInit(): void {
     this.getData();
-    this.getFeatures();
   }
+  
   // -----------------     custome methods       ------------------------- ||
 
   getData() {         //  Get      Data        ---------------------------
@@ -74,8 +74,8 @@ export class SubscriptionComponent {
     });
   };
 
-  getFeatures(){      //  Features  
-    console.log('feature ');
+  getFeatures(id:any){      //  Features  
+    console.log('feature',id);
   }
 
   sidebarToggle(eventData: { toggleVal: boolean }) { // gettting value from child component
