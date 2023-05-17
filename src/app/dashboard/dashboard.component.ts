@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { ApiService } from '../_services/api.service';
 import { HttpHeaders } from '@angular/common/http';
+import { NgxUiLoaderService } from 'ngx-ui-loader';
 
 @Component({
   selector: 'app-dashboard',
@@ -19,11 +20,12 @@ export class DashboardComponent {
   }
 
   getdata() {
-    let url: string = '/auth/profile';
-    let headers = new HttpHeaders().set("authorization", `Bearer ${localStorage.getItem('token')}`);
-    // this.apiService.get(url, { headers }).subscribe((data: any) => {
+    // let url: string = `/auth/profile`;
+    // let headers = new HttpHeaders().set("authorization", `Bearer ${localStorage.getItem('token')}`);
+    // this.apiService.get(url, headers ).subscribe((data: any) => {
     //   console.log('data ', data);
     // });
+    console.log('data ', localStorage);
   }
 
   sidebarToggle(eventData: { toggleVal: boolean }) {

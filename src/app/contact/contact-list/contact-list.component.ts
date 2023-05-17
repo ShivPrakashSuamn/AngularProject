@@ -3,6 +3,7 @@ import { ApiService } from 'src/app/_services/api.service';
 import { AlertService } from 'src/app/_services/alert.service';
 import Swal from 'sweetalert2';
 import { ngxCsv } from 'ngx-csv/ngx-csv';
+import { HttpHeaders } from '@angular/common/http';
 
 @Component({
   selector: 'app-contact-list',
@@ -41,10 +42,12 @@ export class ContactListComponent {
 
   getData() {           //  Data Get databes   ---------------------------------
     let url:string = `/contact?limit=${this.limit}&page=${this.page}&order_by=${this.order_by}&order_type=${this.order_type}&search=${this.search}`;
-    this.apiService.get(url , {}).subscribe((data:any) => {
+    let headers = new HttpHeaders().set("authorization", `Bearer ${localStorage.getItem('token')}`);
+    this.apiService.get(url , headers).subscribe((data:any) => {
         if(data && data.status){
           this.page = data.data.page;
           this.data = data.data.data; 
+          console.log('imagr', this.data)
           this.totalRows = data.data.total;
           this.totalPage = data.data.totalPage;
         }else{
@@ -110,7 +113,8 @@ export class ContactListComponent {
   showRow(id:any) {     //  Display one line of Data  --------------------------
     console.log('Show id =', id);
     let url:string = `/contact/show?id=${id}`;
-    this.apiService.get(url , {}).subscribe((data:any) => {
+    let headers = new HttpHeaders().set("authorization", `Bearer ${localStorage.getItem('token')}`);
+    this.apiService.get(url , headers).subscribe((data:any) => {
       if(data && data.status){
         this.fname = data.data[0].fname;
         this.lname = data.data[0].lname;

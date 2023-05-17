@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { AlertService } from '../../_services/alert.service';
 import { ActivatedRoute } from '@angular/router';
 import { ApiService } from 'src/app/_services/api.service';
+import { HttpHeaders } from '@angular/common/http';
 
 @Component({
   selector: 'app-contact-create',
@@ -82,9 +83,10 @@ export class ContactCreateComponent {
           formData.delete('file');
         }
       }
-      let headers = new Headers();
-      headers.append('Content-Type', 'multipart/form-data');
-      headers.append('Accept', 'application/json');
+      // let headers = new Headers();
+      // headers.append('Content-Type', 'multipart/form-data');
+      // headers.append('Accept', 'application/json');
+      let headers = new HttpHeaders().set("authorization", `Bearer ${localStorage.getItem('token')}`);
       let options = { headers: headers };
       this.apiService.post(url, formData, options).subscribe((data: any) => {
         if (data.status) {
@@ -109,7 +111,8 @@ export class ContactCreateComponent {
 
   getData() {          // Upadte data get end input fill  ------------
     let url: string = `/contact/show?id=${this.id}`;
-    this.apiService.get(url , {}).subscribe((data: any) => {
+    let headers = new HttpHeaders().set("authorization", `Bearer ${localStorage.getItem('token')}`);
+    this.apiService.get(url , headers).subscribe((data: any) => {
       if (data && data.status) {
         let userData = data.data[0];
         var dt = new Date(userData.dob);

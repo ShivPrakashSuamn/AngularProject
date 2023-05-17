@@ -3,7 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { AlertService } from 'src/app/_services/alert.service';
 import { ApiService } from 'src/app/_services/api.service';
 import { ActivatedRoute } from '@angular/router';
-
+import { HttpHeaders } from '@angular/common/http';
 
 @Component({
   selector: 'app-template-create',
@@ -58,11 +58,11 @@ export class TemplateCreateComponent {
       formData.append('description', body.description);
       formData.append('file', this.templateFile, this.templateFile.name);
 
-      let headers = new Headers();
-      headers.append('Content-Type', 'multipart/form-data');
-      headers.append('Accept', 'application/json');
+      // let headers = new Headers();
+      // headers.append('Content-Type', 'multipart/form-data');
+      // headers.append('Accept', 'application/json');
+      let headers = new HttpHeaders().set("authorization", `Bearer ${localStorage.getItem('token')}`);
       let options = {headers:headers};
-
       this.apiService.post(url, formData, options).subscribe((data:any)=>{
         console.log('form result -', data);
       })

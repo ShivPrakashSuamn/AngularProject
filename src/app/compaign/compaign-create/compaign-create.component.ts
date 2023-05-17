@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { AlertService } from 'src/app/_services/alert.service';
 import { ApiService } from 'src/app/_services/api.service';
 import { ActivatedRoute } from '@angular/router'
+import { HttpHeaders } from '@angular/common/http';
 
 @Component({
   selector: 'app-compaign-create',
@@ -45,8 +46,8 @@ export class CompaignCreateComponent {
 
       // const body = this.createForm.value;
       // let url:string = '/list/store';
-      // let options = {};
-
+      let headers = new HttpHeaders().set("authorization", `Bearer ${localStorage.getItem('token')}`);
+      // let options = {headers:headers};
       // this.apiService.post(url, body, options).subscribe((data:any)=>{
       //   console.log('form result -', data);
       // })
@@ -58,7 +59,8 @@ export class CompaignCreateComponent {
 
   updateDataGet() {  //  Update Data Get   ------------------------------
     let url:string = `/template/show?id=${this.id}`;
-    this.apiService.get(url, {}).subscribe((data:any)=>{
+    let headers = new HttpHeaders().set("authorization", `Bearer ${localStorage.getItem('token')}`);
+    this.apiService.get(url, headers).subscribe((data:any)=>{
       console.log("data->", data)
       this.title = data.data[0].title;
     })

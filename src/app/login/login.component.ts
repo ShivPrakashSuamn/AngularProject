@@ -53,7 +53,7 @@ export class LoginComponent {
       let options = { headers: headers };
       // Post data Node ----
       this.apiService.post(url, body, options).subscribe((data:any)=>{
-        console.log('Form Result ->', data.data.token)
+        console.log('Form Result ->', data.data.user)
         if(data.status){
           this.alertService.success(data.message);
           localStorage.setItem('isLoggedIn',"1");  

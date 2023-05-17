@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, FormArray, FormControl, Validators } from '@ang
 import { AlertService } from 'src/app/_services/alert.service';
 import { ApiService } from 'src/app/_services/api.service';
 import { ActivatedRoute } from '@angular/router';
+import { HttpHeaders } from '@angular/common/http';
 
 @Component({
   selector: 'app-list-create',
@@ -49,7 +50,8 @@ export class ListCreateComponent {
 
   getdata() {     //  get contact data    ------------------------------
     let url = `/contact?limit=${this.limit}&page=${this.page}&order_by=${this.order_by}&order_type=${this.order_type}`;
-    this.apiService.get(url , {}).subscribe((data: any) => {
+    let headers = new HttpHeaders().set("authorization", `Bearer ${localStorage.getItem('token')}`);
+    this.apiService.get(url , headers).subscribe((data: any) => {
       if (data && data.status) {
         this.data = data.data.data;
         this.data.map((item: any) => {
@@ -89,7 +91,8 @@ export class ListCreateComponent {
 
   updateDataGet() {  //  Update Data Get   ------------------------------ 
     let url: string = `/list/show?id=${this.id}`;
-    this.apiService.get(url , {}).subscribe((data: any) => {
+    let headers = new HttpHeaders().set("authorization", `Bearer ${localStorage.getItem('token')}`);
+    this.apiService.get(url , headers).subscribe((data: any) => {
       if (data && data.status) {
         let userData = data.data;
         userData.checkbox.map((item1: any) => {
@@ -119,8 +122,8 @@ export class ListCreateComponent {
       if(this.id){
         url = `/list/update?id=${this.id}`; 
       }
-      let options = {};
-
+      let headers = new HttpHeaders().set("authorization", `Bearer ${localStorage.getItem('token')}`);
+      let options = {headers:headers};
       this.apiService.post(url, body, options).subscribe((data: any) => {
         console.log('form result -', data);
         this.alertService.success(data.message); // Alert---

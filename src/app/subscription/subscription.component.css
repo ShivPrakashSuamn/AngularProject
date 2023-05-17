@@ -3,6 +3,14 @@
     margin: auto;
 }
 
+.card1 {
+    width: 100%;
+    margin-top: 100px;
+    font-family: 'Poppins', sans-serif;
+    padding-left: 1px;
+}
+
+
 .box {
     box-shadow: 0px 1px 3px 0px #eb0bf3bf;
     border-radius: 15px;
@@ -12,11 +20,12 @@
     font-family: "Mulish rev=1";
 }
 
-.feature{
+.feature {
     margin-top: 118px;
     font-family: "Mulish rev=1";
 }
-.f-plan{
+
+.f-plan {
     font-family: "Mulish rev=1";
     margin-top: 45px;
 }
@@ -38,8 +47,7 @@ p {
 
 .team {
     text-align: center;
-    padding-top: 10px;
-    margin-top: 100px;
+    padding-top: 27px;
 }
 
 h1 {
@@ -53,6 +61,7 @@ h1 {
     height: 34px;
     position: absolute;
     margin-top: -5px;
+    margin-left: 3px;
 }
 
 .switch input {
@@ -107,6 +116,7 @@ input:checked+.slider:before {
 .slider.round:before {
     border-radius: 50%;
 }
+
 .edit {
     background: linear-gradient(315deg, #e91e63, #5d02ff);
     color: white;
@@ -129,6 +139,7 @@ input:checked+.slider:before {
     text-decoration: dotted;
     text-decoration-line: underline;
 }
-.right-arow{
+
+.right-arow {
     font-size: 20px;
 }

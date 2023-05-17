@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { ApiService } from 'src/app/_services/api.service';
 import { AlertService } from 'src/app/_services/alert.service';
+import { HttpHeaders } from '@angular/common/http';
 
 @Component({
   selector: 'app-template-list',
@@ -31,7 +32,8 @@ export class TemplateListComponent {
 
   getData(){
     let url:string = `/template?limit=${this.limit}&page=${this.page}&order_by=${this.order_by}&order_type=${this.order_type}&search=${this.search}`;
-    this.apiService.get(url , {}).subscribe((data:any)=>{
+    let headers = new HttpHeaders().set("authorization", `Bearer ${localStorage.getItem('token')}`);
+    this.apiService.get(url , headers).subscribe((data:any)=>{
       console.log('data->', data.data.data)
       if(data && data.status){
         this.data = data.data.data;

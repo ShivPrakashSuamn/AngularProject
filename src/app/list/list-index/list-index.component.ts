@@ -3,6 +3,7 @@ import { ApiService } from 'src/app/_services/api.service';
 import { AlertService } from '../../_services/alert.service';
 import Swal from 'sweetalert2';
 import { ngxCsv } from 'ngx-csv/ngx-csv';
+import { HttpHeaders } from '@angular/common/http';
 
 @Component({
   selector: 'app-list-index',
@@ -36,7 +37,8 @@ export class ListIndexComponent {
 
   getData() {           //  Data Get databes   ---------------------------------
     let url:string = `/list?limit=${this.limit}&page=${this.page}&order_by=${this.order_by}&order_type=${this.order_type}&search=${this.search}`;
-    this.apiService.get(url , {}).subscribe((data:any) => {
+    let headers = new HttpHeaders().set("authorization", `Bearer ${localStorage.getItem('token')}`);
+    this.apiService.get(url , headers).subscribe((data:any) => {
         if(data && data.status){
           this.page = data.data.page;
           this.data = data.data.data; 
@@ -105,7 +107,8 @@ export class ListIndexComponent {
   showRow(id:any) {     //  Display one line of Data  --------------------------
     console.log('Show id =', id);
     let url:string = `/list/show?id=${id}`;
-    this.apiService.get(url , {}).subscribe((data:any) => {
+    let headers = new HttpHeaders().set("authorization", `Bearer ${localStorage.getItem('token')}`);
+    this.apiService.get(url , headers).subscribe((data:any) => {
       if(data && data.status){
         this.title = data.data.data[0].title;
         this.Select_Contact = data.data.data[0].total_contacts;

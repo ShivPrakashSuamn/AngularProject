@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { AlertService } from '../../_services/alert.service';
 import { ApiService } from 'src/app/_services/api.service';
 import Swal from 'sweetalert2';
+import { HttpHeaders } from '@angular/common/http';
 
 @Component({
   selector: 'app-contact-import',
@@ -44,9 +45,8 @@ export class ContactImportComponent {
       let url:string = `/contact/csv`;
       let formData: FormData = new FormData();
       formData.append('file', this.profileImage,this.profileImage.name);
-      let headers = new Headers();
-        headers.append('Content-Type', 'multipart/form-data');
-        headers.append('Accept', 'application/json');
+
+      let headers = new HttpHeaders().set("authorization", `Bearer ${localStorage.getItem('token')}`);
       let options = { headers: headers };
       this.apiService.post(url, formData, options).subscribe((data:any)=>{
         console.log('req_Data = ',data)

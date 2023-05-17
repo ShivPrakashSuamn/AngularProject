@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { AlertService } from '../../_services/alert.service';
 import { ApiService } from 'src/app/_services/api.service';
+import { HttpHeaders } from '@angular/common/http';
 
 @Component({
   selector: 'app-list-import',
@@ -44,9 +45,8 @@ export class ListImportComponent {
       let formData: FormData = new FormData();
       formData.append('title', this.fileForm.value.title);
       formData.append('file', this.profileImage,this.profileImage.name);
-      let headers = new Headers();
-        headers.append('Content-Type', 'multipart/form-data');
-        headers.append('Accept', 'application/json');
+    
+      let headers = new HttpHeaders().set("authorization", `Bearer ${localStorage.getItem('token')}`);
       let options = { headers: headers };
       this.apiService.post(url, formData, options).subscribe((data:any)=>{
         this.alertService.success(data.message);
