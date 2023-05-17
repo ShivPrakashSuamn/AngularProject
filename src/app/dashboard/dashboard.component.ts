@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
 import { ApiService } from '../_services/api.service';
 import { HttpHeaders } from '@angular/common/http';
-import { NgxUiLoaderService } from 'ngx-ui-loader';
 
 @Component({
   selector: 'app-dashboard',
@@ -10,22 +9,26 @@ import { NgxUiLoaderService } from 'ngx-ui-loader';
 })
 export class DashboardComponent {
   toggleVal: boolean = false;
+  totalContact:Number = 0;
+  totalList:Number = 0;
 
-  constructor(private apiService: ApiService) {
-    // it call first 
-  }
-  
+  // ---------------------    life cycle of angular    --------------------  ||
+
+  constructor(private apiService: ApiService) { }
+
   ngOnInit() {
     this.getdata();
   }
 
+  // ---------------------      custome methods      -----------------------  ||
+
   getdata() {
-    // let url: string = `/auth/profile`;
-    // let headers = new HttpHeaders().set("authorization", `Bearer ${localStorage.getItem('token')}`);
-    // this.apiService.get(url, headers ).subscribe((data: any) => {
-    //   console.log('data ', data);
-    // });
-    console.log('data ', localStorage);
+    let url: string = '/dashboard';
+    let headers = new HttpHeaders().set("authorization", `Bearer ${localStorage.getItem('token')}`);
+    this.apiService.get(url, headers).subscribe((data: any) => {
+      this.totalContact = data.data.totalContact;
+      this.totalList = data.data.totalList;
+    });
   }
 
   sidebarToggle(eventData: { toggleVal: boolean }) {

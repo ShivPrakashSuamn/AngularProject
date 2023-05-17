@@ -44,7 +44,7 @@
                                         <h2 class="feature text-center tex"><b>Features</b> <br><i class='bx bx-vertical-bottom nav_icon'></i></h2>   
                                     </div>
                                     <div class="col-sm-3" *ngFor="let row of data"> 
-                                        <div class="box p-4">
+                                        <div class="box p-4" [ngClass]="{'plan-active': row.id == 3}">
                                             <h1 class="pt-2 mb-3 tex"> {{row.title}} </h1> 
                                             <p> Send the right content at the right time  With testing and scheduling <br>features. </p>
                                             <h3><span class="free-text .text-warning"><b>Free</b></span><span class="month" style="font-size: 14px;"> for 1 month</span></h3>

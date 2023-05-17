@@ -18,10 +18,11 @@ export class SubscriptionComponent {
 
   ngOnInit(): void {
     this.getData();
+    this.getFeatures();
   }
   // -----------------     custome methods       ------------------------- ||
 
-  getData() {
+  getData() {         //  Get      Data        ---------------------------
     let url = '/plans';
     let headers = new HttpHeaders().set("authorization", `Bearer ${localStorage.getItem('token')}`);
     this.apiService.get(url, headers).subscribe((data: any) => {
@@ -30,7 +31,7 @@ export class SubscriptionComponent {
     });
   }
 
-  options = {
+  options = {         //  Payment  Options     --------------------------
     "key": "rzp_test_eEhqxxfnggSTsN",
     "amount": "799",
     "currency": "INR",
@@ -50,6 +51,7 @@ export class SubscriptionComponent {
       "color": "#b51fff"
     }
   }
+
   payNow(id: any) {   //  Payment Function     --------------------------
     let url = `/plans/show?id=${id}`;
     let headers = new HttpHeaders().set("authorization", `Bearer ${localStorage.getItem('token')}`);
@@ -71,6 +73,10 @@ export class SubscriptionComponent {
       })
     });
   };
+
+  getFeatures(){      //  Features  
+    console.log('feature ');
+  }
 
   sidebarToggle(eventData: { toggleVal: boolean }) { // gettting value from child component
     this.toggleVal = eventData.toggleVal;

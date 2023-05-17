@@ -143,3 +143,6 @@ input:checked+.slider:before {
 .right-arow {
     font-size: 20px;
 }
+.plan-active {
+    background-color:rgb(203 253 255 / 30%);
+}
