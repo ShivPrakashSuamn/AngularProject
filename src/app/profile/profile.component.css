@@ -1,40 +1,68 @@
-
-.card1{
+.card1 {
     width: 100%;
     margin-top: 108px;
     font-family: 'Poppins', sans-serif;
     padding-left: 5px;
 }
-.edit{
+
+.edit {
     border: none;
-    background:linear-gradient(315deg,#e91e63,#5d02ff) ;
-    color:white;
+    background: linear-gradient(315deg, #e91e63, #5d02ff);
+    color: white;
 }
-.edit:hover{
-    background:linear-gradient(315deg,#5d02ff,#e91e63) ;
+
+.edit:hover {
+    background: linear-gradient(315deg, #5d02ff, #e91e63);
 }
-.edit:hover:active{
+
+.edit:hover:active {
     color: rgba(255, 255, 255, 0.521);
-    background:linear-gradient(315deg,#e91e6271,#5f02ff8c) ;
+    background: linear-gradient(315deg, #e91e6271, #5f02ff8c);
 }
-.about{
+
+.about {
     background-color: #a7a4a46b;
     border-radius: 10px;
-    color:#d83cff;
+    color: #d83cff;
 }
-.cancelbtn{
+
+.cancelbtn {
     border: 1px solid #ff3382a1;
     color: #6404f48f;
     margin-right: 15px;
     padding: 8px 15px;
-  }
-.battcolor{
+}
+
+.battcolor {
     border: 1px solid #ff3382;
     /* color: #6404f4; */
     padding: 8px 22px;
 }
-.resetp{
+
+.resetp {
     border: 1px solid #f82783;
     margin: 7px 0px;
     color: #dd44f0;
+}
+
+.show-image {
+    width: 140px;
+    height: 130px;
+    margin-bottom: 0px !important;
+}
+
+.text-image {
+    height: 130px;
+    width: 130px;
+    padding: 15px;
+    margin: auto;
+    text-align: center;
+    border-radius: 50%;
+    box-shadow: 0px 1px 8px 0px #c01692;
+}
+
+.imgUpload {
+    text-align: center;
+    font-size: 20px;
+    color: #c440ff;
 }

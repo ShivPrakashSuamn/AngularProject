@@ -2,7 +2,6 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { LoginComponent } from './login/login.component';
 import { SignComponent } from './sign/sign.component';
-import { SidebarComponent } from './sidebar/sidebar.component';
 import { ProfileComponent } from './profile/profile.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { CategoryListComponent } from './category/category-list/category-list.component';
@@ -19,8 +18,8 @@ import { ListCreateComponent } from './list/list-create/list-create.component';
 import { ListImportComponent } from './list/list-import/list-import.component';
 import { PaginationComponent } from './pagination/pagination.component';
 import { NoPageComponent } from './no-page/no-page.component';
-import { AuthGuard } from './_services/auth.guard';
 import { SubscriptionComponent } from './subscription/subscription.component';
+import { AuthGuard } from './_services/auth.guard';
 
 const routes: Routes = [
   { path: '', redirectTo: '/login', pathMatch: 'full' },

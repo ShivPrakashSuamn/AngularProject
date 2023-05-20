@@ -53,9 +53,10 @@ export class LoginComponent {
       let options = { headers: headers };
       // Post data Node ----
       this.apiService.post(url, body, options).subscribe((data:any)=>{
-        console.log('Form Result ->', data.data.user)
         if(data.status){
+          let user = data.data.user;
           this.alertService.success(data.message);
+          localStorage.setItem('loginUser',JSON.stringify(user));  
           localStorage.setItem('isLoggedIn',"1");  
           localStorage.setItem('token',data.data.token);  // Token store ---
           this.route.navigate(['/dashboard']);  // Location set -- 

@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-
+import { ApiService } from '../_services/api.service';
+import { AlertService } from '../_services/alert.service';
+import { HttpHeaders } from '@angular/common/http';
 
 @Component({
   selector: 'app-profile',
@@ -11,26 +13,99 @@ export class ProfileComponent {
   toggleVal:boolean = false;
   createForm: FormGroup;
   submitted: any = false;
+  loginData: any;
+  fname:String = '';
+  lname:String = '';
+  email:String = '';
+  mobile:String = '';
+  id:String = '';
+  profileImage:any ;
+  image: string = '';
 
   // ----------------    life cycle of angular    --------------------  ||
 
-  constructor(private fb:FormBuilder) { 
+  constructor(private fb:FormBuilder, private apiService:ApiService, private alertService:AlertService) { 
     this.createForm = fb.group({
       fname: ['', Validators.required],
       lname: ['', Validators.required],
       email: ['', Validators.required],
+      mobile: ['', Validators.required],
     });
   } 
   get f() {
     return this.createForm.controls;
   }
 
+  ngOnInit(){ 
+    this.getLoginUser();
+  }
   // ----------------    custome methods   --------------------------  ||
 
-  submit(){
+  getLoginUser(){     //  login dataGet  -----------------------------
+    this.loginData = localStorage.getItem('loginUser');
+    var data = JSON.parse(this.loginData);
+    this.id = data.id;
+    this.fname = data.fname;
+    this.lname = data.lname;
+    this.email = data.email;
+    this.mobile = data.mobile;
+    this.image = data.image;
+
+    this.createForm = this.fb.group({
+      fname: [`${this.fname}`, Validators.required],
+      lname: [`${this.lname}`, Validators.required],
+      email: [`${this.email}`, Validators.required],
+      mobile: [`${this.mobile}`, Validators.required],
+      image: [`${this.image}`, Validators.required]
+    });
+  }
+
+  handleFileUpload(target: any) {  // iamge handle    ----------------
+    this.profileImage = target.files[0];
+  }
+
+  submit(){           //  Update  data  -----------------------------
     console.log('Submit Click');
     this.submitted = true;
-     console.log('Create Form Data =', this.createForm.value);
+    //console.log('Create Form Data =', this.createForm.value);
+    if (this.createForm.valid) {
+      
+      let url = `/user/update?id=${this.id}`;
+
+      const body = this.createForm.value;
+      let formData: FormData = new FormData();
+      formData.append('fname', body.fname)
+      formData.append('lname', body.lname)
+      formData.append('email', body.email)
+      formData.append('mobile', body.mobile)
+      
+      if (this.id == undefined) {
+        if (this.profileImage) {
+          formData.append('file', this.profileImage, this.profileImage.name);
+        } else {
+          formData.delete('file');
+        }
+      } else if (this.id != '') {
+        if (this.profileImage) {
+          formData.append('file', this.profileImage, this.profileImage.name);
+        } else {
+          formData.delete('file');
+        }
+      }
+      let headers = new HttpHeaders().set("authorization", `Bearer ${localStorage.getItem('token')}`);
+      let options = { headers: headers };
+
+      this.apiService.post(url, formData, options).subscribe((data: any) => {
+        //console.log('Form Result -', data)
+        if (data.status) {
+          this.alertService.success(data.message); // Alert---
+        } else {
+          this.alertService.warning(data.message); // Alert---
+        }
+      });
+    } else {
+      this.alertService.error('This is input Empty');
+    }
   }
 
   reset() {           // Form  reset  --------------------------------

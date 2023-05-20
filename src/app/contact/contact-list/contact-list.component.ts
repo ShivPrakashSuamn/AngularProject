@@ -45,9 +45,10 @@ export class ContactListComponent {
     let headers = new HttpHeaders().set("authorization", `Bearer ${localStorage.getItem('token')}`);
     this.apiService.get(url , headers).subscribe((data:any) => {
         if(data && data.status){
+          
           this.page = data.data.page;
           this.data = data.data.data; 
-          console.log('imagr', this.data)
+          //this.fetchImage(url, headers)
           this.totalRows = data.data.total;
           this.totalPage = data.data.totalPage;
         }else{
@@ -56,6 +57,22 @@ export class ContactListComponent {
       }
     );
   }
+
+//    //const myImage = document.querySelector('img');
+
+// // I make a wrapper snippet which will resolve to a objectURL
+//  fetchImage(url:any, headers:any) {
+//     return new Promise((resolve, reject) => {
+//         fetch(url, headers)
+//             .then(response => response.blob()) // sending the blob response to the next then
+//             .then(blob => {
+//                 const objectUrl = URL.createObjectURL(blob);
+//                 console.log('imagr', objectUrl)
+//                 resolve(objectUrl);
+//               }) // resolved the promise with the objectUrl 
+//             .catch(err => reject(err)); // if there are any errors reject them
+//     });
+// }
 
   pageChange(e:any){    //  Page Change funcation   -----------------------------
     this.page = e;

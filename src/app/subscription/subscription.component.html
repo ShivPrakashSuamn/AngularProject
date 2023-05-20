@@ -12,7 +12,7 @@
                         <div class="p-3">
                             <div class="row mb-2">
                                 <div class="col-md-6 p-0">
-                                    <h2><b class="tex"> Subscription </b></h2>
+                                    <h2><b class="tex"> Subscription  <i class='fab fa-amazon-pay'></i></b></h2>
                                     <p style="margin: 0; color: #b6b6b6d9;">Whether to  keep the plan always Active or set Monthly</p>
                                 </div>
                                 <div class="col-md-6 p-0">
@@ -38,18 +38,25 @@
                                             <h1 class="pt-2 mb-3 tex"> {{row.title}} </h1> 
                                             <p> Send the right content at the right time  With testing and scheduling features. </p>
                                             <h3><span class="free-text .text-warning"><b>Free</b></span><span class="month" style="font-size: 14px;"> for 1 month</span></h3>
-                                            <h6 class="m-0"> Then, Starts at </h6>
+                                            <h6 class="m-0"><span [ngClass]="{'d-none':(row.title == 'Premium')}">Then,</span> Starts at </h6>
                                             <h2><b> &#8377; {{row.price }} </b><span class="month">/month<sup>*</sup></span></h2>
                                             <div class="row" style="padding: 0px 30px;">
-                                                <button type="button" class="btn btn-lg mt-3 mb-3 edit" (click)="payNow(row.id)"> Buy Now </button>
+                                                <button type="button" class="btn btn-lg mt-3 mb-3 edit" (click)="payNow(row.id)"> 
+                                                    <span [ngClass]="{'d-none':(row.id == 3)}"> Buy Now </span>
+                                                    <span [ngClass]="{'d-none':!(row.id == 3)}"> Active </span>
+                                                </button>
                                             </div>
                                             <p class="peg mt-1" >you will get these features in this plan</p>  
-
-                                            <ul (change)="getFeatures(row.id)">
-                                                <li>lest</li>
-                                                <li> </li>
-                                            </ul> 
-                                                                           
+                                            <div class="row">
+                                                <table>
+                                                    <tr *ngFor="let data of features">
+                                                        <td *ngIf="data.plan_id == row.id && data.status == 1"><span class="right-arow text-success"><b>&#10003;</b></span></td>
+                                                        <td *ngIf="data.plan_id == row.id && data.status == 0" class="text-danger"> &#10006; </td>
+                                                        <td *ngIf="data.plan_id == row.id" [ngClass]="{'text-success':data.status==1, 'text-danger': !(data.status==1)}"> {{data.feature_name}} </td>
+                                                        <td *ngIf="data.plan_id == row.id" [ngClass]="{'text-success':data.status==1, 'text-danger': !(data.status==1)}"> {{data.feature_value}} </td>
+                                                    </tr>
+                                                </table>   
+                                            </div>                           
                                         </div>
                                     </div>
                                     <!-- <div class="col-sm-3"> 
@@ -60,7 +67,7 @@
                                             <h6 class="m-0"> Then, Starts at </h6>                      
                                             <h2><b> &#8377; 1,500 </b><span class="month">/month<sup>*</sup></span></h2>
                                             <div class="row" style="padding: 0px 30px;">
-                                                <button type="button" class="btn btn-lg mt-3 mb-3 edit" (click)="payNow()"> Buy Now </button>
+                                                <button type="button" class="btn btn-lg mt-3 mb-3 edit"> Buy Now </button>
                                             </div>
                                             <p class="peg mt-1" >*SeeFree Trial Terms Overages apply if contact or email send limit is <br>exceeded.<br> <a href="javascript:void(0)" class="peg mt-1">Learn more</a></p>               
                                         </div>
@@ -73,35 +80,13 @@
                                             <h6 class="m-0"> Starts at </h6>
                                             <h2><b> &#8377; 29,000 </b><span class="month">/month<sup>*</sup></span></h2>
                                             <div class="row" style="padding: 0px 30px;">
-                                                <button type="button" class="btn btn-lg mt-3 mb-3 edit" (click)="payNow()"> Buy Now </button>
+                                                <button type="button" class="btn btn-lg mt-3 mb-3 edit"> Buy Now </button>
                                             </div>
                                             <p class="peg mt-1" >*Overages apply if contact or email send limit is exceeded. <br><br> <a href="javascript:void(0)" class="peg mt-1">Learn more</a></p>                              
                                         </div>
                                     </div> -->
                                 </div>
                             </div> 
-                            <!-- <div class="row" style="padding: 4px 30px;">
-                                <table class="table table-bordered">
-                                    <tr>
-                                        <td style="padding-left: 50px;">Monthly Email Sends</td>
-                                        <td class="text-center">2,000</td>
-                                        <td class="text-center">10,000</td>
-                                        <td class="text-center">150,000</td>
-                                    </tr>
-                                    <tr>
-                                        <td style="padding-left: 50px;">Custom-Coded Templates</td>
-                                        <td class="col-sm-3 text-center">&#10060;</td>
-                                        <td class="col-sm-3 text-center">&#10060;</td>
-                                        <td class="col-sm-3 text-center"><span class="right-arow text-success"><b>&#10003;</b></span></td>
-                                    </tr>
-                                    <tr>
-                                        <td style="padding-left: 50px;">Audiences</td>
-                                        <td class="text-center">5 Audiences</td>
-                                        <td class="text-center">5 Audiences</td>
-                                        <td class="text-center">Unlimited</td>
-                                    </tr>
-                                </table>
-                            </div> -->
                         </div>
                     </div>
                 </div>

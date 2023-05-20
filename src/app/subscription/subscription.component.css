@@ -13,6 +13,7 @@
 .box {
     box-shadow: 0px 1px 3px 0px #eb0bf3bf;
     border-radius: 15px;
+    height: 100%;
 }
 
 .box h2 {

@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { ApiService } from '../_services/api.service';
 import { HttpHeaders } from '@angular/common/http';
+import { AlertService } from '../_services/alert.service';
 
 @Component({
   selector: 'app-dashboard',
@@ -9,12 +10,12 @@ import { HttpHeaders } from '@angular/common/http';
 })
 export class DashboardComponent {
   toggleVal: boolean = false;
-  totalContact:Number = 0;
-  totalList:Number = 0;
+  totalContact: Number = 0;
+  totalList: Number = 0;
 
   // ---------------------    life cycle of angular    --------------------  ||
 
-  constructor(private apiService: ApiService) { }
+  constructor(private apiService: ApiService, private alertService:AlertService) { }
 
   ngOnInit() {
     this.getdata();
@@ -26,8 +27,12 @@ export class DashboardComponent {
     let url: string = '/dashboard';
     let headers = new HttpHeaders().set("authorization", `Bearer ${localStorage.getItem('token')}`);
     this.apiService.get(url, headers).subscribe((data: any) => {
-      this.totalContact = data.data.totalContact;
-      this.totalList = data.data.totalList;
+      if (data.status) {
+        this.totalContact = data.data.totalContact;
+        this.totalList = data.data.totalList;
+      } else {
+        this.alertService.warning(data.message);
+      }
     });
   }
 

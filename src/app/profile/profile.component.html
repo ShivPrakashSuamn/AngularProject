@@ -15,8 +15,7 @@
                   style="background:linear-gradient(315deg,#e91e63,#5d02ff); height:200px;">
                   <div class="ms-4 mt-5 d-flex flex-column" style="width: 150px;">
                     <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-profiles/avatar-1.webp"
-                      alt="Generic placeholder image" class="img-fluid img-thumbnail mt-4 mb-2"
-                      style="width: 150px; z-index: 1">
+                    alt="Generic placeholder image" class="img-fluid img-thumbnail mt-4 mb-2" style="width: 150px; z-index: 1">
                     <button type="button" class="btn edit mt-1" style="z-index: 1;" data-bs-toggle="modal" data-bs-target="#exampleModal"> Edit profile </button>
                     <button type="button" class="btn resetp mt-2" style="z-index: 1;" > Reset password </button>
                     <!-- edit Form -->
@@ -29,6 +28,19 @@
                               <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                             </div>
                             <div class="modal-body">
+                              <div class="row">
+                                <span style="text-align: center;">
+                                  <span *ngIf="image != 'null' && image"><img src="http://localhost:3001/uploads/images/{{image}}" class="rounded-circle p-0 show-image"/></span>
+                                  <span *ngIf="image == 'null'" class="p-0"><div class="text-image tex"><b style="font-size: 70px;">{{fname.substr(0,1)}}</b></div></span>
+                                  <!-- <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-profiles/avatar-1.webp"
+                                  alt="Generic placeholder image" class="rounded-circle show-image ">           -->
+                                </span>
+                                <div class="form-group imgUpload">
+                                  <label for="exampleInputFile">Upload</label>
+                                  <input type="file" id="exampleInputFile" style="display: none;" name="file" (change)="handleFileUpload($event.target)"/>
+                                </div>
+                                  
+                              </div>
                               <label for="fname" class="tex"> First Name :</label>
                               <input type="text" class="form-control bg-transparent" name="fname" placeholder="Enter first name" formControlName="fname"
                                   [style.border]="(submitted && f['fname'].errors && f['fname'].errors['required'])==true ? '1px solid red' :'1px solid #c6c6c6'" /><br>
@@ -38,6 +50,9 @@
                               <label for="email" class="tex">Email :</label>
                               <input type="email"class="form-control bg-transparent" name="email" placeholder="Enter email" formControlName="email"
                                   [style.border]="(submitted && f['email'].errors && f['email'].errors['required'])==true ? '1px solid red' :'1px solid #c6c6c6'" /><br>
+                              <label for="mobile" class="tex">Mobile :</label>
+                              <input type="number"class="form-control bg-transparent" name="mobile" placeholder="Enter Mobile" formControlName="mobile"
+                                  [style.border]="(submitted && f['mobile'].errors && f['mobile'].errors['required'])==true ? '1px solid red' :'1px solid #c6c6c6'" /><br>
                             </div>
                             <div class="modal-footer">
                               <!-- <button type="button" class="btn btn-secondary edit" data-bs-dismiss="modal">Close</button> -->
@@ -51,7 +66,7 @@
                     <!-- end -->
                   </div>
                   <div class="ms-3" style="margin-top: 130px;">
-                    <h5>Andy Horwitz</h5>
+                    <h5>{{fname}} {{lname}}</h5>
                     <p>New York</p>
                   </div>
                 </div>
@@ -75,10 +90,10 @@
                   <div class="mb-5">
                     <p class="lead fw-normal mb-1 tex">About</p>
                     <div class="p-4 about">
+                      <p class="font-italic mb-0">{{email}}</p>
                       <p class="font-italic mb-1">Web Developer</p>
                       <p class="font-italic mb-1">Lives in New York</p>
-                      <p class="font-italic mb-1">Photographer</p>
-                      <p class="font-italic mb-0">andy55@gmail.com</p>
+                      <p class="font-italic mb-1">{{mobile}}</p>
                     </div>
                   </div>
                   <div class="d-flex justify-content-between align-items-center mb-4">

@@ -12,8 +12,8 @@ import { Router } from '@angular/router';
 
 @Injectable()
 export class HttpInterceptorInterceptor implements HttpInterceptor {
-  resp:any; 
-  constructor(private router: Router) {}
+  resp: any;
+  constructor(private router: Router) { }
 
   intercept(request: HttpRequest<unknown>, next: HttpHandler): Observable<HttpEvent<unknown>> {
     return next.handle(request).pipe(
@@ -21,8 +21,9 @@ export class HttpInterceptorInterceptor implements HttpInterceptor {
         event => {
           //logging the http response to browser's console in case of a success
           if (event instanceof HttpResponse) {
-            this.resp = event.body; 
-            if(this.resp && !this.resp.status && this.resp.message && this.resp.message == "unauthorization request"){
+            this.resp = event.body;
+            if (this.resp && !this.resp.status && this.resp.message && this.resp.message == "unauthorization request") {
+              localStorage.clear();
               this.router.navigate(['/login']);
             }
           }
