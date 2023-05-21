@@ -57,7 +57,6 @@ export class ListCreateComponent {
         this.data.map((item: any) => {
           item.checked = false;
         });
-        // console.table('this.data',this.data)
       } else {
         this.alertService.error('Data Fatch Failed..');  // data.message -----
       }
@@ -125,7 +124,6 @@ export class ListCreateComponent {
       let headers = new HttpHeaders().set("authorization", `Bearer ${localStorage.getItem('token')}`);
       let options = {headers:headers};
       this.apiService.post(url, body, options).subscribe((data: any) => {
-        console.log('form result -', data);
         this.alertService.success(data.message); // Alert---
       })
     } else {

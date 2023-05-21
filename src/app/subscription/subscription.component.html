@@ -36,10 +36,16 @@
                                     <div class="col-sm-4" *ngFor="let row of data"> 
                                         <div class="box p-4" [ngClass]="{'plan-active': row.id == 3}">
                                             <h1 class="pt-2 mb-3 tex"> {{row.title}} </h1> 
-                                            <p> Send the right content at the right time  With testing and scheduling features. </p>
+                                            <p> {{row.description}} </p>
                                             <h3><span class="free-text .text-warning"><b>Free</b></span><span class="month" style="font-size: 14px;"> for 1 month</span></h3>
                                             <h6 class="m-0"><span [ngClass]="{'d-none':(row.title == 'Premium')}">Then,</span> Starts at </h6>
-                                            <h2><b> &#8377; {{row.price }} </b><span class="month">/month<sup>*</sup></span></h2>
+                                            <h2>
+                                                <b> 
+                                                    <del> <span > &#8377; {{row.price }} </span> </del>
+                                                    <ins><span > &#8377; {{row.offer_price }} </span> </ins>
+                                                </b>
+                                                <span class="month">/month<sup>*</sup></span>
+                                            </h2>
                                             <div class="row" style="padding: 0px 30px;">
                                                 <button type="button" class="btn btn-lg mt-3 mb-3 edit" (click)="payNow(row.id)"> 
                                                     <span [ngClass]="{'d-none':(row.id == 3)}"> Buy Now </span>
@@ -52,39 +58,13 @@
                                                     <tr *ngFor="let data of features">
                                                         <td *ngIf="data.plan_id == row.id && data.status == 1"><span class="right-arow text-success"><b>&#10003;</b></span></td>
                                                         <td *ngIf="data.plan_id == row.id && data.status == 0" class="text-danger"> &#10006; </td>
-                                                        <td *ngIf="data.plan_id == row.id" [ngClass]="{'text-success':data.status==1, 'text-danger': !(data.status==1)}"> {{data.feature_name}} </td>
-                                                        <td *ngIf="data.plan_id == row.id" [ngClass]="{'text-success':data.status==1, 'text-danger': !(data.status==1)}"> {{data.feature_value}} </td>
+                                                        <td *ngIf="data.plan_id == row.id" [ngClass]="{'text-success':data.status==1}"> {{data.feature_name}} </td>
+                                                        <td *ngIf="data.plan_id == row.id" [ngClass]="{'text-success':data.status==1}"> {{data.feature_value}} </td>
                                                     </tr>
                                                 </table>   
                                             </div>                           
                                         </div>
                                     </div>
-                                    <!-- <div class="col-sm-3"> 
-                                        <div class="box p-4">
-                                            <h1  class="pt-2 mb-3 tex"> Standard </h1> 
-                                            <p> Sell even more with personalization, Optimization tools, and enhanced automations. </p>
-                                            <h3><span class="free-text .text-warning"><b>Free</b></span><span class="month" style="font-size: 14px;"> for 1 month</span></h3>
-                                            <h6 class="m-0"> Then, Starts at </h6>                      
-                                            <h2><b> &#8377; 1,500 </b><span class="month">/month<sup>*</sup></span></h2>
-                                            <div class="row" style="padding: 0px 30px;">
-                                                <button type="button" class="btn btn-lg mt-3 mb-3 edit"> Buy Now </button>
-                                            </div>
-                                            <p class="peg mt-1" >*SeeFree Trial Terms Overages apply if contact or email send limit is <br>exceeded.<br> <a href="javascript:void(0)" class="peg mt-1">Learn more</a></p>               
-                                        </div>
-                                    </div>         
-                                    <div class="col-sm-3"> 
-                                        <div class="box p-4" style="background-color:rgb(203 253 255 / 30%)">
-                                            <h1  class="pt-2 mb-3 tex"> Premium </h1> 
-                                            <p> Our most advanced tools, unlimited contacts, and priority support. built for teams.</p>
-                                            <h3><span class="free-text .text-warning"><b>No</b></span><span class="month" style="font-size: 14px;"> for 1 month</span></h3>
-                                            <h6 class="m-0"> Starts at </h6>
-                                            <h2><b> &#8377; 29,000 </b><span class="month">/month<sup>*</sup></span></h2>
-                                            <div class="row" style="padding: 0px 30px;">
-                                                <button type="button" class="btn btn-lg mt-3 mb-3 edit"> Buy Now </button>
-                                            </div>
-                                            <p class="peg mt-1" >*Overages apply if contact or email send limit is exceeded. <br><br> <a href="javascript:void(0)" class="peg mt-1">Learn more</a></p>                              
-                                        </div>
-                                    </div> -->
                                 </div>
                             </div> 
                         </div>

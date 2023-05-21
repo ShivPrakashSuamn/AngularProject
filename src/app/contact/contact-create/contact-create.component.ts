@@ -83,9 +83,6 @@ export class ContactCreateComponent {
           formData.delete('file');
         }
       }
-      // let headers = new Headers();
-      // headers.append('Content-Type', 'multipart/form-data');
-      // headers.append('Accept', 'application/json');
       let headers = new HttpHeaders().set("authorization", `Bearer ${localStorage.getItem('token')}`);
       let options = { headers: headers };
       this.apiService.post(url, formData, options).subscribe((data: any) => {

@@ -21,7 +21,9 @@
 }
 
 .about {
-    background-color: #a7a4a46b;
+    background-image: url(../../assets/images/backgraund2.jpg);
+    background-repeat: repeat-y;
+    background-size: cover;
     border-radius: 10px;
     color: #d83cff;
 }
@@ -66,3 +68,4 @@
     font-size: 20px;
     color: #c440ff;
 }
+

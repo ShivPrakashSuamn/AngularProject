@@ -40,8 +40,6 @@ export class ContactImportComponent {
     console.log('SubmitForm');
     this.submitted = true;
     if(this.fileForm.valid){
-      this.alertService.success('CSV_File Save SuccessFull');
-      // console.log('Create Form Data =', this.fileForm.value.csvFile);
       let url:string = `/contact/csv`;
       let formData: FormData = new FormData();
       formData.append('file', this.profileImage,this.profileImage.name);
@@ -49,7 +47,7 @@ export class ContactImportComponent {
       let headers = new HttpHeaders().set("authorization", `Bearer ${localStorage.getItem('token')}`);
       let options = { headers: headers };
       this.apiService.post(url, formData, options).subscribe((data:any)=>{
-        console.log('req_Data = ',data)
+        this.alertService.success(data.message);
       });
     } else {
       this.alertService.error('This is input Empty');
