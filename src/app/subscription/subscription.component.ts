@@ -18,6 +18,7 @@ export class SubscriptionComponent {
   features: any;
   loginData: any;
   id:any;
+  planActive:any;
   // ------------------    life cycle of angular    ----------------------- ||
 
   constructor(private apiService: ApiService, private alertService:AlertService) { }
@@ -42,6 +43,7 @@ export class SubscriptionComponent {
     this.apiService.get(url, headers).subscribe((data: any) => {
       this.data = data.data.data;
       this.features = data.data.features;
+      this.planActive= data.data.planActive;
     });
   }
 
@@ -51,8 +53,7 @@ export class SubscriptionComponent {
     this.apiService.get(url, headers).subscribe((data: any) => {
       this.data = data.data;
       this.data['handler'] = async (response:any) => {
-        //console.log('--',response.razorpay_payment_id);//this returns the expected value
-        await this.handle_response(response.razorpay_payment_id,id);      
+        await this.handle_response(response.razorpay_payment_id,id);  //this returns the expected value 
       };
       var rzp1 = new Razorpay(this.data);
       rzp1.open();
@@ -62,19 +63,26 @@ export class SubscriptionComponent {
     });
   };
 
-  handle_response(id:any,plan_id:any) {         //  Get      Data       ---------------------------
+  handle_response(id:any,plan_id:any) { // Payment save -----------------
     let peyData = {payment_id:id,plan_id:`${plan_id}`};
     let url = '/payment/confirmPayment';
     let headers = new HttpHeaders().set("authorization", `Bearer ${localStorage.getItem('token')}`);
     let options = { headers: headers };
-    this.apiService.post(url, peyData, options).subscribe((data: any) => {
-     // console.log('confirm payment response', data)
-     if (data.status) {
-        this.alertService.success(data.message); // Alert---
-      } else {
-        this.alertService.warning(data.message); // Alert---
-      }
+    this.apiService.post(url, peyData, options).subscribe( async(data: any) => {
+
+      await this.getData();  ///  --------------------------------------------------------------------------
+
+      console.log('confirm payment response', data)
+      // if (data.status) {
+      //  this.alertService.success(data.message); // Alert---
+      // } else {
+      //   this.alertService.warning(data.message); // Alert---
+      // }
     });
+  }
+
+  billToggle(){
+    console.log('click')
   }
 
   sidebarToggle(eventData: { toggleVal: boolean }) { // gettting value from child component

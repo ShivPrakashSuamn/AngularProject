@@ -21,7 +21,7 @@
                                             <p> 
                                                 <span class="tex" style="font-size:18px;">  MONTHLY BILLING  </span>  
                                                 <label class="switch">  
-                                                    <input type="checkbox" checked>
+                                                    <input type="checkbox" (click)="billToggle()" checked>
                                                     <span class="slider round "></span> 
                                                 </label> 
                                                 <span style="margin-left: 72px;">ANNUAL BILLING </span>
@@ -34,32 +34,31 @@
                             <div class="man-box">           
                                 <div class="row p-4">  
                                     <div class="col-sm-4" *ngFor="let row of data"> 
-                                        <div class="box p-4" [ngClass]="{'plan-active': row.id == 3}">
+                                        <div class="box p-4" [ngClass]="{'plan-active': row.id == planActive}">
                                             <h1 class="pt-2 mb-3 tex"> {{row.title}} </h1> 
                                             <p> {{row.description}} </p>
                                             <h3><span class="free-text .text-warning"><b>Free</b></span><span class="month" style="font-size: 14px;"> for 1 month</span></h3>
                                             <h6 class="m-0"><span [ngClass]="{'d-none':(row.title == 'Premium')}">Then,</span> Starts at </h6>
                                             <h2>
                                                 <b> 
-                                                    <del> <span > &#8377; {{row.price }} </span> </del>
-                                                    <ins><span > &#8377; {{row.offer_price }} </span> </ins>
+                                                    <span [ngClass]="{'strikethrough':row.price && row.offer_price !='', 'text-success':row.offer_price ==''}">&#8377; {{row.price }} </span>
+                                                    <ins *ngIf="row.offer_price"><span> &#8377; {{row.offer_price }} </span> </ins>
                                                 </b>
                                                 <span class="month">/month<sup>*</sup></span>
                                             </h2>
                                             <div class="row" style="padding: 0px 30px;">
                                                 <button type="button" class="btn btn-lg mt-3 mb-3 edit" (click)="payNow(row.id)"> 
-                                                    <span [ngClass]="{'d-none':(row.id == 3)}"> Buy Now </span>
-                                                    <span [ngClass]="{'d-none':!(row.id == 3)}"> Active </span>
+                                                    <span [ngClass]="{'d-none':(row.id == planActive)}"> Buy Now </span>
+                                                    <span [ngClass]="{'d-none':!(row.id == planActive)}"> Active </span>
                                                 </button>
                                             </div>
                                             <p class="peg mt-1" >you will get these features in this plan</p>  
                                             <div class="row">
                                                 <table>
                                                     <tr *ngFor="let data of features">
-                                                        <td *ngIf="data.plan_id == row.id && data.status == 1"><span class="right-arow text-success"><b>&#10003;</b></span></td>
-                                                        <td *ngIf="data.plan_id == row.id && data.status == 0" class="text-danger"> &#10006; </td>
-                                                        <td *ngIf="data.plan_id == row.id" [ngClass]="{'text-success':data.status==1}"> {{data.feature_name}} </td>
-                                                        <td *ngIf="data.plan_id == row.id" [ngClass]="{'text-success':data.status==1}"> {{data.feature_value}} </td>
+                                                        <td *ngIf="data.plan_id == row.id"><span class="right-arow text-success"><b>&#10003;</b></span></td>                                                       
+                                                        <td *ngIf="data.plan_id == row.id" [ngClass]="{'text-success':data.status}"> {{data.feature_name}} </td>
+                                                        <td *ngIf="data.plan_id == row.id" [ngClass]="{'text-success':data.status}"> {{data.feature_value}} </td>
                                                     </tr>
                                                 </table>   
                                             </div>                           

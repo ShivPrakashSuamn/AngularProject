@@ -126,7 +126,7 @@ input:checked+.slider:before {
 }
 
 .free-text {
-    color: yellowgreen;
+    color: #da9537;
     text-decoration: dotted;
     text-decoration-line: underline;
 }
@@ -139,27 +139,30 @@ input:checked+.slider:before {
     background-color: rgb(203 253 255 / 30%);
 }
 
-del {
-    color: rgba(red, 0.5);
-    text-decoration: none;
+
+.strikethrough {
     position: relative;
+    color: lightslategray;
+    font-size: 24px;
 }
 
-/* del:before {
-    content: " ";
-    display: block;
-    width: 100%;
-    border-top: 2px solid rgba(red, 0.8);
-    height: 12px;
+.strikethrough:before {
     position: absolute;
-    bottom: 0;
+    content: "";
     left: 0;
-    transform: rotate(-7deg);
-} */
+    top: 50%;
+    right: 0;
+    border-top: 1px solid red;
+    -webkit-transform: rotate(-15deg);
+    -moz-transform: rotate(-15deg);
+    -ms-transform: rotate(-15deg);
+    -o-transform: rotate(-15deg);
+    transform: rotate(-15deg);
+}
+
 
 ins {
     color: green;
-    font-size: 32px;
     text-decoration: none;
-    padding: 1em 1em 1em .5em;
+    padding: 0px 0px 0px 15px;
 }
