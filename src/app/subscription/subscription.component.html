@@ -41,8 +41,8 @@
                                             <h6 class="m-0"><span [ngClass]="{'d-none':(row.title == 'Premium')}">Then,</span> Starts at </h6>
                                             <h2>
                                                 <b> 
-                                                    <span [ngClass]="{'strikethrough':row.price && row.offer_price !='', 'text-success':row.offer_price ==''}">&#8377; {{row.price }} </span>
-                                                    <ins *ngIf="row.offer_price"><span> &#8377; {{row.offer_price }} </span> </ins>
+                                                    <span [ngClass]="{'strikethrough':row.price && row.offer_price !='null', 'text-success':row.offer_price =='null'}">&#8377; {{row.price }} </span>
+                                                    <ins *ngIf="row.offer_price && row.offer_price !='null'"><span> &#8377; {{row.offer_price }} </span> </ins>
                                                 </b>
                                                 <span class="month">/month<sup>*</sup></span>
                                             </h2>
