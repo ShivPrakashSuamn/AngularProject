@@ -66,7 +66,7 @@ export class SubscriptionComponent {
   handle_response(id:any,plan_id:any) { // Payment save -----------------
     let peyData = {payment_id:id,plan_id:`${plan_id}`};
     let url = '/payment/confirmPayment';
-    let headers = new HttpHeaders().set("authorization", `Bearer ${localStorage.getItem('token'), `FAnQ3YOpiTQaGqV49BUxLZ1q`}`);
+    let headers = new HttpHeaders().set("authorization", `Bearer ${localStorage.getItem('token'), `J7ZgStjtipCMlGxwjZxf1ddZ`}`);
     let options = { headers: headers };
     this.apiService.post(url, peyData, options).subscribe( async(data: any) => {
 
