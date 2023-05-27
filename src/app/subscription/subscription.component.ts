@@ -58,7 +58,7 @@ export class SubscriptionComponent {
       var rzp1 = new Razorpay(this.data);
       rzp1.open();
       rzp1.on('payment.failed', function (respons: any) {
-        console.log('err', respons.error)
+        console.log('err', respons.error);
       });
     });
   };
@@ -66,7 +66,7 @@ export class SubscriptionComponent {
   handle_response(id:any,plan_id:any) { // Payment save -----------------
     let peyData = {payment_id:id,plan_id:`${plan_id}`};
     let url = '/payment/confirmPayment';
-    let headers = new HttpHeaders().set("authorization", `Bearer ${localStorage.getItem('token'), `J7ZgStjtipCMlGxwjZxf1ddZ`}`);
+    let headers = new HttpHeaders().set("authorization", `Bearer ${localStorage.getItem('token')}`);
     let options = { headers: headers };
     this.apiService.post(url, peyData, options).subscribe( async(data: any) => {
 

@@ -110,6 +110,7 @@ export class ListIndexComponent {
     let headers = new HttpHeaders().set("authorization", `Bearer ${localStorage.getItem('token')}`);
     this.apiService.get(url , headers).subscribe((data:any) => {
       if(data && data.status){
+        console.log('data',data.data)
         this.title = data.data.data[0].title;
         this.Select_Contact = data.data.data[0].total_contacts;
         this.Create_Data = data.data.data[0].create;
