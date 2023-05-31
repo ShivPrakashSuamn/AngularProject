@@ -1,0 +1,133 @@
+
+<div class="row">
+    <!--- sidebar  -->
+    <div style="transition: .5s;" class="p-0" [ngClass]="{'col-lg-1': toggleVal,'col-lg-2':!toggleVal}">
+        <app-sidebar (sidebarToggle)=sidebarToggle($event)> </app-sidebar>
+    </div>
+
+    <div class="p-0 height-100" style="transition: .5s;" [ngClass]="{'col-lg-11': toggleVal,'col-lg-10':!toggleVal}">
+        <div class="container-fluid ">
+            <div class="col col-lg-12">
+                <div class="card1">
+                    <div class="m-3">
+                        <div class="p-3">
+                            <div class="row mb-3">
+                                <div class="col-md-6 p-0">
+                                    <div class="row">
+                                        <div class="col-lg-3 p-0">
+                                            <h2>
+                                                <b class="tex">Compaign</b>
+                                            </h2>
+                                        </div>
+                                        <div class="col-lg-9 p-0 mt-2">
+                                            <h4>
+                                                <b class="tex">
+                                                    <i class="fa fa-caret-right" style="padding-right: 18px;"></i>
+                                                    <span >Add New</span>
+                                                    <!-- <span *ngIf="id != undefined">Edit</span> -->
+                                                    Compaign
+                                                </b>
+                                            </h4>
+                                        </div>
+                                    </div>
+                                    <p style="margin: 0; color: #b6b6b6d9;">Hare you can manage all your Compaign ditails.</p>
+                                </div>
+                                <div class="col-md-6 p-0">
+                                    <span style="float: right;">
+                                        <button routerLink="/compaign/create" type="button" class="btn squer-btn sm-btn edit icn">
+                                        <i class='bx bx-chevrons-left nav_icon'></i>back</button>
+                                    </span>
+                                </div>
+                            </div>
+                            <hr>
+                            <div class="row">
+                                <div class="col-lg-8">
+                                    <ul>
+                                        <li>
+                                            <a href="javascript:void(0)" routerLink="/compaign/create" class="text-success">
+                                                <span class="grid-box1 active-back"> <span class="grid-box2 active-color">1</span> </span>
+                                                <span style="margin: 0px 12px;">Create Title</span>
+                                            </a>
+                                            <div class="line active-color"></div>
+                                        </li>
+                                        <li>
+                                            <a href="javascript:void(0)" routerLink="/select">
+                                                <span class="grid-box1"> <span class="grid-box2 ">2</span> </span>
+                                                <span style="margin: 0px 12px;">Select Template</span>
+                                            </a>
+                                            <div class="line"></div>
+                                        </li>
+                                        <li>
+                                            <a href="javascript:void(0)">
+                                                <span class="grid-box1"> <span class="grid-box2">3</span> </span>
+                                                <span style="margin: 0px 12px;">Editer</span>
+                                            </a>
+                                        </li>
+                                    </ul> 
+                                </div>
+                                <div class="col-lg-4">
+                                    <button type="button" class="btn edit mt-2" (click)="submit()">Save</button>
+                                </div>                             
+                            </div>
+                            <div class="row mt-4 mb-4">
+                                <h4 class="m-0"><b style="color: #a200ffb3;"> {{title}} </b></h4> 
+                                <p style="margin: 0; color: #b6b6b6d9;">Choose from our Awesomely designed converting Templates or Start creating your Own.</p>                     
+                            </div>
+                            <div class="row">
+                                <div *ngFor="let row of data" class="col-md-3">
+                                    <div class="comman">
+                                        <div class="thum"><img src="http://localhost:3001{{row.thumbnail}}" style="overflow: auto;" /></div>
+                                        <div class="tex p-3 mt-2 overflow">
+                                            <h3><b>{{row.title}}</b></h3>
+                                        </div>
+                                        <div class="p-3 overflow">
+                                            <p class="text-mute ">{{row.description}}</p>
+                                        </div>
+                                        <div class="row mt-4 mb-3">
+                                            <div class="col-lg-6">
+                                                <button type="button" class="btn battcolor" (click)="selectDemo(row.id)" data-bs-toggle="modal" data-bs-target="#exampleModal" >Demo</button>
+                                            </div>
+                                            <div class="col-lg-6">
+                                                <button type="button" class="btn" [ngClass]="{'btnActive': (ToggleSelect == row.id), 'edit':!(ToggleSelect == row.id)}" (click)="selectTemplate(row.id)">Select</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div *ngIf="data.length == 0" class="row">
+                                <h2 class="text-center"><b class=" tex">NO RECORD FOUND</b></h2>
+                            </div>
+                            <!-- Show Single Row Data in Table -->
+                            <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                <div class="modal-dialog">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title tex" id="exampleModalLabel">{{title}} :</h5>
+                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                        </div>
+                                        <div class="modal-body">
+                                            <div>
+                                                <span *ngIf="thumbnail != 'null'"><img src="http://localhost:3001{{thumbnail}}" class="rounded imgThumbnail"/></span>      
+                                            </div>
+                                            <table class="table ">
+                                                <tr>
+                                                    <th class="tex"> Created :</th>
+                                                    <td> {{created | date:'long'}}</td>
+                                                </tr>                                                           
+                                            </table>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-secondary edit" data-bs-dismiss="modal">Close</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- end -->
+                        </div>
+                        <br>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

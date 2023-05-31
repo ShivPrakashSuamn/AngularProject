@@ -34,6 +34,7 @@ import { PaginationComponent } from './pagination/pagination.component';
 import { NoPageComponent } from './no-page/no-page.component';
 import { HttpInterceptorInterceptor } from './http-interceptor.interceptor';
 import { SubscriptionComponent } from './subscription/subscription.component';
+import { TemplateCompComponent } from './compaign/template-comp/template-comp.component';
 
 const ngxUiLoaderConfig: NgxUiLoaderConfig = {
   bgsColor: 'red',
@@ -86,7 +87,8 @@ const ngxUiLoaderConfig: NgxUiLoaderConfig = {
     ListImportComponent,
     PaginationComponent,
     NoPageComponent,
-    SubscriptionComponent
+    SubscriptionComponent,
+    TemplateCompComponent
   ],
   imports: [
     BrowserModule,

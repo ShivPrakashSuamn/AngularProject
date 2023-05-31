@@ -21,7 +21,7 @@
                                             <p> 
                                                 <span class="tex" style="font-size:18px;">  MONTHLY BILLING  </span>  
                                                 <label class="switch">  
-                                                    <input type="checkbox" (click)="billToggle()" checked>
+                                                    <input type="checkbox" (click)="billToggle($event)" checked>
                                                     <span class="slider round "></span> 
                                                 </label> 
                                                 <span style="margin-left: 72px;">ANNUAL BILLING </span>
@@ -33,24 +33,26 @@
                             <hr>
                             <div class="man-box">           
                                 <div class="row p-4">  
-                                    <div class="col-sm-4" *ngFor="let row of data"> 
-                                        <div class="box p-4" [ngClass]="{'plan-active': row.id == planActive}">
+                                    <div class="col-sm-4" style="padding: 15px;" *ngFor="let row of data"> 
+                                        
+                                        <div class="box p-4" [ngClass]="{'plan-active': planActive.includes((row.id).toString())}">
                                             <h1 class="pt-2 mb-3 tex"> {{row.title}} </h1> 
                                             <p> {{row.description}} </p>
                                             <h3><span class="free-text .text-warning"><b>Free</b></span><span class="month" style="font-size: 14px;"> for 1 month</span></h3>
                                             <h6 class="m-0"><span [ngClass]="{'d-none':(row.title == 'Premium')}">Then,</span> Starts at </h6>
                                             <h2>
                                                 <b> 
-                                                    <span [ngClass]="{'strikethrough':row.price && row.offer_price !='null', 'text-success':row.offer_price =='null'}">&#8377; {{row.price }} </span>
-                                                    <ins *ngIf="row.offer_price && row.offer_price !='null'"><span> &#8377; {{row.offer_price }} </span> </ins>
+                                                    <span [ngClass]="{'strikethrough':row.price && row.offer_price != 0, 'text-success':row.offer_price == 0}">&#8377; {{getPrice(row.price)}} </span>
+                                                    <ins *ngIf="row.offer_price && row.offer_price != 0"><span> &#8377; {{getPrice(row.offer_price)}} </span> </ins>
                                                 </b>
                                                 <span class="month">/month<sup>*</sup></span>
                                             </h2>
                                             <div class="row" style="padding: 0px 30px;">
-                                                <button type="button" class="btn btn-lg mt-3 mb-3 edit" (click)="payNow(row.id)"> 
-                                                    <span [ngClass]="{'d-none':(row.id == planActive)}"> Buy Now </span>
-                                                    <span [ngClass]="{'d-none':!(row.id == planActive)}"> Active </span>
-                                                </button>
+                                                <button type="button" class="btn btn-lg mt-3 mb-3 edit" (click)="payNow(row.id)" 
+                                                    [ngClass]="{'d-none':(planActive.includes((row.id).toString()))}"> Buy Now </button>
+
+                                                <button type="button" class="btn btn-lg mt-3 mb-3 edit"
+                                                    [ngClass]="{'d-none':!(planActive.includes((row.id).toString()))}"> Active </button>
                                             </div>
                                             <p class="peg mt-1" >you will get these features in this plan</p>  
                                             <div class="row">

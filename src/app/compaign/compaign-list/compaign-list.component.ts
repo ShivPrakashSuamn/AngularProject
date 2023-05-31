@@ -36,9 +36,8 @@ export class CompaignListComponent {
   // ---------------------      custome methods      -----------------------  ||
 
   getData() {           //  Data Get databes   ---------------------------------
-    let url:string = `/template?limit=${this.limit}&page=${this.page}&order_by=${this.order_by}&order_type=${this.order_type}&search=${this.search}`;
+    let url:string = `/compaign?limit=${this.limit}&page=${this.page}&order_by=${this.order_by}&order_type=${this.order_type}&search=${this.search}`;
     this.apiService.get(url, {}).subscribe((data:any) => {
-      console.log('data',data.data);
         if(data && data.status){
           this.page = data.data.page;
           this.data = data.data.data; 
@@ -74,12 +73,12 @@ export class CompaignListComponent {
   }
 
   showRow(id:any) {     //  Display one line of Data  --------------------------
-    let url = '/template/show?id='+id;
+    let url = '/compaign/show?id='+id;
     this.apiService.get(url, {}).subscribe((data:any) => {
       if(data && data.status){
-        this.title = data.data[0].title;
-        this.thumbnail = data.data[0].thumbnail;
-        this.created = data.data[0].created;
+        this.title = data.data.data[0].title;
+        this.thumbnail = data.data.data[0].thumbnail;
+        this.created = data.data.data[0].created;
       } else {
         this.alertService.error(data.message);
       }
@@ -97,7 +96,7 @@ export class CompaignListComponent {
     }).then((result) => {
       if (result.value) {
         Swal.fire('SuccessFully !', 'Row Deleted Successfully.', 'success');
-        let url:string = `/template/delete?id=${id}`;
+        let url:string = `/compaign/delete?id=${id}`;
         this.apiService.get(url, {}).subscribe((data:any) => {
           this.getData(); 
           console.log('deleteRow Status -',data.status) ;   

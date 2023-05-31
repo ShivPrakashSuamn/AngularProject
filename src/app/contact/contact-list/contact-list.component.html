@@ -66,7 +66,7 @@
                                                     <td> {{row.create | date:'short'}} </td> 
                                                     <td class="t_row p-0 text-center"> 
                                                         <a routerLink="/contact/update/{{row.id}}" data-dismiss="alert"><i class='bx bx-pencil nav_icon'></i></a>
-                                                        <a herf="JavaScript:void(0)" (click)="showRow(row.id)" data-bs-toggle="modal" data-bs-target="#exampleModal" data-dismiss="alert"><i class='bx bx-show nav_icon btn spas'></i></a>
+                                                        <a herf="JavaScript:void(0)" (click)="showRow(row.id)" data-bs-toggle="modal" data-bs-target="#showContact" data-dismiss="alert"><i class='bx bx-show nav_icon btn spas'></i></a>
                                                         <a herf="JavaScript:void(0)" (click)="deleteRow(row.id)" data-dismiss="alert"><span class="btn spas">&times;</span></a>
                                                     </td> 
                                                 </tr>
@@ -77,11 +77,11 @@
                                         </tbody> 
                                     </table>                                           
                                       <!-- Show Single Row Data in Table -->
-                                        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                        <div class="modal fade" id="showContact" tabindex="-1" aria-labelledby="showContactLabel" aria-hidden="true">
                                             <div class="modal-dialog">
                                                 <div class="modal-content">
                                                     <div class="modal-header">
-                                                        <h5 class="modal-title tex" id="exampleModalLabel"> One Line Data : </h5>
+                                                        <h5 class="modal-title tex" id="showContactLabel"> One Line Data : </h5>
                                                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                                     </div>
                                                     <div class="modal-body">

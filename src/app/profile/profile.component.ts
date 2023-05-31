@@ -10,38 +10,50 @@ import { HttpHeaders } from '@angular/common/http';
   styleUrls: ['./profile.component.css']
 })
 export class ProfileComponent {
-  toggleVal:boolean = false;
+  toggleVal: boolean = false;
   createForm: FormGroup;
   submitted: any = false;
   loginData: any;
-  fname:String = '';
-  lname:String = '';
-  email:String = '';
-  mobile:String = '';
-  id:String = '';
-  profileImage:any ;
+  fname: String = '';
+  lname: String = '';
+  email: String = '';
+  mobile: String = '';
+  id: String = '';
+  profileImage: any;
   image: string = '';
+  timeOut: any;
 
   // ----------------    life cycle of angular    --------------------  ||
 
-  constructor(private fb:FormBuilder, private apiService:ApiService, private alertService:AlertService) { 
+  constructor(private fb: FormBuilder, private apiService: ApiService, private alertService: AlertService) {
     this.createForm = fb.group({
       fname: ['', Validators.required],
       lname: ['', Validators.required],
       email: ['', Validators.required],
       mobile: ['', Validators.required],
     });
-  } 
+  }
   get f() {
     return this.createForm.controls;
   }
 
-  ngOnInit(){ 
+  ngOnInit() {
     this.getLoginUser();
+
+    var timeleft = 5;
+    var downloadTimer = setInterval(function(){
+      if(timeleft <= 0){
+        clearInterval(downloadTimer);
+      }
+      let time = 5 - timeleft;
+      console.log('--',time)
+      timeleft -= 1;
+    }, 1000);
   }
+
   // ----------------    custome methods   --------------------------  ||
 
-  getLoginUser(){     //  login dataGet  -----------------------------
+  getLoginUser() {     //  login dataGet  -----------------------------
     this.loginData = localStorage.getItem('loginUser');
     var data = JSON.parse(this.loginData);
     this.id = data.id;
@@ -64,12 +76,12 @@ export class ProfileComponent {
     this.profileImage = target.files[0];
   }
 
-  submit(){           //  Update  data  -----------------------------
+  submit() {           //  Update  data  -----------------------------
     console.log('Submit Click');
     this.submitted = true;
     //console.log('Create Form Data =', this.createForm.value);
     if (this.createForm.valid) {
-      
+
       let url = `/user/update?id=${this.id}`;
 
       const body = this.createForm.value;
@@ -78,7 +90,7 @@ export class ProfileComponent {
       formData.append('lname', body.lname)
       formData.append('email', body.email)
       formData.append('mobile', body.mobile)
-      
+
       if (this.id == undefined) {
         if (this.profileImage) {
           formData.append('file', this.profileImage, this.profileImage.name);
@@ -99,6 +111,11 @@ export class ProfileComponent {
         //console.log('Form Result -', data)
         if (data.status) {
           this.alertService.success(data.message); // Alert---
+
+          setTimeout(function () {
+            console.log("10 seconds---");
+          }, 5000);
+
         } else {
           this.alertService.warning(data.message); // Alert---
         }
@@ -111,9 +128,9 @@ export class ProfileComponent {
   reset() {           // Form  reset  --------------------------------
     this.createForm.reset();
   }
-  
+
   sidebarToggle(eventData: { toggleVal: boolean }) { // gettting value from child component
     this.toggleVal = eventData.toggleVal;
-    console.log('profile page inside sidebar toggle',eventData.toggleVal);
+    console.log('profile page inside sidebar toggle', eventData.toggleVal);
   }
 }
