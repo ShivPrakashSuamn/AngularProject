@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ApiService } from '../_services/api.service';
 import { AlertService } from '../_services/alert.service';
 import { HttpHeaders } from '@angular/common/http';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-profile',
@@ -21,11 +22,11 @@ export class ProfileComponent {
   id: String = '';
   profileImage: any;
   image: string = '';
-  timeOut: any;
-
+  countdown: boolean = false;
+  message: string = '';
   // ----------------    life cycle of angular    --------------------  ||
 
-  constructor(private fb: FormBuilder, private apiService: ApiService, private alertService: AlertService) {
+  constructor(private fb: FormBuilder, private apiService: ApiService, private alertService: AlertService, private router: Router) {
     this.createForm = fb.group({
       fname: ['', Validators.required],
       lname: ['', Validators.required],
@@ -39,16 +40,6 @@ export class ProfileComponent {
 
   ngOnInit() {
     this.getLoginUser();
-
-    var timeleft = 5;
-    var downloadTimer = setInterval(function(){
-      if(timeleft <= 0){
-        clearInterval(downloadTimer);
-      }
-      let time = 5 - timeleft;
-      console.log('--',time)
-      timeleft -= 1;
-    }, 1000);
   }
 
   // ----------------    custome methods   --------------------------  ||
@@ -106,16 +97,16 @@ export class ProfileComponent {
       }
       let headers = new HttpHeaders().set("authorization", `Bearer ${localStorage.getItem('token')}`);
       let options = { headers: headers };
-
       this.apiService.post(url, formData, options).subscribe((data: any) => {
-        //console.log('Form Result -', data)
         if (data.status) {
-          this.alertService.success(data.message); // Alert---
-
-          setTimeout(function () {
-            console.log("10 seconds---");
-          }, 5000);
-
+          this.countdown = true;
+          if (this.countdown) {
+            this.message = data.message;
+            setInterval(() => {
+              localStorage.clear();
+              window.location.reload();
+            }, 9000);
+          }
         } else {
           this.alertService.warning(data.message); // Alert---
         }

@@ -21,6 +21,7 @@ export class TemplateCompComponent {
   id: any = '';
 
   title: any;
+  newTitle:any;
   thumbnail: any;
   created: any;
   selectID: any;
@@ -58,11 +59,11 @@ export class TemplateCompComponent {
     let url: string = `/compaign/show?id=${this.id}`;
     let headers = new HttpHeaders().set("authorization", `Bearer ${localStorage.getItem('token')}`);
     this.apiService.get(url, headers).subscribe((data: any) => {
-      this.title = data.data.data[0].title;
+      this.newTitle = data.data.data[0].title;
     })
   }
 
-  selectTemplate(id: any) {    // Submit Form    -----------------------------------
+  selectTemplate(id: any) {    // select templat  -----------------------------------
     console.log('Select Button Click', id);
     if (id) {
       this.selectID = id;
@@ -72,19 +73,17 @@ export class TemplateCompComponent {
     }
   }
 
-  submit() {
+  submit() {                   // Submit template -----------------------------------
     if (this.selectID) {
       let url: string = '/compaign/update?id='+this.id;
       let body = {
-        insrtId: this.id,
         template_id: this.selectID
       }
-      console.log('submit Button Click', body);
       let headers = new HttpHeaders().set("authorization", `Bearer ${localStorage.getItem('token')}`);
       let options = { headers: headers };
       this.apiService.post(url, body, options).subscribe((data: any) => {
         if (data.status) {
-          this.alertService.success('data.message'); // Alert---
+          this.alertService.success(data.message); // Alert---
         } else {
           this.alertService.warning(data.message); // Alert---
         }

@@ -22,10 +22,8 @@
 }
 
 .comman {
-    /* width: 280px; */
-    height: 300px;
+    height: 315px;
     border: 1px solid #bfbfbf;
-    /* margin-left: 67px; */
 }
 
 #collection {
@@ -49,7 +47,6 @@
   }
 
 .overflow {
-    overflow: hidden;
     height:50px;
     line-height: 24px;
     } 

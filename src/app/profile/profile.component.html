@@ -5,8 +5,8 @@
   </div>
   <!--- ProFile Page ------------->
   <div style="transition: .5s;" [ngClass]="{'col-lg-11': toggleVal,'col-lg-10':!toggleVal}">
-    <div class="container-fluid ">
-      <section class="gradient-custom-2 ">
+    <div class="container-fluid" *ngIf="!countdown">
+      <section class="gradient-custom-2" >
         <div class="p-3">
           <div class="align-items-center">
             <div class="col col-lg-12">
@@ -17,7 +17,7 @@
                     alt="Generic placeholder image" class="img-fluid img-thumbnail mt-4 mb-2" style="width: 150px; z-index: 1">
                     <button type="button" class="btn edit mt-1" style="z-index: 1;" data-bs-toggle="modal" data-bs-target="#exampleModal"> Edit profile </button>
                     <button type="button" class="btn resetp mt-2" style="z-index: 1;" > Reset password </button>
-                    <!-- edit Form -->
+                    <!--- edit Form ------------>
                     <form class="form"[formGroup]="createForm" (ngSubmit)="submit()">
                       <div class="modal fade"  tabindex="-1" aria-labelledby="exampleModalLabel" id="exampleModal" aria-hidden="true">
                         <div class="modal-dialog">
@@ -31,8 +31,6 @@
                                 <span style="text-align: center;">
                                   <span *ngIf="image != 'null' && image"><img src="http://localhost:3001/uploads/images/{{image}}" class="rounded-circle p-0 show-image"/></span>
                                   <span *ngIf="image == 'null'" class="p-0"><div class="text-image tex"><b style="font-size: 70px;">{{fname.substr(0,1)}}</b></div></span>
-                                  <!-- <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-profiles/avatar-1.webp"
-                                  alt="Generic placeholder image" class="rounded-circle show-image ">           -->
                                 </span>
                                 <div class="form-group imgUpload">
                                   <label for="exampleInputFile">Upload</label>
@@ -54,28 +52,12 @@
                                   [style.border]="(submitted && f['mobile'].errors && f['mobile'].errors['required'])==true ? '1px solid red' :'1px solid #c6c6c6'" /><br>
                             </div>
                             <div class="modal-footer">
-                              <!-- <button type="button" class="btn btn-secondary edit" data-bs-dismiss="modal">Close</button> -->
-                              <input type="reset" class="btn cancelbtn" (click)="reset()" value="Cancal" name="cancal" data-bs-toggle="modal" data-bs-target="#exampleModal1">
                               <input type="submit" class="btn battcolor edit" value="SAVE" name="submit">
                             </div>
                           </div>
                         </div>
                       </div>
                     </form>
-                    <!-- end -->
-                    <div class="modal fade"  tabindex="-1" aria-labelledby="exampleModalLabel" id="exampleModal1" aria-hidden="true">
-                      <div class="modal-dialog">
-                        <div class="modal-content">
-                          <div class="modal-header">
-                            <h5 class="modal-title tex text-center" id="exampleModalLabel"><b>5 Seconde Logout Systam</b></h5>
-                          </div>
-                          <div class="modal-body">
-                            <div>Time</div>
-<progress value="0" max="10" id="progressBar"></progress>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
                   </div>
                   <div class="ms-3" style="margin-top: 130px;">
                     <h5>{{fname}} {{lname}}</h5>
@@ -139,5 +121,50 @@
         </div>
       </section>
     </div>
+    <!-- Update Logout Timer  ------------->
+    <body *ngIf="countdown">
+      <div class="countdown">
+        <div class="message-tex">{{message}} </div>
+        <div class="number">
+          <h2>8</h2>
+        </div>        
+        <div class="number">
+          <h2>7</h2>
+        </div>
+        
+        <div class="number">
+          <h2>6</h2>
+        </div>
+        
+        <div class="number">
+          <h2>5</h2>
+        </div>
+        
+        <div class="number">
+          <h2>4</h2>
+        </div>
+        
+        <div class="number">
+          <h2>3</h2>
+        </div>
+        
+        <div class="number">
+          <h2>2</h2>
+        </div>
+        
+        <div class="number">
+          <h2>1</h2>
+        </div>
+        
+        <div class="number">
+          <h2>0</h2>
+        </div>
+        
+        <div class="number">
+          <h2>9</h2>
+        </div>
+        <h1 class="logout-text">Syatem Logout ?</h1>
+      </div>
+    </body>
   </div>
 </div>

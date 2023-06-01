@@ -70,12 +70,12 @@
                                 </div>                             
                             </div>
                             <div class="row mt-4 mb-4">
-                                <h4 class="m-0"><b style="color: #a200ffb3;"> {{title}} </b></h4> 
+                                <h4 class="m-0"><b style="color: #a200ffb3;"> {{newTitle}} </b></h4> 
                                 <p style="margin: 0; color: #b6b6b6d9;">Choose from our Awesomely designed converting Templates or Start creating your Own.</p>                     
                             </div>
                             <div class="row">
-                                <div *ngFor="let row of data" class="col-md-3">
-                                    <div class="comman">
+                                <div *ngFor="let row of data" class="col-md-3">   
+                                    <div class="comman" [ngClass]="{'select-active': (ToggleSelect == row.id), 'white':!(ToggleSelect == row.id)}">
                                         <div class="thum"><img src="http://localhost:3001{{row.thumbnail}}" style="overflow: auto;" /></div>
                                         <div class="tex p-3 mt-2 overflow">
                                             <h3><b>{{row.title}}</b></h3>

@@ -47,25 +47,27 @@ export class CompaignCreateComponent {
       let url: string = '/compaign/store';
       let headers = new HttpHeaders().set("authorization", `Bearer ${localStorage.getItem('token')}`);
       let options = { headers: headers };
-      // this.apiService.post(url, body, options).subscribe((data: any) => {
-      //   if (data.status) {
-      //     this.alertService.success('data.message'); // Alert---
-      //     this.nextLink.navigate(['/compaign/template', data.data]);
-      //   } else {
-      //     this.alertService.warning(data.message); // Alert---
-      //   }
-      // });
+      this.apiService.post(url, body, options).subscribe((data: any) => {
+        if (data.status) {
+          this.alertService.success('data.message'); // Alert---
+          this.nextLink.navigate(['/compaign/template', data.data]);
+        } else {
+          this.alertService.warning(data.message); // Alert---
+        }
+      });
     } else {
       this.alertService.error('This is input Empty');
     }
   }
 
   updateDataGet() {  //  Update Data Get   ------------------------------
-    let url: string = `/template/show?id=${this.id}`;
+    let url: string = `/compaign/show?id=${this.id}`;
     let headers = new HttpHeaders().set("authorization", `Bearer ${localStorage.getItem('token')}`);
     this.apiService.get(url, headers).subscribe((data: any) => {
-      console.log("data->", data)
-      this.title = data.data[0].title;
+      this.title = data.data.data[0].title;
+      this.createForm = this.fb.group({
+        title: [`${this.title}`, Validators.required]
+      });
     })
   }
 

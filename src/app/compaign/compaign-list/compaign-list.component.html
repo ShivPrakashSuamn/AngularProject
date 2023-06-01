@@ -50,7 +50,7 @@
                                             <tr *ngFor="let row of data">
                                                 <td (click)="sortBy('id')">{{row.id}}</td>
                                                 <td class="p-1">
-                                                    <span *ngIf="row.image != 'null'"><img src="http://localhost:3001{{row.thumbnail}}" class="tableImg rounded"/></span>      
+                                                    <span *ngIf="row.image != 'null'"><img src="http://localhost:3001{{row.thumbnail_path}}" class="tableImg rounded"/></span>      
                                                 </td>
                                                 <td (click)="sortBy('title')"> {{row.title}} </td>
                                                 <td> {{row.created | date:'medium'}} </td>

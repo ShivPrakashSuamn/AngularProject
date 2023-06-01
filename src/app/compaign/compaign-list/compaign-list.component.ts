@@ -77,7 +77,7 @@ export class CompaignListComponent {
     this.apiService.get(url, {}).subscribe((data:any) => {
       if(data && data.status){
         this.title = data.data.data[0].title;
-        this.thumbnail = data.data.data[0].thumbnail;
+        this.thumbnail = data.data.data[0].thumbnail_path;
         this.created = data.data.data[0].created;
       } else {
         this.alertService.error(data.message);
