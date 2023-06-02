@@ -18,8 +18,6 @@ import { SignComponent } from './sign/sign.component';
 import { SidebarComponent } from './sidebar/sidebar.component';
 import { ProfileComponent } from './profile/profile.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
-import { CategoryListComponent } from './category/category-list/category-list.component';
-import { CategoryCreateComponent } from './category/category-create/category-create.component';
 import { TemplateListComponent } from './template/template-list/template-list.component';
 import { TemplateCreateComponent } from './template/template-create/template-create.component';
 import { ContactListComponent } from './contact/contact-list/contact-list.component';
@@ -35,6 +33,8 @@ import { NoPageComponent } from './no-page/no-page.component';
 import { HttpInterceptorInterceptor } from './http-interceptor.interceptor';
 import { SubscriptionComponent } from './subscription/subscription.component';
 import { TemplateCompComponent } from './compaign/template-comp/template-comp.component';
+import { EditorComponent } from './editor/editor.component';
+import { CompaignPublishComponent } from './compaign/compaign-publish/compaign-publish.component';
 
 const ngxUiLoaderConfig: NgxUiLoaderConfig = {
   bgsColor: 'red',
@@ -72,8 +72,6 @@ const ngxUiLoaderConfig: NgxUiLoaderConfig = {
     SignComponent,
     ProfileComponent,
     DashboardComponent,
-    CategoryListComponent,
-    CategoryCreateComponent,
     SidebarComponent,
     TemplateListComponent,
     TemplateCreateComponent,
@@ -88,7 +86,9 @@ const ngxUiLoaderConfig: NgxUiLoaderConfig = {
     PaginationComponent,
     NoPageComponent,
     SubscriptionComponent,
-    TemplateCompComponent
+    TemplateCompComponent,
+    EditorComponent,
+    CompaignPublishComponent
   ],
   imports: [
     BrowserModule,

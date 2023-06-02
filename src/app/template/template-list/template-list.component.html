@@ -28,16 +28,18 @@
                         <hr>
                         <!-- for loop -->
                         <div class="row mt-5">
-                            <div *ngFor="let row of data" class="col-md-3">
-                                <div class="comman">
-                                    <div class="thum"><img src="http://localhost:3001{{row.thumbnail}}" style="overflow: auto;" /></div>
-                                    <div class="tex p-3 mt-2 overflow">
-                                        <h3><b>{{row.title}}</b></h3>
-                                    </div>
-                                    <div class="p-3 overflow">
-                                        <p class="text-mute ">{{row.description}}</p>
-                                    </div>
-                                </div>
+                            <div *ngFor="let row of data" class="col-md-3 zoom">
+                                <a href="javascript:void(0)" style="text-decoration: none;">
+                                    <div class="comman">
+                                        <div class="thum"><img src="http://localhost:3001{{row.thumbnail}}" style="overflow: auto;" /></div>
+                                        <div class="tex p-3 mt-2 overflow">
+                                            <h3><b>{{row.title}}</b></h3>
+                                        </div>
+                                        <div class="p-3 overflow">
+                                            <p class="text-mute ">{{row.description}}</p>
+                                        </div>
+                                    </div>  
+                                </a>
                             </div>
                         </div>
                         <div *ngIf="data.length == 0" class="row">

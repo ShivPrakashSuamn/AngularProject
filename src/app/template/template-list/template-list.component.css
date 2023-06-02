@@ -122,3 +122,6 @@ form {
     font-size: 16px;
     padding: 4px 28px;
 }
+.zoom:hover{
+    transform: scale(1.1);
+}

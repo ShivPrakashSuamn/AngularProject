@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { ApiService } from 'src/app/_services/api.service';
 import { AlertService } from 'src/app/_services/alert.service';
 import { HttpHeaders } from '@angular/common/http';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-template-comp',
@@ -29,7 +29,7 @@ export class TemplateCompComponent {
 
   // ---------------------    life cycle of angular    --------------------  ||
 
-  constructor(private apiService: ApiService, private alertService: AlertService, private route: ActivatedRoute) {
+  constructor(private apiService: ApiService, private alertService: AlertService, private route: ActivatedRoute,private nextLink:Router) {
     // it call first 
   }
 
@@ -55,7 +55,7 @@ export class TemplateCompComponent {
     });
   }
 
-  titleGet() {
+  titleGet() {                //  Create Title Get  --------------------------------
     let url: string = `/compaign/show?id=${this.id}`;
     let headers = new HttpHeaders().set("authorization", `Bearer ${localStorage.getItem('token')}`);
     this.apiService.get(url, headers).subscribe((data: any) => {
@@ -84,6 +84,9 @@ export class TemplateCompComponent {
       this.apiService.post(url, body, options).subscribe((data: any) => {
         if (data.status) {
           this.alertService.success(data.message); // Alert---
+          setInterval(() => {
+            this.nextLink.navigate(['/compaign/editor',this.id]);
+          }, 1000);
         } else {
           this.alertService.warning(data.message); // Alert---
         }

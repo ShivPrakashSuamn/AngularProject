@@ -35,7 +35,7 @@
                                 <div class="row p-4">  
                                     <div class="col-sm-4" style="padding: 15px;" *ngFor="let row of data"> 
                                         
-                                        <div class="box p-4" [ngClass]="{'plan-active': planActive.includes((row.id).toString())}">
+                                        <div class="box p-4" [ngClass]="{'plan-active': planActive.includes((row.id).toString()) }">
                                             <h1 class="pt-2 mb-3 tex"> {{row.title}} </h1> 
                                             <p> {{row.description}} </p>
                                             <h3><span class="free-text .text-warning"><b>Free</b></span><span class="month" style="font-size: 14px;"> for 1 month</span></h3>

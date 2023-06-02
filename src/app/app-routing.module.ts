@@ -4,8 +4,6 @@ import { LoginComponent } from './login/login.component';
 import { SignComponent } from './sign/sign.component';
 import { ProfileComponent } from './profile/profile.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
-import { CategoryListComponent } from './category/category-list/category-list.component';
-import { CategoryCreateComponent } from './category/category-create/category-create.component';
 import { TemplateListComponent } from './template/template-list/template-list.component';
 import { TemplateCreateComponent } from './template/template-create/template-create.component';
 import { ContactListComponent } from './contact/contact-list/contact-list.component';
@@ -21,6 +19,8 @@ import { NoPageComponent } from './no-page/no-page.component';
 import { SubscriptionComponent } from './subscription/subscription.component';
 import { AuthGuard } from './_services/auth.guard';
 import { TemplateCompComponent } from './compaign/template-comp/template-comp.component';
+import { CompaignPublishComponent } from './compaign/compaign-publish/compaign-publish.component';
+import { EditorComponent } from './editor/editor.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/login', pathMatch: 'full' },
@@ -28,8 +28,6 @@ const routes: Routes = [
   { path: 'signup', component: SignComponent},
   { path: 'profile', component: ProfileComponent, canActivate: [AuthGuard] },
   { path: 'dashboard', component: DashboardComponent, canActivate: [AuthGuard] },
-  { path: 'category', component: CategoryListComponent, canActivate: [AuthGuard] },
-  { path: 'category/create', component: CategoryCreateComponent, canActivate: [AuthGuard] },
   { path: 'template', component: TemplateListComponent, canActivate: [AuthGuard] },
   { path: 'template/create', component: TemplateCreateComponent, canActivate: [AuthGuard] },
   { path: 'contact', component: ContactListComponent, canActivate: [AuthGuard] },
@@ -40,13 +38,14 @@ const routes: Routes = [
   { path: 'compaign/update/:id', component: CompaignCreateComponent , canActivate: [AuthGuard]},
   { path: 'compaign/create', component: CompaignCreateComponent , canActivate: [AuthGuard]},
   { path: 'compaign/template/:id', component: TemplateCompComponent , canActivate: [AuthGuard]},
+  { path: 'compaign/publish/:id', component: CompaignPublishComponent , canActivate: [AuthGuard]},
+  { path: 'compaign/editor/:id', component: EditorComponent , canActivate: [AuthGuard]},
   { path: 'list', component: ListIndexComponent , canActivate: [AuthGuard]},
   { path: 'list/update/:id', component: ListCreateComponent , canActivate: [AuthGuard]},
   { path: 'list/create', component: ListCreateComponent, canActivate: [AuthGuard] },
   { path: 'list/import', component: ListImportComponent, canActivate: [AuthGuard]},
   { path: 'pagination', component: PaginationComponent, canActivate: [AuthGuard]},
   { path: 'subscription', component: SubscriptionComponent, canActivate: [AuthGuard]},
- // { path: 'templateComp', component: TemplateCompComponent, canActivate: [AuthGuard]},
   { path: '**', component: NoPageComponent , canActivate: [AuthGuard] }
 ];
 

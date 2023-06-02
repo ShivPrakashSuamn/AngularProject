@@ -18,7 +18,7 @@ export class SubscriptionComponent {
   features: any;
   loginData: any;
   id: any;
-  planActive:any = [];
+  planActive: any = [];
   priceMethod: boolean = true;
   // ------------------    life cycle of angular    ----------------------- ||
 
@@ -31,29 +31,31 @@ export class SubscriptionComponent {
 
   // -----------------     custome methods       ------------------------- ||
 
-  getLoginUser() {     //  login dataGet  -----------------------------
+  getLoginUser() {     //  login dataGet       -----------------------------
     this.loginData = localStorage.getItem('loginUser');
     var data = JSON.parse(this.loginData);
     this.id = data.id;
     console.log('loginUser id-', this.id)
   }
 
-  getData() {         //  Get      Data       ---------------------------
+  getData() {         //  Get      Data        -----------------------------
     let url = '/plans';
     let headers = new HttpHeaders().set("authorization", `Bearer ${localStorage.getItem('token')}`);
     this.apiService.get(url, headers).subscribe((data: any) => {
       this.data = data.data.data;
       this.features = data.data.features;
       let planData = data.data.planActive;
-      for(var i = 0; i <= planData.length ; i++){
-        if(i < planData.length){
-          this.planActive.push(planData[i].plan_id);
+      for (var i = 0; i <= planData.length; i++) {
+        if (i < planData.length) {
+          if(planData[i].status == 1){ 
+            this.planActive.push(planData[i].plan_id);
+          }
         }
-        }
+      }
     });
   }
 
-  payNow(id: any) {   //  Payment Function     --------------------------
+  payNow(id: any) {   //  Payment Function     -----------------------------
     let url = `/plans/subscription?id=${id}`;
     let headers = new HttpHeaders().set("authorization", `Bearer ${localStorage.getItem('token')}`);
     this.apiService.get(url, headers).subscribe((data: any) => {
@@ -84,8 +86,15 @@ export class SubscriptionComponent {
     });
   }
 
-  billToggle(eventData: any) {
+  billToggle(eventData: any) {       //  payment Monthly-Annual ------------
     this.priceMethod = eventData.target.checked;
+  }
+
+  getPrice(price: any) {            //  payment Monthly-Annual ------------
+    if (this.priceMethod)
+      return price;
+    else
+      return (price / 12).toFixed(2);
   }
 
   sidebarToggle(eventData: { toggleVal: boolean }) { // gettting value from child component
@@ -94,10 +103,4 @@ export class SubscriptionComponent {
     this.message = "Success Payment"
   }
 
-  getPrice(price: any) {
-    if (this.priceMethod)
-      return price;
-    else
-      return (price / 12).toFixed(2);
-  }
 }
