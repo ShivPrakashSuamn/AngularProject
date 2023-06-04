@@ -41,6 +41,16 @@ export class ProfileComponent {
   ngOnInit() {
     this.getLoginUser();
   }
+// =--------------------
+  logout()  {
+    return new Promise(resolve => {
+      setTimeout(() => resolve(this.getHeroes()), 10000);
+    });
+  }
+  getHeroes(){
+    localStorage.clear();
+    window.location.reload();
+  }
 
   // ----------------    custome methods   --------------------------  ||
 
@@ -102,10 +112,11 @@ export class ProfileComponent {
           this.countdown = true;
           if (this.countdown) {
             this.message = data.message;
-            setInterval(() => {
-              localStorage.clear();
-              window.location.reload();
-            }, 9000);
+            this.logout();
+            // setInterval(() => {
+            //   localStorage.clear();
+            //   window.location.reload();
+            // }, 9000);
           }
         } else {
           this.alertService.warning(data.message); // Alert---
