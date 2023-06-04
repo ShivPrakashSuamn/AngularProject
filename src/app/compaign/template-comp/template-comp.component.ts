@@ -84,9 +84,7 @@ export class TemplateCompComponent {
       this.apiService.post(url, body, options).subscribe((data: any) => {
         if (data.status) {
           this.alertService.success(data.message); // Alert---
-          setInterval(() => {
-            this.nextLink.navigate(['/compaign/editor',this.id]);
-          }, 1000);
+          this.nextLink.navigate(['/compaign/editor',this.id]);
         } else {
           this.alertService.warning(data.message); // Alert---
         }

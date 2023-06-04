@@ -12,7 +12,8 @@ export class DashboardComponent {
   toggleVal: boolean = false;
   totalContact: Number = 0;
   totalList: Number = 0;
-
+  totalCompaign: Number = 0;
+  
   // ---------------------    life cycle of angular    --------------------  ||
 
   constructor(private apiService: ApiService, private alertService:AlertService) { }
@@ -30,6 +31,7 @@ export class DashboardComponent {
       if (data.status) {
         this.totalContact = data.data.totalContact;
         this.totalList = data.data.totalList;
+        this.totalCompaign = data.data.totalCompaign;
       } else {
         this.alertService.warning(data.message);
       }
