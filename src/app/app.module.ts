@@ -35,6 +35,8 @@ import { SubscriptionComponent } from './subscription/subscription.component';
 import { TemplateCompComponent } from './compaign/template-comp/template-comp.component';
 import { EditorComponent } from './editor/editor.component';
 import { CompaignPublishComponent } from './compaign/compaign-publish/compaign-publish.component';
+import { SettingsListComponent } from './settings/settings-list/settings-list.component';
+import { SettingsCreateComponent } from './settings/settings-create/settings-create.component';
 
 const ngxUiLoaderConfig: NgxUiLoaderConfig = {
   bgsColor: 'red',
@@ -88,7 +90,9 @@ const ngxUiLoaderConfig: NgxUiLoaderConfig = {
     SubscriptionComponent,
     TemplateCompComponent,
     EditorComponent,
-    CompaignPublishComponent
+    CompaignPublishComponent,
+    SettingsListComponent,
+    SettingsCreateComponent
   ],
   imports: [
     BrowserModule,

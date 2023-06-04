@@ -121,6 +121,12 @@
                                 <span class="nav_name">Subscription</span>
                             </a>
                         </li>
+                        <li [class.active]="getActive('setting')" class="hover-Bg">
+                            <a routerLink="/setting" class="nav_link tex" style="margin-bottom: 18px;">
+                                <i class='bx bx-cog nav_icon' type='solid'></i>
+                                <span class="nav_name">Settings</span>
+                            </a>
+                        </li>
                     </ul>
                 </div>
             </div>

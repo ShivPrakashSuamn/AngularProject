@@ -57,9 +57,9 @@
                                         </div>
                                         <div class="post mt-3">
                                             <p style="font-size: 20px;" class="tex">when you want publis </p>
-                                            <input type="radio" class="form-check-input" name="publisTime" checked/>
+                                            <input type="radio" class="form-check-input" name="schedule" formControlName="schedule" value="Now" checked/>
                                             <label class="form-check-label" for="now">Now</label>
-                                            <input  type="radio" class="form-check-input" name="publisTime" (click)="publisSelectdate()"/>
+                                            <input  type="radio" class="form-check-input" name="schedule" formControlName="schedule" value="TimeSet" (click)="publisSelectdate()"/>
                                             <label class="form-check-label mb-3" for="select">Select Date </label>
                                             <input type="date" class="form-control bg-transparent" [ngClass]="{'d-none':!hiddenInput}" name="publishData" formControlName="publishData"/>
                                         </div>

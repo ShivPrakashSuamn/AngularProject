@@ -25,7 +25,8 @@ export class CompaignPublishComponent {
 
   constructor(private fb: FormBuilder, private alertService: AlertService, private route: ActivatedRoute, private apiService: ApiService,private nextLink:Router) {
     this.createForm = fb.group({
-      publishData: [ ]
+      schedule: ['', Validators.required],
+      publishData: ['']
     });
   }
 
@@ -91,7 +92,6 @@ export class CompaignPublishComponent {
     let url: string = `/list`;
     let headers = new HttpHeaders().set("authorization", `Bearer ${localStorage.getItem('token')}`);
     this.apiService.get(url, headers).subscribe((data: any) => {
-      console.log('click',data.data.data);
       this.data = data.data.data;
     })
   }

@@ -21,6 +21,8 @@ import { AuthGuard } from './_services/auth.guard';
 import { TemplateCompComponent } from './compaign/template-comp/template-comp.component';
 import { CompaignPublishComponent } from './compaign/compaign-publish/compaign-publish.component';
 import { EditorComponent } from './editor/editor.component';
+import { SettingsListComponent } from './settings/settings-list/settings-list.component';
+import { SettingsCreateComponent } from './settings/settings-create/settings-create.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/login', pathMatch: 'full' },
@@ -46,6 +48,9 @@ const routes: Routes = [
   { path: 'list/import', component: ListImportComponent, canActivate: [AuthGuard]},
   { path: 'pagination', component: PaginationComponent, canActivate: [AuthGuard]},
   { path: 'subscription', component: SubscriptionComponent, canActivate: [AuthGuard]},
+  { path: 'setting', component: SettingsListComponent, canActivate: [AuthGuard] },
+  { path: 'setting/create', component: SettingsCreateComponent, canActivate: [AuthGuard] },
+  { path: 'setting/update/:id', component: SettingsCreateComponent, canActivate: [AuthGuard] },
   { path: '**', component: NoPageComponent , canActivate: [AuthGuard] }
 ];
 
