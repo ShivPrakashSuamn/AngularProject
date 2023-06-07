@@ -55,14 +55,28 @@
                                                 </tbody>
                                             </table>
                                         </div>
+
+                                        <!-- <ngx-mat-timepicker >
+                                        
+                                        </ngx-mat-timepicker> -->
+
                                         <div class="post mt-3">
                                             <p style="font-size: 20px;" class="tex">when you want publis </p>
                                             <input type="radio" class="form-check-input" name="schedule" formControlName="schedule" value="Now" checked/>
                                             <label class="form-check-label" for="now">Now</label>
                                             <input  type="radio" class="form-check-input" name="schedule" formControlName="schedule" value="TimeSet" (click)="publisSelectdate()"/>
-                                            <label class="form-check-label mb-3" for="select">Select Date </label>
-                                            <input type="date" class="form-control bg-transparent" [ngClass]="{'d-none':!hiddenInput}" name="publishData" formControlName="publishData"/>
-                                        </div>
+                                            <label class="form-check-label mb-3" for="select">Select Date </label><br>
+                                            <!-- <input type="date" class="form-control bg-transparent" [ngClass]="{'d-none':!hiddenInput}" name="publishData" formControlName="publishData"/> -->
+                                            <mat-form-field [ngClass]="{'d-none':!hiddenInput}">
+                                                <mat-label>Choose a date</mat-label>
+                                              <!-- #docregion toggle -->
+                                                <input matInput [matDatepicker]="picker"  name="publishData" formControlName="publishData"/>
+                                                <mat-hint>MM/DD/YYYY</mat-hint>
+                                                <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+                                                <mat-datepicker #picker></mat-datepicker>
+                                              <!-- #enddocregion toggle -->
+                                            </mat-form-field>                                            
+                                        </div>                                
                                         <div class="float-end mt-4">
                                             <input type="reset" class="btn cancelbtn" (click)="reset()" value="Cancal"name="cancal">
                                             <input type="submit" class="btn battcolor" value="Publish" name="submit">

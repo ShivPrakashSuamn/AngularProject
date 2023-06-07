@@ -38,6 +38,11 @@ import { CompaignPublishComponent } from './compaign/compaign-publish/compaign-p
 import { SettingsListComponent } from './settings/settings-list/settings-list.component';
 import { SettingsCreateComponent } from './settings/settings-create/settings-create.component';
 
+import {MatDatepickerModule} from '@angular/material/datepicker';
+import {MatInputModule} from '@angular/material/input';
+import {MatNativeDateModule} from '@angular/material/core';
+import {MatFormFieldModule} from '@angular/material/form-field';
+
 const ngxUiLoaderConfig: NgxUiLoaderConfig = {
   bgsColor: 'red',
   // bgsOpacity: 0.5,
@@ -110,7 +115,12 @@ const ngxUiLoaderConfig: NgxUiLoaderConfig = {
     NgxUiLoaderModule.forRoot(ngxUiLoaderConfig),
     NgxUiLoaderRouterModule, // import this module for showing loader automatically when navigating between app routes
     NgxUiLoaderHttpModule,
-    HttpClientModule
+    HttpClientModule,
+
+    MatDatepickerModule,
+    MatInputModule,
+    MatNativeDateModule,
+    MatFormFieldModule
   ],
   providers: [{
       provide: HTTP_INTERCEPTORS,

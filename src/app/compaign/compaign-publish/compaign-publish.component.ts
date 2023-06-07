@@ -5,25 +5,27 @@ import { ApiService } from 'src/app/_services/api.service';
 import { ActivatedRoute } from '@angular/router';
 import { Router } from '@angular/router';
 import { HttpHeaders } from '@angular/common/http';
+import { DatePipe } from '@angular/common';
 
 @Component({
   selector: 'app-compaign-publish',
   templateUrl: './compaign-publish.component.html',
   styleUrls: ['./compaign-publish.component.css']
 })
+
 export class CompaignPublishComponent {
   toggleVal: boolean = false;
   createForm: FormGroup;
   submitted: any = false;
   id: any = '';
   data: any = '';
-  hiddenInput:boolean = false;
+  hiddenInput: boolean = false;
   allSelect: any = false;
   listContacts: any = [];
 
   // ----------------    life cycle of angular    --------------------  ||
 
-  constructor(private fb: FormBuilder, private alertService: AlertService, private route: ActivatedRoute, private apiService: ApiService,private nextLink:Router) {
+  constructor( private fb: FormBuilder, private alertService: AlertService, private route: ActivatedRoute, private apiService: ApiService, private nextLink: Router) {
     this.createForm = fb.group({
       schedule: ['', Validators.required],
       publishData: ['']
@@ -70,14 +72,17 @@ export class CompaignPublishComponent {
     console.log('Submit Button Click');
     this.submitted = true;
     if (this.createForm.valid) {
+      var pipe = new DatePipe("en-US");
+      var date = pipe.transform(this.createForm.value.publishData, 'shortDate');
       const body = { ...this.createForm.value, contacts: this.listContacts };
+     // console.log('Submit Button Click', body);
       let url: string = `/compaign/sendMail?id=${this.id}`;
       let headers = new HttpHeaders().set("authorization", `Bearer ${localStorage.getItem('token')}`);
       let options = { headers: headers };
       this.apiService.post(url, body, options).subscribe((data: any) => {
         if (data.status) {
           this.alertService.success('data.message'); // Alert---
-          console.log('ruslte',data)
+          console.log('ruslte', data)
           // this.nextLink.navigate(['/compaign/template', data.data]);
         } else {
           this.alertService.warning(data.message); // Alert---
@@ -105,7 +110,8 @@ export class CompaignPublishComponent {
     this.createForm.reset();
   }
 
-  publisSelectdate(){
-      this.hiddenInput = true;
-    }
+  publisSelectdate() {
+    this.hiddenInput = true;
+  }
+  
 }

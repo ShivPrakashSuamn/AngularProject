@@ -44,9 +44,9 @@
                                                 <tr *ngFor="let row of data" >
                                                     <td> {{row.id}} </td> 
                                                     <td> {{row.key}}  </td>                                               
-                                                    <td *ngIf="row.value && row.value != 'null' && row.key != 'LOGO'"> {{ row.value }} </td>                                        
+                                                    <td *ngIf="row.value && row.value != 'null' && row.type != 'Image'"> {{ row.value }} </td>                                        
                                                     <td *ngIf="row.value && row.value == 'null'"> Null </td>                                        
-                                                    <td  *ngIf="row.value && row.value != 'null' && row.key == 'LOGO'" class="p-1">
+                                                    <td  *ngIf="row.value && row.value != 'null' && row.type == 'Image'" class="p-1">
                                                         <img src="http://localhost:3001/uploads/images/{{row.value}}" class="rounded tableImg" alt="Logo" />
                                                     </td>
                                                     <td> {{row.type}}  </td> 
@@ -77,8 +77,8 @@
                                                             <tr>
                                                                 <th class="tex"> Value :</th>
                                                                 <td *ngIf="value && value == 'null'"> Null </td>
-                                                                <td *ngIf="value && value != 'null' && key != 'LOGO'"> {{ value }} </td>
-                                                                <td *ngIf="value && value != 'null' && key == 'LOGO'"> 
+                                                                <td *ngIf="value && value != 'null' && type != 'Image'"> {{ value }} </td>
+                                                                <td *ngIf="value && value != 'null' && type == 'Image'"> 
                                                                     <img  src="http://localhost:3001/uploads/images/{{value}}" class="rounded imgThumbnail" />       
                                                                 </td>
                                                             </tr>

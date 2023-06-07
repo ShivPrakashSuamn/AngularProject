@@ -19,6 +19,7 @@ export class SettingsCreateComponent {
   iamge: any;
   logoGet:any 
   settingData: string = '';
+  typeToggle:boolean = false;
 
   // ----------------    life cycle of angular    --------------------  ||
 
@@ -26,6 +27,7 @@ export class SettingsCreateComponent {
     this.createForm = fb.group({
       type: ['', Validators.required],
       key: ['', Validators.required],
+      value:['']
     });
   }
 
@@ -33,13 +35,22 @@ export class SettingsCreateComponent {
     this.id = this.route.snapshot.params['id'];
     this.getType();
     if (this.id != undefined) {
-      console.log('Update id =', this.id)
       this.getData();
     }
   }
 
   get f() {
     return this.createForm.controls;
+  }
+
+  ngDoCheck(){       //  Input Chang Function   ---------------------
+    let type = this.createForm.value.type;
+    if(type == 'Image'){
+      this.typeToggle = true;
+    } else {
+      this.typeToggle = false;
+    }
+    // when any input change then it call with window refresh
   }
 
   // ----------------    custome methods   --------------------------  ||
@@ -49,7 +60,7 @@ export class SettingsCreateComponent {
   }
 
   submit() {    // Submit Form    -----------------------------------
-    console.log('Submit Button Click');
+   
     this.submitted = true;
     if (this.createForm.valid) {
       let url: string = `/setting/userstore`;
@@ -60,6 +71,11 @@ export class SettingsCreateComponent {
       let formData: FormData = new FormData();
       formData.append('type', body.type)
       formData.append('key', body.key)
+      if(body.value  == ''){
+        formData.append('value', 'null')
+      } else {
+        formData.append('value', body.value)
+      }
       if (this.id == undefined) {
         if (this.iamge) {
           formData.append('file', this.iamge, this.iamge.name);
@@ -76,7 +92,6 @@ export class SettingsCreateComponent {
       let headers = new HttpHeaders().set("authorization", `Bearer ${localStorage.getItem('token')}`);
       let options = { headers: headers };
       this.apiService.post(url, formData, options).subscribe((data: any) => {
-       // console.log('Form Result -', data);
         if (data.status) {
           this.alertService.success(data.message); // Alert---
         } else {
@@ -98,6 +113,7 @@ export class SettingsCreateComponent {
         this.createForm = this.fb.group({
           type: [`${userData.type}`, Validators.required],
           key: [`${userData.key}`, Validators.required],
+          value: [`${userData.value}`, Validators.required],
         });
       } else {
         this.alertService.error('Data Fatch Failed..');  // data.message -----

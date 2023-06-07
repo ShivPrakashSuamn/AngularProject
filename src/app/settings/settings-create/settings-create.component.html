@@ -40,7 +40,7 @@
                             <hr>
                             <form class="form" [formGroup]="createForm" (ngSubmit)="submit()"class="mt-4" enctype="multipart/form-data">  	
                                 <div class="row" >
-                                    <div class="col-md-4">
+                                    <div [ngClass]="{'col-md-4':typeToggle,'d-none':!typeToggle}" >
                                         <h4 class="tex"> Settings file :</h4>
                                         <div class="blank-box text-center mt-4">
                                             <i class='bx bx-desktop nav_icon ' style="font-size: 100px; color: #b6b6b6d9;"></i>
@@ -56,7 +56,7 @@
                                             </h6>
                                         </div>
                                     </div>
-                                    <div class="col-md-8 p-0">
+                                    <div [ngClass]="{'col-md-8':typeToggle,'col-md-12':!typeToggle}">
                                         <h4 class="tex"> Basic information :</h4>
                                         <div class="row mt-3">
                                             <div class="col-md-12"> 
@@ -66,11 +66,16 @@
                                                     <option value="">Select Type</option>
                                                     <option *ngFor="let rowData of settingData" value="{{rowData}}" [selected]="type.value == rowData"> {{rowData}}</option> 
                                                 </select><br>
-                                            
                                                 <label for="key" class="tex"> Key :</label>
                                                 <input type="text" class="form-control bg-transparent" name="key" placeholder="Enter Key" formControlName="key" oninput="this.value = this.value.toUpperCase()"
                                                     [style.border]="(submitted && f['key'].errors && f['key'].errors['required'])==true ? '1px solid red' :'1px solid #c6c6c6'" /><br>
-                                            
+                                                
+                                                <div [ngClass]="{'d-none':typeToggle}">
+                                                    <label for="value" class="tex" > Value :</label>
+                                                    <input type="text" class="form-control bg-transparent" name="value" placeholder="Enter value" formControlName="value" 
+                                                    [style.border]="(submitted && f['value'].errors && f['value'].errors['required'])==true ? '1px solid red' :'1px solid #c6c6c6'" /><br>
+                                                </div>
+
                                                 <div class="float-end">
                                                     <input type="reset" class="btn cancelbtn" (click)="reset()" value="Cancal" name="cancal">
                                                     <input type="submit" class="btn battcolor" value="SAVE" name="submit">
