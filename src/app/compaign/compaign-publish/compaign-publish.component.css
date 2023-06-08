@@ -97,3 +97,27 @@ h1 {
   font-size: 18px;
   margin: 2px 15px;
 }
+
+.time-set{
+  width: 320px;
+  height: 60px;
+  background: whitesmoke;
+  border-bottom: 1px solid #474747cf;
+  float: left;
+  margin: 0px 12px;
+}
+
+.set-new-btn{
+  border: 1px solid #c6c6c680;
+  height: 35px;
+  margin: 0px 10px;
+}
+.clock-set{
+  margin: -18px 0px 0px 11px;
+  padding: 8px;
+  border-radius: 50px;
+  border: none;
+}
+.clock-set:hover{
+  background: #d6dcdc9e;
+}

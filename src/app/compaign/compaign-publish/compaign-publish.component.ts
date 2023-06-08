@@ -22,19 +22,22 @@ export class CompaignPublishComponent {
   hiddenInput: boolean = false;
   allSelect: any = false;
   listContacts: any = [];
+  time: string = '';
 
   // ----------------    life cycle of angular    --------------------  ||
 
   constructor( private fb: FormBuilder, private alertService: AlertService, private route: ActivatedRoute, private apiService: ApiService, private nextLink: Router) {
     this.createForm = fb.group({
       schedule: ['', Validators.required],
-      publishData: ['']
+      publishData: [''],
+      publishTime: ['']
     });
   }
 
   ngOnInit() {        //  ngOninit Function -------------------------
     this.id = this.route.snapshot.params['id'];
     this.dataGet();
+    this.setNow();
   }
 
   get f() {
@@ -75,7 +78,7 @@ export class CompaignPublishComponent {
       var pipe = new DatePipe("en-US");
       var date = pipe.transform(this.createForm.value.publishData, 'shortDate');
       const body = { ...this.createForm.value, contacts: this.listContacts };
-     // console.log('Submit Button Click', body);
+      //console.log('Submit Button Click', );
       let url: string = `/compaign/sendMail?id=${this.id}`;
       let headers = new HttpHeaders().set("authorization", `Bearer ${localStorage.getItem('token')}`);
       let options = { headers: headers };
@@ -113,5 +116,13 @@ export class CompaignPublishComponent {
   publisSelectdate() {
     this.hiddenInput = true;
   }
-  
+
+  setNow(){           // Set function    -----------------------------
+    let now = new Date();
+    let hours = ("0" + now.getHours()).slice(-2);
+    let minutes = ("0" + now.getMinutes()).slice(-2);
+    let str = hours + ':' + minutes;
+    this.time = str;
+  }
+
 }

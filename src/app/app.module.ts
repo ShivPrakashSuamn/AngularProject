@@ -41,7 +41,7 @@ import { SettingsCreateComponent } from './settings/settings-create/settings-cre
 import {MatDatepickerModule} from '@angular/material/datepicker';
 import {MatInputModule} from '@angular/material/input';
 import {MatNativeDateModule} from '@angular/material/core';
-import {MatFormFieldModule} from '@angular/material/form-field';
+//import {MatFormFieldModule} from '@angular/material/form-field';
 
 const ngxUiLoaderConfig: NgxUiLoaderConfig = {
   bgsColor: 'red',
@@ -120,7 +120,7 @@ const ngxUiLoaderConfig: NgxUiLoaderConfig = {
     MatDatepickerModule,
     MatInputModule,
     MatNativeDateModule,
-    MatFormFieldModule
+   // MatFormFieldModule
   ],
   providers: [{
       provide: HTTP_INTERCEPTORS,
