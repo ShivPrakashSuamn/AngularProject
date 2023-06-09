@@ -48,10 +48,23 @@ export class ContactImportComponent {
       let options = { headers: headers };
       this.apiService.post(url, formData, options).subscribe((data:any)=>{
         this.alertService.success(data.message);
+        this.worklogUpdate('Import CSV');
       });
     } else {
       this.alertService.error('This is input Empty');
     }
+  }
+
+  worklogUpdate(type: any) {   //  Worklog   ------------------------------
+    let url: string = `/auth/worklogStore`;
+    const data = { 'title': 'Contact', 'description': `${type}` }
+    let headers = new HttpHeaders().set("authorization", `Bearer ${localStorage.getItem('token')}`);
+    let options = { headers: headers };
+    this.apiService.post(url, data, options).subscribe((data: any) => {
+      if (data.status) {
+        //console.log('worklogUpdate', data);
+      }
+    });
   }
 
   sidebarToggle(eventData: { toggleVal: boolean }) { // gettting value from child component

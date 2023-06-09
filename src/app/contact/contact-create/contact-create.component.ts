@@ -17,7 +17,7 @@ export class ContactCreateComponent {
   data: any = [];
   id: any = undefined;
   img: any;
-  profileImage:any;
+  profileImage: any;
 
   // ----------------    life cycle of angular    --------------------  ||
 
@@ -48,7 +48,7 @@ export class ContactCreateComponent {
 
   // ----------------    custome methods   --------------------------  ||
 
-  handleFileUpload(target:any){  // iamge handle    ----------------
+  handleFileUpload(target: any) {  // iamge handle    ----------------
     this.profileImage = target.files[0];
   }
 
@@ -57,8 +57,8 @@ export class ContactCreateComponent {
     this.submitted = true;
     if (this.createForm.valid) {
       let url: string = `/contact/store`;
-      if(this.id){
-        url = `/contact/update?id=${this.id}`; 
+      if (this.id) {
+        url = `/contact/update?id=${this.id}`;
       }
       const body = this.createForm.value;
       let formData: FormData = new FormData();
@@ -70,16 +70,16 @@ export class ContactCreateComponent {
       formData.append('city', body.city)
       formData.append('pincode', body.pin_code)
       formData.append('phone', body.phone)
-      if(this.id == undefined){
-        if(this.profileImage){
-          formData.append('file', this.profileImage,this.profileImage.name);
+      if (this.id == undefined) {
+        if (this.profileImage) {
+          formData.append('file', this.profileImage, this.profileImage.name);
         } else {
           formData.delete('file');
         }
-      }else if (this.id != ''){
-        if(this.profileImage){
-          formData.append('file', this.profileImage,this.profileImage.name);
-        }else{
+      } else if (this.id != '') {
+        if (this.profileImage) {
+          formData.append('file', this.profileImage, this.profileImage.name);
+        } else {
           formData.delete('file');
         }
       }
@@ -88,6 +88,11 @@ export class ContactCreateComponent {
       this.apiService.post(url, formData, options).subscribe((data: any) => {
         if (data.status) {
           this.alertService.success(data.message); // Alert---
+          if (this.id) {
+            this.worklogUpdate('Update');
+          } else {
+            this.worklogUpdate('Create');
+          }
         } else {
           this.alertService.warning(data.message); // Alert---
         }
@@ -95,6 +100,18 @@ export class ContactCreateComponent {
     } else {
       this.alertService.error('This is input Empty');
     }
+  }
+
+  worklogUpdate(type: any) { //  Worklog   ----------------------------
+    let url: string = `/auth/worklogStore`;
+    const data = { 'title': 'Contact', 'description': `${type}` }
+    let headers = new HttpHeaders().set("authorization", `Bearer ${localStorage.getItem('token')}`);
+    let options = { headers: headers };
+    this.apiService.post(url, data, options).subscribe((data: any) => {
+      if (data.status) {
+        //console.log('worklogUpdate', data);
+      }
+    });
   }
 
   sidebarToggle(eventData: { toggleVal: boolean }) { //Sidebar manage 
@@ -109,13 +126,13 @@ export class ContactCreateComponent {
   getData() {          // Upadte data get end input fill  ------------
     let url: string = `/contact/show?id=${this.id}`;
     let headers = new HttpHeaders().set("authorization", `Bearer ${localStorage.getItem('token')}`);
-    this.apiService.get(url , headers).subscribe((data: any) => {
+    this.apiService.get(url, headers).subscribe((data: any) => {
       if (data && data.status) {
         let userData = data.data[0];
         var dt = new Date(userData.dob);
         var day = ("0" + dt.getDate()).slice(-2);
         var month = ("0" + (dt.getMonth() + 1)).slice(-2);
-        var dob = dt.getFullYear() +"-"+ month +"-"+ day;
+        var dob = dt.getFullYear() + "-" + month + "-" + day;
         this.img = userData.image;
         var pin = userData.pin_code;
         this.createForm = this.fb.group({
@@ -135,7 +152,7 @@ export class ContactCreateComponent {
   }
 
   getImageName() {     // Selecte image name -------------------------
-    if(this.profileImage) {
+    if (this.profileImage) {
       return this.profileImage.name;
     } else if (this.img) {
       return this.img;

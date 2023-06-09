@@ -75,7 +75,8 @@
                                                     <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
                                                     <mat-datepicker #picker></mat-datepicker>
                                                     <!-- #enddocregion toggle -->
-                                                </mat-form-field>                                                  
+                                                </mat-form-field> 
+                                                                                                 
                                                 <mat-form-field class="example-full-width" style=" margin: 0px 20px;">
                                                     <mat-label>Choose a Time</mat-label>
                                                     <input matInput type="time"  [(ngModel)]="time" formControlName="publishTime" style="width: 69%;"> 
@@ -83,7 +84,7 @@
                                                         <a href="javascript:void(0)" class="btn clock-set" (click)="setNow()">
                                                             <i class='bx bx-time-five nav_icon' type='solid' style="font-size: 25px;"></i>
                                                         </a>
-                                                    <mat-hint>HH : MM : SS - <span>{{time}}</span></mat-hint> 
+                                                    <mat-hint>HH : MM : SS</mat-hint> 
                                                 </mat-form-field>
                                                
                                                 <!-- <div class="time-set">                                           
