@@ -77,14 +77,14 @@ export class CompaignPublishComponent {
     if (this.createForm.valid) {
       var pipe = new DatePipe("en-US");
       var date = pipe.transform(this.createForm.value.publishData, 'shortDate');
+      
       const body = { ...this.createForm.value, contacts: this.listContacts };
-      //console.log('Submit Button Click', );
       let url: string = `/compaign/sendMail?id=${this.id}`;
       let headers = new HttpHeaders().set("authorization", `Bearer ${localStorage.getItem('token')}`);
       let options = { headers: headers };
       this.apiService.post(url, body, options).subscribe((data: any) => {
         if (data.status) {
-          this.alertService.success('data.message'); // Alert---
+          this.alertService.success(data.message); // Alert---
           console.log('ruslte', data)
           // this.nextLink.navigate(['/compaign/template', data.data]);
         } else {
