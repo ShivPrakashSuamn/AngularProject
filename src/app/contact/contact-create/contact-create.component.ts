@@ -88,11 +88,6 @@ export class ContactCreateComponent {
       this.apiService.post(url, formData, options).subscribe((data: any) => {
         if (data.status) {
           this.alertService.success(data.message); // Alert---
-          if (this.id) {
-            this.worklogUpdate('Update');
-          } else {
-            this.worklogUpdate('Create');
-          }
         } else {
           this.alertService.warning(data.message); // Alert---
         }
@@ -100,18 +95,6 @@ export class ContactCreateComponent {
     } else {
       this.alertService.error('This is input Empty');
     }
-  }
-
-  worklogUpdate(type: any) { //  Worklog   ----------------------------
-    let url: string = `/auth/worklogStore`;
-    const data = { 'title': 'Contact', 'description': `${type}` }
-    let headers = new HttpHeaders().set("authorization", `Bearer ${localStorage.getItem('token')}`);
-    let options = { headers: headers };
-    this.apiService.post(url, data, options).subscribe((data: any) => {
-      if (data.status) {
-        //console.log('worklogUpdate', data);
-      }
-    });
   }
 
   sidebarToggle(eventData: { toggleVal: boolean }) { //Sidebar manage 

@@ -13,6 +13,8 @@ export class DashboardComponent {
   totalContact: Number = 0;
   totalList: Number = 0;
   totalCompaign: Number = 0;
+  totalSendMail: Number = 0;
+  totalErrorMail: Number = 0;
   
   // ---------------------    life cycle of angular    --------------------  ||
 
@@ -32,6 +34,8 @@ export class DashboardComponent {
         this.totalContact = data.data.totalContact;
         this.totalList = data.data.totalList;
         this.totalCompaign = data.data.totalCompaign;
+        this.totalSendMail = data.data.totalSendMail;
+        this.totalErrorMail = data.data.totalErrorMail;
       } else {
         this.alertService.warning(data.message);
       }

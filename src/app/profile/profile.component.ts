@@ -13,6 +13,7 @@ import { Router } from '@angular/router';
 export class ProfileComponent {
   toggleVal: boolean = false;
   createForm: FormGroup;
+  resetForm:FormGroup;
   submitted: any = false;
   loginData: any;
   fname: String = '';
@@ -41,7 +42,12 @@ export class ProfileComponent {
       fname: ['', Validators.required],
       lname: ['', Validators.required],
       email: ['', Validators.required],
-      mobile: ['', Validators.required],
+      mobile: ['', Validators.required]
+    });
+    this.resetForm = fb.group({
+      oldpass: ['', Validators.required],
+      newpass: ['', Validators.required],
+      conpass: ['', Validators.required]
     });
   }
   get f() {
@@ -124,6 +130,19 @@ export class ProfileComponent {
     } else {
       this.alertService.error('This is input Empty');
     }
+  }
+
+  passwordReset(){
+     console.log('ckick',this.resetForm.value);
+     if(this.resetForm.valid){
+      let url = "/auth/reset";
+      let body = this.resetForm.value;
+      let headers = new HttpHeaders().set("authorization", `Bearer ${localStorage.getItem('token')}`);
+      let options = { headers: headers }
+      this.apiService.post(url, body, options).subscribe((data:any)=>{
+        console.log('data',data);
+      })
+     }
   }
 
   getData() {           //  Data Get databes   ---------------------------------

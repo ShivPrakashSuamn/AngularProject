@@ -33,3 +33,26 @@ body {
 }
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+.h5, h5 {
+    font-size: 1.25rem !important;
+}
+.h2, h2 {
+    font-size: 2rem !important;
+    line-height: normal !important;
+}
+.h4, h4 {
+    font-size: 1.5rem !important;
+    margin: 0 !important;
+    line-height: 30px !important;
+    font-weight: 500 !important;
+}
+
+.h1, h1 {
+    font-size: 2.5rem !important;
+    line-height: normal !important;
+}
+.p, p {
+    font-size: medium !important;
+    line-height: revert !important;
+}

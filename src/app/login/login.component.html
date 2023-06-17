@@ -33,8 +33,37 @@
             <div class="inputBox">
                 <input type="submit" name="" value="Log In">
             </div>
+            <div class="text-center mt-3">
+                <button type="button" class="btn btn-outline-danger" data-bs-toggle="modal"  data-bs-target="#forgetPassword">Forget Password</button>
+            </div>
         </form>
     </div>
     <p class="forgot ">Create New Account <a routerLink="/signup">SignUp</a></p>
 </div>
+<!-- end form and start reset form ------>
+<div class="modal fade"  tabindex="-1"  id="forgetPassword" aria-hidden="true">
+    <form [formGroup]="forgetForm" (ngSubmit)="passwordForget()">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title tex" ><b>Forget Password : </b></h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <label for="oldEmail" class="tex mb-3"> Email Enter :</label>
+            <input type="email" class="form-control bg-transparent" name="oldEmail" placeholder="Email" formControlName="oldEmail"
+                [style.border]="(submittedForget && fp['oldEmail'].errors && fp['oldEmail'].errors['required'])==true ? '1px solid red' :'1px solid #c6c6c6'" /><br>              
+
+            <label for="newPassword" class="tex mb-3" [ngClass]="{'d-none':!passwordFild}"> Now Password :</label>
+            <input type="text"  [ngClass]="{'d-none':!passwordFild}" class="form-control bg-transparent" name="newPassword" placeholder="New Password" formControlName="newPassword"
+                [style.border]="(submittedForget && fp['newPassword'].errors && fp['newPassword'].errors['required'])==true ? '1px solid red' :'1px solid #c6c6c6'" /><br>              
+          </div>
+          <div class="modal-footer">
+            <input type="submit" class="btn battcolor edit" value="Reset" name="passwordReset">
+          </div>
+        </div>
+      </div>
+    </form>
+</div>
+  <!-- end -->
 

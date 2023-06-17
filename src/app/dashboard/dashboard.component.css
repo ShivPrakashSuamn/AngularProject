@@ -86,8 +86,8 @@
     margin-bottom: 5px;
 }
 .p-tag{
-    font-size: 11px;
-    margin: -8px 0px;
+    font-size: 12px !important;
+    margin: -3px 0px;
     width: 55px;
     color: #969b99;
 }

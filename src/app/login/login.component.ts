@@ -4,6 +4,7 @@ import { AlertService } from '../_services/alert.service';
 import { NgxUiLoaderService } from 'ngx-ui-loader';
 import { ApiService } from '../_services/api.service';
 import { Router } from '@angular/router';
+import { HttpHeaders } from '@angular/common/http';
 
 @Component({
   selector: 'app-login',
@@ -12,7 +13,10 @@ import { Router } from '@angular/router';
 })
 export class LoginComponent {
   loginForm: FormGroup;
+  forgetForm: FormGroup;
   submitted: any = false;
+  submittedForget: any = false;
+  passwordFild: any = false;
   head = 'Login';
   fontcolor = 'rgb(167 32 184)';
   // -------------------------------------------      life cycle of angular
@@ -22,10 +26,13 @@ export class LoginComponent {
     if(this.apiService.isLoggedIn()){
       this.route.navigate(['/dashboard']);
     }
-    // it call first
     this.loginForm = fb.group({
       email: ['', Validators.required],
       password: ['', Validators.required]
+    })
+    this.forgetForm = fb.group({
+      oldEmail: ['', Validators.required],
+      newPassword: ['']
     })
   }
 
@@ -36,6 +43,9 @@ export class LoginComponent {
   // -----------------------------------------------    custome methods   
   get f() {
     return this.loginForm.controls;
+  }
+  get fp() {
+    return this.forgetForm.controls;
   }
   
   loginSubmit() {    //  Login Form  --------------
@@ -69,9 +79,32 @@ export class LoginComponent {
     }
   }
 
+  passwordForget(){
+    this.submittedForget = true;
+    console.log('clock',this.forgetForm.value);
+    if(this.forgetForm.valid){
+      let url = '/auth/forgot';
+      let body = this.forgetForm.value;
+      let headers = new HttpHeaders().set("authorization", `Bearer ${localStorage.getItem('token')}`);
+      let options = { headers: headers };
+      this.apiService.post(url, body, options).subscribe((data:any)=>{
+        if(data.status){
+          console.log('click',data)
+          this.passwordFild = true;
+          this.alertService.success(data.message);
+        } else {
+          this.alertService.warning(data.message);
+        }
+      })
+    } else {
+      this.alertService.error('This in input Empty');
+    }
+  }
+
   light() {     //  Ligth  Mood -------------
     document.body.style.background = "white";
   }
+
   dark() {      //  Daek  Mood  --------------
     document.body.style.background = "#060c21";
   }
