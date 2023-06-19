@@ -37,11 +37,13 @@ import { EditorComponent } from './editor/editor.component';
 import { CompaignPublishComponent } from './compaign/compaign-publish/compaign-publish.component';
 import { SettingsListComponent } from './settings/settings-list/settings-list.component';
 import { SettingsCreateComponent } from './settings/settings-create/settings-create.component';
+import { ForgetDialogComponent } from './forget-dialog/forget-dialog.component';
 
 import {MatDatepickerModule} from '@angular/material/datepicker';
 import {MatInputModule} from '@angular/material/input';
 import {MatNativeDateModule} from '@angular/material/core';
 import {MatCheckboxModule} from '@angular/material/checkbox'
+import {MatDialogModule} from '@angular/material/dialog';
 //import {MatFormFieldModule} from '@angular/material/form-field';
 
 const ngxUiLoaderConfig: NgxUiLoaderConfig = {
@@ -98,7 +100,8 @@ const ngxUiLoaderConfig: NgxUiLoaderConfig = {
     EditorComponent,
     CompaignPublishComponent,
     SettingsListComponent,
-    SettingsCreateComponent
+    SettingsCreateComponent,
+    ForgetDialogComponent
   ],
   imports: [
     BrowserModule,
@@ -122,6 +125,7 @@ const ngxUiLoaderConfig: NgxUiLoaderConfig = {
     MatInputModule,
     MatNativeDateModule,
     MatCheckboxModule,
+    MatDialogModule
    // MatFormFieldModule
   ],
   providers: [{

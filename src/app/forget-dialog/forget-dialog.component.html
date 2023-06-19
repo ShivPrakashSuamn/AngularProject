@@ -1,0 +1,17 @@
+<div class="p-5">
+    <form [formGroup]="forgetForm" (ngSubmit)="passwordForget()" class="m-0">
+        <h2 class="tex mb-5 text-center"><b> New Password </b></h2>
+        <label for="generateP" class="tex mb-3"> Generate Password :</label>
+        <input type="password" class="form-control bg-transparent" name="generateP" placeholder="New Password Enter"
+            formControlName="generateP"
+            [style.border]="(submitted && fp['generateP'].errors && fp['generateP'].errors['required'])==true ? '1px solid red' :'1px solid #c6c6c6'" /><br>
+
+        <label for="confirmP" class="tex mb-3"> Confirm Password :</label>
+        <input type="text" class="form-control bg-transparent" name="confirmP" placeholder="Confirm Password" formControlName="confirmP"
+            [style.border]="(submitted && fp['confirmP'].errors && fp['confirmP'].errors['required'])==true ? '1px solid red' :'1px solid #c6c6c6'" />
+        <p class="text-danger text-center mt-1" [ngClass]="{'d': !passwordMech }"> Password is Not the Same</p> <br>
+        <div style="float: right;">
+            <input type="submit" class="btn edit mt-3 mb-5" value="Reset" name="passwordReset">
+        </div>
+    </form>
+</div>

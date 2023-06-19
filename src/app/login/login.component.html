@@ -53,13 +53,12 @@
             <label for="oldEmail" class="tex mb-3"> Email Enter :</label>
             <input type="email" class="form-control bg-transparent" name="oldEmail" placeholder="Email" formControlName="oldEmail"
                 [style.border]="(submittedForget && fp['oldEmail'].errors && fp['oldEmail'].errors['required'])==true ? '1px solid red' :'1px solid #c6c6c6'" /><br>              
-
-            <label for="newPassword" class="tex mb-3" [ngClass]="{'d-none':!passwordFild}"> Now Password :</label>
-            <input type="text"  [ngClass]="{'d-none':!passwordFild}" class="form-control bg-transparent" name="newPassword" placeholder="New Password" formControlName="newPassword"
-                [style.border]="(submittedForget && fp['newPassword'].errors && fp['newPassword'].errors['required'])==true ? '1px solid red' :'1px solid #c6c6c6'" /><br>              
           </div>
           <div class="modal-footer">
-            <input type="submit" class="btn battcolor edit" value="Reset" name="passwordReset">
+            <mat-dialog-actions>
+                <!-- <button mat-raised-button (click)="openDialog()">Pick one</button> -->
+                <input type="submit" class="btn battcolor edit" value="Next" name="passwordReset" data-bs-dismiss="modal">
+            </mat-dialog-actions>
           </div>
         </div>
       </div>
