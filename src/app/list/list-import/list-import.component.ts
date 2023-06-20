@@ -39,7 +39,6 @@ export class ListImportComponent {
     console.log('SubmitForm');
     this.submitted = true;
     if (this.fileForm.valid) {
-      this.alertService.success('CSV_File Save SuccessFull');
       // console.log('Create Form Data =', this.fileForm.value);
       let url: string = `/list/csv`;
       let formData: FormData = new FormData();

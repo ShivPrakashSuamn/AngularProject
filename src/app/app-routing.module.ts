@@ -23,13 +23,13 @@ import { CompaignPublishComponent } from './compaign/compaign-publish/compaign-p
 import { EditorComponent } from './editor/editor.component';
 import { SettingsListComponent } from './settings/settings-list/settings-list.component';
 import { SettingsCreateComponent } from './settings/settings-create/settings-create.component';
-import { ForgetDialogComponent } from './forget-dialog/forget-dialog.component';
+import { ResetPageComponent } from './reset-page/reset-page.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/login', pathMatch: 'full' },
   { path: 'login', component: LoginComponent },
-  { path: 'login/forget', component: ForgetDialogComponent },
   { path: 'signup', component: SignComponent},
+  { path: 'reset', component: ResetPageComponent },
   { path: 'profile', component: ProfileComponent, canActivate: [AuthGuard] },
   { path: 'dashboard', component: DashboardComponent, canActivate: [AuthGuard] },
   { path: 'template', component: TemplateListComponent, canActivate: [AuthGuard] },

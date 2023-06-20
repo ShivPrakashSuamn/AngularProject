@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { ForgetDialogComponent } from './forget-dialog.component';
+import { ResetPageComponent } from './reset-page.component';
 
-describe('ForgetDialogComponent', () => {
-  let component: ForgetDialogComponent;
-  let fixture: ComponentFixture<ForgetDialogComponent>;
+describe('ResetPageComponent', () => {
+  let component: ResetPageComponent;
+  let fixture: ComponentFixture<ResetPageComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ ForgetDialogComponent ]
+      declarations: [ ResetPageComponent ]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(ForgetDialogComponent);
+    fixture = TestBed.createComponent(ResetPageComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

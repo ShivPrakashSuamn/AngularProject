@@ -7,45 +7,52 @@ import { Router } from '@angular/router';
 import { HttpHeaders } from '@angular/common/http';
 
 @Component({
-  selector: 'app-forget-dialog',
-  templateUrl: './forget-dialog.component.html',
-  styleUrls: ['./forget-dialog.component.css']
+  selector: 'app-reset-page',
+  templateUrl: './reset-page.component.html',
+  styleUrls: ['./reset-page.component.css']
 })
-export class ForgetDialogComponent {
-  forgetForm: FormGroup;
+export class ResetPageComponent {
+  resetForm: FormGroup;
   submitted: any = false;
   passwordMech: any = false;
-
-  // -------------------------------------------      life cycle of angular
+  token: any;
+  // -------------------------------------------   life cycle of angular   --------------------------  //
 
   constructor(private fb: FormBuilder, private alertService: AlertService, private loaderService: NgxUiLoaderService, private apiService: ApiService, private route: Router) {
-
     if (this.apiService.isLoggedIn()) {
       this.route.navigate(['/dashboard']);
     }
 
-    this.forgetForm = fb.group({
+    this.resetForm = fb.group({
       generateP: ['', Validators.required],
       confirmP: ['', Validators.required]
     })
   }
 
+  ngOnInit() {        //  ngOninit Function -------------------------
+    this.token = (this.route.url).slice(13);
+  }
   get fp() {
-    return this.forgetForm.controls;
+    return this.resetForm.controls;
   }
 
-  passwordForget() {
+  passwordReset() {
     this.submitted = true;
-    let value = this.forgetForm.value;
+    let value = this.resetForm.value;
+    console.log('lcik', value)
     if (value.generateP == value.confirmP) {
       this.passwordMech = false;
-      let url = '/auth/forgot';
-      let body = this.forgetForm.value;
+      let url = '/auth/reset';
+      let body = {
+        'generateP': this.resetForm.value.generateP,
+        'confirmP': this.resetForm.value.confirmP,
+        'token': this.token
+      };
       let headers = new HttpHeaders().set("authorization", `Bearer ${localStorage.getItem('token')}`);
       let options = { headers: headers };
       this.apiService.post(url, body, options).subscribe((data: any) => {
+        console.log('click', data)
         if (data.status) {
-          console.log('click', data)
           this.alertService.success(data.message);
         } else {
           this.alertService.warning(data.message);

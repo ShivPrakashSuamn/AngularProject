@@ -5,8 +5,6 @@ import { NgxUiLoaderService } from 'ngx-ui-loader';
 import { ApiService } from '../_services/api.service';
 import { Router } from '@angular/router';
 import { HttpHeaders } from '@angular/common/http';
-import { ForgetDialogComponent} from '../forget-dialog/forget-dialog.component';
-import { MatDialog } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-login',
@@ -20,9 +18,10 @@ export class LoginComponent {
   submittedForget: any = false;
   head = 'Login';
   fontcolor = 'rgb(167 32 184)';
-  // -------------------------------------------      life cycle of angular
 
-  constructor(private fb: FormBuilder, private matDialog: MatDialog, private alertService: AlertService, private loaderService: NgxUiLoaderService, private apiService: ApiService, private route: Router) {
+  // -------------------------------------------      life cycle of angular  - -------------------------------    //
+
+  constructor(private fb: FormBuilder, private alertService: AlertService, private loaderService: NgxUiLoaderService, private apiService: ApiService, private route: Router) {
 
     if (this.apiService.isLoggedIn()) {
       this.route.navigate(['/dashboard']);
@@ -35,16 +34,12 @@ export class LoginComponent {
       oldEmail: ['', Validators.required]
     })
   }
-  openDialog() {
-    this.matDialog.open(ForgetDialogComponent, {
-      width: '650px'
-    })
-  }
+
   ngOnInit(): void {
 
   }
 
-  // -----------------------------------------------    custome methods   
+  // -----------------------------------------------    custome methods    ----------------------------------  //
   get f() {
     return this.loginForm.controls;
   }
@@ -93,9 +88,7 @@ export class LoginComponent {
       let options = { headers: headers };
       this.apiService.post(url, body, options).subscribe((data: any) => {
         if (data.status) {
-          // localStorage.setItem('isLoggedIn', "1");
-          // localStorage.setItem('token', data.data.token); 
-          this.openDialog()
+          this.alertService.success(data.message);
         } else {
           this.alertService.warning(data.message);
         }
