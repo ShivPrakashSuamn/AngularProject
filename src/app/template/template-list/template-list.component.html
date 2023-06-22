@@ -29,7 +29,7 @@
                         <!-- for loop -->
                         <div class="row mt-5">
                             <div *ngFor="let row of data" class="col-md-3 zoom">
-                                <a href="javascript:void(0)" style="text-decoration: none;">
+                                <a href="javascript:void(0)" routerLink="/template/opne/{{row.id}}" style="text-decoration: none;">
                                     <div class="comman">
                                         <div class="thum"><img src="http://localhost:3001{{row.thumbnail}}" style="overflow: auto;" /></div>
                                         <div class="tex p-3 mt-2 overflow">

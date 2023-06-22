@@ -6,7 +6,7 @@
             [style.border]="(submitted && fp['generateP'].errors && fp['generateP'].errors['required'])==true ? '1px solid red' :'1px solid #c6c6c6'" /><br>
 
         <label for="confirmP" class="tex mb-3"> Confirm Password :</label>
-        <input type="text" class="form-control bg-transparent" name="confirmP" placeholder="Confirm Password" formControlName="confirmP"
+        <input type="password" class="form-control bg-transparent" name="confirmP" placeholder="Confirm Password" formControlName="confirmP"
             [style.border]="(submitted && fp['confirmP'].errors && fp['confirmP'].errors['required'])==true ? '1px solid red' :'1px solid #c6c6c6'" />
         <p class="text-danger text-center mt-1" [ngClass]="{'d': !passwordMech }"> Password is Not the Same</p> <br>
         

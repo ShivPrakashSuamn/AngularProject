@@ -81,7 +81,7 @@ body {
   align-items: center;
   min-height: 100vh;
   background: radial-gradient(#8a42f0eb, #c4168b9c);
-  font-family: 'David Libre', serif;
+  font-family: 'David Libre', serif !important;
   z-index: +1;
 }
 
@@ -172,8 +172,9 @@ body {
   .countdown .number h2 {
     margin: 0;
     padding: 0;
-    font-size: 20em;
+    font-size: 20em !important;
     color: #fff;
+    font-family: 'David Libre', serif !important;
   }
   
   @keyframes animate {
@@ -194,4 +195,7 @@ body {
     font-size: 20px;
     word-spacing: 30px;
     text-align: center;
+}
+.upload{
+    cursor: pointer;
 }

@@ -44,17 +44,18 @@ import {MatNativeDateModule} from '@angular/material/core';
 import {MatCheckboxModule} from '@angular/material/checkbox'
 import {MatDialogModule} from '@angular/material/dialog';
 import { ResetPageComponent } from './reset-page/reset-page.component';
+import { TemplateOpneComponent } from './template/template-opne/template-opne.component';
 //import {MatFormFieldModule} from '@angular/material/form-field';
 
 const ngxUiLoaderConfig: NgxUiLoaderConfig = {
   bgsColor: 'red',
+  bgsPosition: POSITION.centerCenter,
   // bgsOpacity: 0.5,
-  // bgsPosition: POSITION.bottomLeft,
-  // bgsSize: 60,
+  // bgsSize: 35,
   // bgsType: SPINNER.chasingDots,
-  // blur: 5,
+  // blur: 10,
   // delay: 0,
-  fastFadeOut: true,
+  // fastFadeOut: true,
   fgsColor: 'red',
   // fgsPosition: POSITION.centerCenter,
   // fgsSize: 60,
@@ -101,7 +102,8 @@ const ngxUiLoaderConfig: NgxUiLoaderConfig = {
     CompaignPublishComponent,
     SettingsListComponent,
     SettingsCreateComponent,
-    ResetPageComponent
+    ResetPageComponent,
+    TemplateOpneComponent
   ],
   imports: [
     BrowserModule,

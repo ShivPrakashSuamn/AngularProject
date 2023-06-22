@@ -5,6 +5,7 @@ import { NgxUiLoaderService } from 'ngx-ui-loader';
 import { ApiService } from '../_services/api.service';
 import { Router } from '@angular/router';
 import { HttpHeaders } from '@angular/common/http';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-reset-page',
@@ -18,7 +19,7 @@ export class ResetPageComponent {
   token: any;
   // -------------------------------------------   life cycle of angular   --------------------------  //
 
-  constructor(private fb: FormBuilder, private alertService: AlertService, private loaderService: NgxUiLoaderService, private apiService: ApiService, private route: Router) {
+  constructor(private fb: FormBuilder, private alertService: AlertService, private loaderService: NgxUiLoaderService, private apiService: ApiService, private rout: ActivatedRoute , private route: Router) {
     if (this.apiService.isLoggedIn()) {
       this.route.navigate(['/dashboard']);
     }
@@ -30,7 +31,9 @@ export class ResetPageComponent {
   }
 
   ngOnInit() {        //  ngOninit Function -------------------------
-    this.token = (this.route.url).slice(13);
+    this.rout.queryParams.subscribe((params: any) => {
+      this.token = decodeURI(params['token']) ;
+    });
   }
   get fp() {
     return this.resetForm.controls;
@@ -53,6 +56,7 @@ export class ResetPageComponent {
       this.apiService.post(url, body, options).subscribe((data: any) => {
         console.log('click', data)
         if (data.status) {
+          this.route.navigate(['/login']);
           this.alertService.success(data.message);
         } else {
           this.alertService.warning(data.message);

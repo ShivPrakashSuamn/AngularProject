@@ -24,6 +24,7 @@ import { EditorComponent } from './editor/editor.component';
 import { SettingsListComponent } from './settings/settings-list/settings-list.component';
 import { SettingsCreateComponent } from './settings/settings-create/settings-create.component';
 import { ResetPageComponent } from './reset-page/reset-page.component';
+import { TemplateOpneComponent } from './template/template-opne/template-opne.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/login', pathMatch: 'full' },
@@ -34,6 +35,7 @@ const routes: Routes = [
   { path: 'dashboard', component: DashboardComponent, canActivate: [AuthGuard] },
   { path: 'template', component: TemplateListComponent, canActivate: [AuthGuard] },
   { path: 'template/create', component: TemplateCreateComponent, canActivate: [AuthGuard] },
+  { path: 'template/opne/:id', component: TemplateOpneComponent, canActivate: [AuthGuard] },
   { path: 'contact', component: ContactListComponent, canActivate: [AuthGuard] },
   { path: 'contact/update/:id', component: ContactCreateComponent, canActivate: [AuthGuard]},
   { path: 'contact/create', component: ContactCreateComponent , canActivate: [AuthGuard]},

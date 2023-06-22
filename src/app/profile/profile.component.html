@@ -32,7 +32,7 @@
                                   <span *ngIf="image == 'null'" class="p-0"><div class="text-image tex"><b style="font-size: 70px;">{{fname.substr(0,1)}}</b></div></span>
                                 </span>
                                 <div class="form-group imgUpload">
-                                  <label for="exampleInputFile">Upload</label>
+                                  <label for="exampleInputFile" class="Upload">Upload <i class='bx bx-camera'></i></label>
                                   <input type="file" id="exampleInputFile" style="display: none;" name="file" (change)="handleFileUpload($event.target)"/>
                                 </div>
                                   
