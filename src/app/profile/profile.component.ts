@@ -13,7 +13,6 @@ import { Router } from '@angular/router';
 export class ProfileComponent {
   toggleVal: boolean = false;
   createForm: FormGroup;
-  resetForm:FormGroup;
   submitted: any = false;
   loginData: any;
   fname: String = '';
@@ -26,14 +25,21 @@ export class ProfileComponent {
   countdown: boolean = false;
   message: string = '';
 
-  data:any = [];
-  page:any = 1;
-  totalRows:any = 0;
-  totalPage:any = 0;
-  search:any='';
-  limit:any = 10;
-  order_by:any = 'id'; 
-  order_type:any = 'desc';
+  componentName = 'profile'; 
+  // Reset passwprd -----
+  resetForm: FormGroup;
+  resetSubmitted: any = false;
+  passwordMech: any = false;
+
+  // Worklog  -----------
+  data: any = [];
+  page: any = 1;
+  totalRows: any = 0;
+  totalPage: any = 0;
+  search: any = '';
+  limit: any = 10;
+  order_by: any = 'id';
+  order_type: any = 'desc';
 
   // ----------------    life cycle of angular    --------------------  ||
 
@@ -53,6 +59,9 @@ export class ProfileComponent {
   get f() {
     return this.createForm.controls;
   }
+  get rf() {
+    return this.resetForm.controls;
+  }
 
   ngOnInit() {
     this.getLoginUser();
@@ -70,7 +79,7 @@ export class ProfileComponent {
     this.email = data.email;
     this.mobile = data.mobile;
     this.image = data.image;
-    
+
     this.createForm = this.fb.group({
       fname: [`${this.fname}`, Validators.required],
       lname: [`${this.lname}`, Validators.required],
@@ -115,7 +124,6 @@ export class ProfileComponent {
       this.apiService.post(url, formData, options).subscribe((data: any) => {
         if (data.status) {
           this.countdown = true;
-          this.worklogUpdate('Update');
           if (this.countdown) {
             this.message = data.message;
             setInterval(() => {
@@ -132,65 +140,75 @@ export class ProfileComponent {
     }
   }
 
-  passwordReset(){
-     console.log('ckick',this.resetForm.value);
-     if(this.resetForm.valid){
-      let url = "/auth/reset";
-      let body = this.resetForm.value;
-      let headers = new HttpHeaders().set("authorization", `Bearer ${localStorage.getItem('token')}`);
-      let options = { headers: headers }
-      this.apiService.post(url, body, options).subscribe((data:any)=>{
-        console.log('data',data);
-      })
-     }
+  passwordReset() {
+    this.resetSubmitted = true;
+    let value = this.resetForm.value;
+    if (value.newpass == value.conpass) {
+      this.passwordMech = false;
+      if (this.resetForm.valid) {
+        let url = "/auth/reset";
+        let body = {
+          oldpass: value.oldpass,
+          newpass: value.newpass,
+          conpass: value.conpass,
+          loginUserEmail: this.email
+        } 
+        let headers = new HttpHeaders().set("authorization", `Bearer ${localStorage.getItem('token')}`);
+        let options = { headers: headers }
+        this.apiService.post(url, body, options).subscribe((data: any) => {
+          if (data.status) {
+            this.alertService.success(data.message);
+            this.countdown = true;
+            if (this.countdown) {
+              this.message = data.message;
+              setInterval(() => {
+                localStorage.clear();
+                window.location.reload();
+              }, 9000);
+            }
+          } else {
+            this.alertService.warning(data.message);
+          }
+        });
+      }
+    } else {
+      this.passwordMech = true;
+    }
   }
 
   getData() {           //  Data Get databes   ---------------------------------
-    let url:string = `/auth/worklog/?limit=${this.limit}&page=${this.page}&order_by=${this.order_by}&order_type=${this.order_type}&search=${this.search}`;
-    this.apiService.get(url, {}).subscribe((data:any) => {
-      if(data && data.status){
+    let url: string = `/auth/worklog/?limit=${this.limit}&page=${this.page}&order_by=${this.order_by}&order_type=${this.order_type}&search=${this.search}`;
+    this.apiService.get(url, {}).subscribe((data: any) => {
+      if (data && data.status) {
         this.page = data.data.page;
-        this.data = data.data.data; 
+        this.data = data.data.data;
         this.totalRows = data.data.allUser;
         this.totalPage = data.data.totalPage;
-        }else{
-          this.alertService.error(data.message);  // data.message -----
-        }
+      } else {
+        this.alertService.error(data.message);  // data.message -----
       }
+    }
     );
   }
-
-  worklogUpdate(type: any) { //  Worklog   ----------------------------
-    let url: string = `/auth/worklogStore`;
-    const data = { 'title': 'Profile', 'description': `${type}` }
-    let headers = new HttpHeaders().set("authorization", `Bearer ${localStorage.getItem('token')}`);
-    let options = { headers: headers };
-    this.apiService.post(url, data, options).subscribe((data: any) => {
-      if (data.status) {
-        //console.log('worklogUpdate', data);
-      }
-    });
-  }
-
-  pageChange(e:any){
+  pageChange(e: any) {
     this.page = e;
     this.getData();
   }
-  getTOFROM(){          //  pagination List  offset  ----------------------------
-    let offset = (this.page -1 )*this.limit; 
+  getTOFROM() {          //  pagination List  offset  ----------------------------
+    let offset = (this.page - 1) * this.limit;
     let l = this.limit;
-    let lastOffset = parseInt(l)+offset; 
-    return `${offset+1} to ${lastOffset}`;
-  } 
+    let lastOffset = parseInt(l) + offset;
+    return `${offset + 1} to ${lastOffset}`;
+  }
 
-  sortBy(key:any){      //  Table - Order by asc/decs ---------------------------
-    this.order_by = key; 
-    if(this.order_type == 'asc'){
-      this.order_type = 'desc'; 
-    }else{
+  sortBy(key: any) {      //  Table - Order by asc/decs ---------------------------
+    this.order_by = key;
+    if (this.order_type == 'asc') {
+      this.order_type = 'desc';
+    } else {
       this.order_type = 'asc';
     }
-    this.getData(); 
+    this.getData();
   }
 
   reset() {           // Form  reset  --------------------------------

@@ -13,7 +13,8 @@
               <div class="card1">
                 <div class="rounded-top text-white d-flex flex-row"  style="background:linear-gradient(315deg,#e91e63,#5d02ff); height:200px;">
                   <div class="ms-4 mt-5 d-flex flex-column" style="width: 150px;">
-                    <img src="http://localhost:3001/uploads/images/{{image}}" alt="Generic placeholder image" class="img-fluid img-thumbnail mt-4 mb-2" style="width: 150px; z-index: 1">
+                    <span *ngIf="image == 'null'" class="mb-2 mt-4 "><div class="img-fluid"><b class="tex" style="font-size: 70px;">{{fname.substr(0,1)}}</b></div></span>
+                    <img *ngIf="image != 'null'" src="http://localhost:3001/uploads/images/{{image}}" alt="Generic placeholder image" class=" img-thumbnail mt-4 mb-2" style="width: 150px; z-index: 1">
                     <button type="button" class="btn edit mt-1" style="z-index: 1;" data-bs-toggle="modal" data-bs-target="#exampleModal"> Edit profile </button>
                     <button type="button" class="btn resetp mt-2" style="z-index: 1;" data-bs-toggle="modal"  data-bs-target="#resetPassword" > Reset password </button>
                     <!--- edit Form ------------>
@@ -68,17 +69,18 @@
                             </div>
                             <div class="modal-body">
                               <label for="oldpass" class="tex"> Old Password :</label>
-                              <input type="text" class="form-control bg-transparent" name="oldpass" placeholder="Old Password" formControlName="oldpass"
-                                  [style.border]="(submitted && f['oldpass'].errors && f['oldpass'].errors['required'])==true ? '1px solid red' :'1px solid #c6c6c6'" /><br>
+                              <input type="password" class="form-control bg-transparent" name="oldpass" placeholder="Old Password" formControlName="oldpass"
+                                  [style.border]="(resetSubmitted && rf['oldpass'].errors && rf['oldpass'].errors['required'])==true ? '1px solid red' :'1px solid #c6c6c6'" /><br>
                               <label for="newpass" class="tex"> New Password :</label>
                               <input type="password" class="form-control bg-transparent" name="newpass" placeholder="New Password" formControlName="newpass"
-                                  [style.border]="(submitted && f['newpass'].errors && f['newpass'].errors['required'])==true ? '1px solid red' :'1px solid #c6c6c6'" /><br>
+                                  [style.border]="(resetSubmitted && rf['newpass'].errors && rf['newpass'].errors['required'])==true ? '1px solid red' :'1px solid #c6c6c6'" /><br>
                               <label for="conpass" class="tex"> Confirm Password :</label>
                               <input type="password"class="form-control bg-transparent" name="conpass" placeholder="Confirm Password" formControlName="conpass"
-                                  [style.border]="(submitted && f['conpass'].errors && f['conpass'].errors['required'])==true ? '1px solid red' :'1px solid #c6c6c6'" /><br>                  
-                            </div>
+                                  [style.border]="(resetSubmitted && rf['conpass'].errors && rf['conpass'].errors['required'])==true ? '1px solid red' :'1px solid #c6c6c6'" />                  
+                                  <p class="text-danger text-center mt-1" [ngClass]="{'d': !passwordMech }"> Password is Not the Same</p> <br>
+                              </div>
                             <div class="modal-footer">
-                              <input type="submit" class="btn battcolor edit" value="Reset" name="passwordReset" data-bs-dismiss="modal">
+                              <input type="submit" class="btn battcolor edit" value="Reset" name="passwordReset" >
                             </div>
                           </div>
                         </div>

@@ -20,4 +20,11 @@ describe('ProfileComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+  // it("testing title", () => {
+  //   expect(component.componentName).toBe('profile')
+  // });
+  // it("testing text", ()=>{
+  //   expect(component.limit).toBe(10);
+  // })
 });

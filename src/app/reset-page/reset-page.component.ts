@@ -54,7 +54,6 @@ export class ResetPageComponent {
       let headers = new HttpHeaders().set("authorization", `Bearer ${localStorage.getItem('token')}`);
       let options = { headers: headers };
       this.apiService.post(url, body, options).subscribe((data: any) => {
-        console.log('click', data)
         if (data.status) {
           this.route.navigate(['/login']);
           this.alertService.success(data.message);
