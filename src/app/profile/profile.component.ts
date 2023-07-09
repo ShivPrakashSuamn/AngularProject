@@ -190,6 +190,7 @@ export class ProfileComponent {
     }
     );
   }
+  
   pageChange(e: any) {
     this.page = e;
     this.getData();
