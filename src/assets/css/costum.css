@@ -1,0 +1,12 @@
+/* .page-link.active {
+      z-index: 3;
+      color: var(--bs-pagination-active-color);
+      background-color: linear-gradient(315deg, #4457fa, #ca3bf5);
+      border-color: linear-gradient(315deg, #4457fa, #ca3bf5);
+} */
+
+.pagination {
+      --bs-pagination-active-bg: #a95dc09a !important;
+      --bs-pagination-active-border-color: #a95dc09a !important;
+      --bs-pagination-color: #4457fa !important;
+}

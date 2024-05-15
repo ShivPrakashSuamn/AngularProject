@@ -60,7 +60,6 @@ export class SettingsCreateComponent {
   }
 
   submit() {    // Submit Form    -----------------------------------
-   
     this.submitted = true;
     if (this.createForm.valid) {
       let url: string = `/setting/userstore`;

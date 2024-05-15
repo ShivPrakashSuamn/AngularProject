@@ -27,6 +27,7 @@
             "styles": [
               "@angular/material/prebuilt-themes/indigo-pink.css",
               "src/styles.css",
+              "src/assets/css/costum.css",
               "./node_modules/bootstrap/dist/css/bootstrap.min.css",
               "./node_modules/font-awesome/css/font-awesome.css",
               "./node_modules/boxicons/css/boxicons.min.css",
